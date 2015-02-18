@@ -1,15 +1,3 @@
-/* link.css */
-
-/* ===[ begin ]=== */
-
-/*
-  Title:                   Link Design Style
-  Authors:                 Dzenan Ridjanovic, Ivo Balbaert
-  Influenced By:           http://www.simplebits.com/
-  Created:                 2006-09-03
-  Updated:                 2013-06-13
-*/
-
   a:link {
     text-decoration: none;
     font-weight: bold;
@@ -45,5 +33,3 @@
     background: orangered;
     border-color: blue;
   }
-
-/* ===[ end ]=== */

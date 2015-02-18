@@ -4,6 +4,9 @@ description: An absolute bare-bones web app.
 environment:
   sdk: '>=1.0.0 <2.0.0'
 dependencies:
-  browser: any
-  dartlero: any
-  web_ui: any
+  browser:
+    git: ''
+  dartlero:
+    git: ''
+  web_ui:
+    git: ''
