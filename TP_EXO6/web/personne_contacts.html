@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Travail pratique</title>
+    <link rel="stylesheet" href="styles/input.css"/>
+    <link rel="stylesheet" href="styles/contact.css"/>
+    <link rel="stylesheet" href="styles/marker.css"/>
+    <link rel="stylesheet" href="styles/page.css"/>
+    <link rel="stylesheet" href="styles/table.css"/>
+    <link rel="components" href="composant/personne/personne_table.html"/>
+    <link rel="stylesheet" href="styles/main.css"/>
+</head>
+
+<body>
+
+    <div class="page-title">
+      Personnes
+      <button on-click="save()">Save</button>
+    </div>
+
+    <personne-table  
+      id="personne-table"  
+      personnes="{{ personnes }}">                
+    </personne-table>
+
+    <script type="application/dart" src="personne_contacts.dart">
+    </script>
+</body>
+</html>

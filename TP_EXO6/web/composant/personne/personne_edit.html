@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+  	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personne edit</title>
+  </head>
+ 
+  <body>   
+    <element name="personne-edit" extends="span">
+      <template>
+        <div>
+          <br/>
+          <label for="edit-personne-name" >Name</label>
+          <input id= "edit-personne-name" readonly="true" value="{{ personne.nom }}"/>
+          <br/>
+          <label for="edit-personne-prenom">Prénom</label>
+          <input id="edit-personne-prenom"
+            type="text" size="96" value="{{ personne.prenom }}"
+          />
+          <br/>
+          <button on-click="update()">Update</button>
+        </div>
+      </template>
+      <script type="application/dart" src="personne_edit.dart"></script>
+    </element>
+    <!-- for this next line to work, your pubspec.yaml file must have a dependency on 'browser' -->
+    <script src="packages/browser/dart.js"></script>
+  </body>
+</html>
