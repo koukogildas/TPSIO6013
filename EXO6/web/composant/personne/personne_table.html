@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8">
+<!-- <link rel="import" href="personne_add.html">
+<link rel="import" href="personne_edit.html">
+<link rel="import" href="../contact/contact_table.html"> -->
+<title>personne table</title>
+</head>
+
+<body>
+
+  <element name="personne-table" extends="span"> 
+    <template> 
+  <!-- Personne    -->
+  
+     <!-- Début: Formulaire pour ajouter une personne -->
+        <div id="showPersonneAdd">
+          <label for="add-personne-nom">Nom:</label>
+          <input id="add-personne-nom" type="text" size="32"/>
+          <br/>
+          <label for="add-personne-prenom">Prenom:</label>
+          <input id="add-personne-prenom" type="text" size="96"/>
+          <br/>
+          <button on-click="addPersonne()">Add</button>
+          <span id="add-personne-message"></span>
+        </div>
+      <!--Fin -->
+      
+       <br/>
+       
+       <!-- Début: Formulaire pour éditer une personne -->       
+        <div id="showPersonneEdit">         
+          <label for="edit-personne-name" >Name</label>
+          <input id= "edit-personne-name" readonly="true" value=""/>
+          <br/>
+          <label for="edit-personne-prenom">Prénom</label>
+          <input id="edit-personne-prenom"
+            type="text" size="96" value=""
+          />         
+          <button on-click="UpdatePersonne()">Update</button>
+        </div>     
+            
+       <!--Fin -->
+       
+        <br/>
+        
+      <!-- Début: Table qui affiche une personne -->
+      <table>
+        <caption class="marker">
+          Personnes
+          <button id="addPersonneButton" on-click="addPersonneTable()">Show Add</button>
+        </caption>
+        <tr>
+          <th>Name</th>
+          <th>Prénom</th>
+          <th>Modifier</th>
+          <th>Supprimer</th>
+          <th>Contacts</th>
+        </tr>
+        <tbody >
+          <!-- <tr>
+            <td> { personne.nom }</td>
+            <td> { personne.prenom }</td>
+            <td><button on-click="edit(personne)">Modifier</button></td>
+            <td><button on-click="delete(personne)">Supprimer</button></td>
+            <td><button id="${ personne.code}"
+                on-click="showContacts(personne)">Show</button></td>
+          </tr> -->
+        </tbody>
+      </table>
+      <br />     
+      <!--Fin table personne -->  
+          
+  <!--  Fin personne -->
+  
+   <!-- Contact    -->   
+       <div template if="showPersonneContacts">
+        <contact-table id="contact-table" personne="${ personne }"
+          contacts="${ personne.contacts }"> </contact-table>
+      </div>      
+   <!-- Concat    --> 
+     
+    </template> 
+    <script type="application/dart" src="personne_table.dart"></script> 
+  </element>
+  <script src="packages/browser/dart.js"></script>
+</body>
+</html>

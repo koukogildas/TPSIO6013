@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+  	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>contact add</title>
+  </head>
+ 
+  <body>   
+        <element name="contact-add" extends="span">
+      <template>
+        <div>
+          <br/>
+          <span class="marker">Contact de {{ personne.code }} </span>
+          <br/>
+          <label for="add-contact-code">email</label>
+          <input id="add-contac-code" type="text" size="32"/>
+          <br/>
+          <label for="add-contac-telephone">telephone</label>
+          <input id="add-contac-telephone" type="text" size="96"/>
+          <br/>
+          <button on-click="add()">Add</button>
+          <span id="add-contact-message"></span>
+        </div>
+      </template>
+       <script type="application/dart" src="contact_add.dart"></script>
+    </element>
+   <!-- for this next line to work, your pubspec.yaml file must have a dependency on 'browser' -->
+    <script src="packages/browser/dart.js"></script>
+  </body>
+</html>

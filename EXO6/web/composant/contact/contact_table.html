@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+  	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="import" href="contact_add.html">
+    <link rel="import" href="contact_edit.html">
+    <title>Contact table</title>
+  </head>
+ 
+  <body>   
+    <element name="contact-table" extends="span">
+      <template>
+        <div template if="showContactAdd">
+          <contact-add
+            personne="${ personne }"
+            contacts="${ contacts }">
+          </contact-add>
+        </div>
+        <div template if="showContactEdit">
+          <contact-edit
+            personne="${ personne }"
+            contacts="${ contacts }"
+            contact="${ contact }">
+          </contact-edit>
+        </div>
+        <table>
+          <caption class="marker">
+            contacts de ${ personne.code }
+            <button id="addContactButton" on-click="add()">Show Add</button>
+          </caption>
+          <tr>
+            <th>Email</th>
+            <th>Telephone</th>
+            <th>Edit</th>
+            <th>Remove</th>
+          </tr>
+          <tbody template iterate="contact in contacts.internalList">
+            <tr>
+              <td> ${ contact.email } </td>
+              <td>${ contact.telephone }</td>
+              <td><button id="editContactButton" on-click="edit(contact)">
+                Edit</button>
+              </td>
+              <td><button on-click="delete(contact)">Remove</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </template>
+      <script type="application/dart" src="contact_table.dart"></script>
+    </element>
+    <!-- for this next line to work, your pubspec.yaml file must have a dependency on 'browser' -->
+    <script src="packages/browser/dart.js"></script>
+  </body>
+</html>
