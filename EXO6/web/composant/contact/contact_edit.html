@@ -25,7 +25,7 @@
         <table>
           <caption class="marker">
             Contacts of ${ personne.code } personne
-            <button id="addContactButton" on-click="add()">Show Add</button>
+            <button id="addContactButton" on-click="addContact()">Show Add</button>
           </caption>
           <tr>
             <th>Email</th>
@@ -37,10 +37,10 @@
             <tr>
               <td> ${ contact.eamail } </td>
               <td>${ contact.telephone }</td>
-              <td><button id="editContactButton" on-click="edit(contact)">
+              <td><button id="editContactButton" on-click="editContact(contact)">
                 Edit</button>
               </td>
-              <td><button on-click="delete(contact)">Remove</button></td>
+              <td><button on-click="deleteContact(contact)">Remove</button></td>
             </tr>
           </tbody>
         </table>

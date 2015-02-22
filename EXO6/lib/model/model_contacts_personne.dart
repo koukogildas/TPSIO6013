@@ -28,14 +28,14 @@ class Model_contacts_personne extends ConceptModel {
     var webPersonneContacts1 = webPersonne1.contacts;
     
     var webPersonneContact1 = new Contact(); 
-    webPersonneContact1.email = 'kougil@yahoo.fr';
-    webPersonneContact1.telephone = '418 268 7458';
-    webPersonneContact1.idContact = "kougil@yahoo.fr418 268 7458";
+    webPersonneContact1.email = 'kougil1@yahoo.fr';
+    webPersonneContact1.telephone = '418 268 6389';
+    webPersonneContact1.idContact = "kougil1@yahoo.fr418 268 7458";
     
     var webPersonneContact2 = new Contact();   
-    webPersonneContact2.email = 'kougil@yahoo.fr';
-    webPersonneContact2.telephone = '418 268 7458';
-    webPersonneContact2.code = 'kougil@yahoo.fr418 268 7458';
+    webPersonneContact2.email = 'kougil2@yahoo.fr';
+    webPersonneContact2.telephone = '418 268 5897';
+    webPersonneContact2.code = 'kougil2@yahoo.fr418 268 7458';
     
     webPersonneContacts1.add(webPersonneContact1);
     webPersonneContacts1.add(webPersonneContact2);
@@ -43,14 +43,14 @@ class Model_contacts_personne extends ConceptModel {
     var webPersonneContacts2 = webPersonne2.contacts;
     
     var webPersonneContact3 = new Contact(); 
-    webPersonneContact3.email = 'kougil@yahoo.fr';
+    webPersonneContact3.email = 'valin1@yahoo.fr';
     webPersonneContact3.telephone = '418 268 7458';
-    webPersonneContact3.code = 'kougil@yahoo.fr418 268 7458';
+    webPersonneContact3.code = 'valin1@yahoo.fr418 268 7458';
         
     var webPersonneContact4 = new Contact();   
-    webPersonneContact4.email = 'kougil@yahoo.fr';
+    webPersonneContact4.email = 'valin2@yahoo.fr';
     webPersonneContact4.telephone = '418 268 7458';
-    webPersonneContact4.code = 'kougil@yahoo.fr418 268 7458';
+    webPersonneContact4.code = 'valin2@yahoo.fr418 268 7458';
         
     webPersonneContacts2.add(webPersonneContact3);
     webPersonneContacts2.add(webPersonneContact4);    

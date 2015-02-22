@@ -13,32 +13,26 @@
 
 <body>
 
-    <div class="page-title">
-      Personnes
-      <button on-click="save()">Save</button>
-    </div>
-      
-     
-      <!-- Personne    -->
+    <div class="page-title"> Mon Agenda </div>          
+      <br />                  
+<!--   Personne    -->
   
-     <!-- Début: Formulaire pour ajouter une personne -->
-        <div id="showPersonneAdd">
-          <label for="add-personne-nom">Nom:</label> 
-          <input
-            id="add-personne-nom" type="text" size="32" /> 
-            <br /> 
-            <label for="add-personne-prenom">Prenom:</label>
-           <input id="add-personne-prenom" type="text" size="96" /> 
-           <br />
-          <button on-click="AddPersonne()">Add</button>
-          <span id="add-personne-message"></span>
-        </div>
-      <!--Fin -->
-      
+       <!-- Début: Formulaire pour ajouter une personne -->
+          <div id="showPersonneAdd" style="display:none;">
+            <label for="add-personne-nom">Nom:</label> 
+            <input
+              id="add-personne-nom" type="text" size="32" /> 
+              <br /> 
+              <label for="add-personne-prenom">Prenom:</label>
+             <input id="add-personne-prenom" type="text" size="96" /> 
+             <br />
+            <button on-click="AddPersonne()">Add</button>
+            <span id="add-personne-message"></span>
+          </div>
+       <!--Fin -->
+             
        <!-- Début: Formulaire pour éditer une personne -->       
-        <div template if="showPersonneEdit">
-          <div>
-          <br/>
+        <div id="showPersonneEdit" style="display:none;">
           <label for="edit-personne-name" >Name</label>
           <input id= "edit-personne-name" readonly="true" value=""/>
           <br/>
@@ -48,44 +42,92 @@
           />
           <br/>
           <button on-click="update()">Update</button>
-        </div>
         </div>         
        <!--Fin -->
        
-      <!-- Début:Table qui affiche une personne -->
-      <table>
+       <br /> 
+       
+       <!-- Début:Table qui affiche une personne -->
+       <table id="table-Personne">
         <caption class="marker">
           Personnes
           <button id="addPersonneButton" on-click="addPersonneTable()">Show Add</button>
+          <button on-click="savePersonne()">Save</button>
         </caption>
         <tr>
           <th>Name</th>
           <th>Prénom</th>
-          <th>Modifier</th>
-          <th>Supprimer</th>
-          <th>Contacts</th>
+          <th colspan="3">Actions</th>
+        <!--   <th>Supprimer</th>
+          <th>Contacts</th> -->
         </tr>
-        <tbody template repeat="personne in personnes.internalList">
-          <!-- <tr>
-            <td> { personne.nom }</td>
-            <td> { personne.prenom }</td>
-            <td><button on-click="edit(personne)">Modifier</button></td>
-            <td><button on-click="delete(personne)">Supprimer</button></td>
-            <td><button id="${ personne.code}"
-                on-click="showContacts(personne)">Show</button></td>
-          </tr> -->
+        <tbody >
+         
         </tbody>
-      </table>
-      <br />     
-      <!--Fin table personne -->  
-          
-  <!--  Fin personne -->
+       </table>          
+      <!--Fin table personne --> 
+      
+<!--    Fin personne  -->  
+   
+         <br />
+         
+<!--      Contact     -->
      
+     <!-- Ajouter un contact -->
+        <div id="showContactAdd"  style="display:none;">
+          <span id="contactOf" class="marker">Contact de {{ personne.code }} </span>
+          <br />
+          <br/>
+          <label for="add-contact-code">email</label>
+          <input id="add-contac-code" type="email" size="32"/>
+          <br/>
+          <label for="add-contac-telephone">telephone</label>
+          <input id="add-contac-telephone" type="tel" size="96"/>
+          <br/>
+          <button on-click="addContact()">Add</button>
+          <span id="add-contact-message"></span>
+        </div>        
+      <!--       Fin ajouter un contact -->
+           
+     <!-- Modifier un contact    -->
+       <div  id="showContactEdit" style="display:none;">
+          <span id = "ContactOf" class="marker">contact de </span>
+          <br/> <br/>
+          <label for="edit-contact-email">email</label>
+          <input id="edit-contact-code"
+            type="email" size="32" value=""
+          />
+          <br/>
+          <label for="edit-contact-telephone">Téléphone</label>
+          <input id="edit-contact-telephone"
+            type="tel" size="96" value=""
+          />
+          <br/>
+          <button on-click="updateContact()">Update</button>
+          <span id="edit-contact-message"></span>
+        </div>
+     <!-- Fin modifier un contact -->
+           
+      <br/>
+      
+      <!-- Table contact -->
+        <table id="table-contact">
+          <caption class="marker" >
+            <span id= "id-text-caption-contact"></span>
+            <button id="addContactButton" style="display: none;">Show Add</button>
+          </caption>
+          <tr>
+            <th>Email</th>
+            <th>Telephone</th>
+            <th colspan="2">Actions</th>
+           <!--  <th>Remove</th> -->
+          </tr>
+          <tbody>   </tbody>
+        </table>
+      <!-- Fin table contact --> 
+                 
+<!--      Fin Concat      -->
      
-     
-     
-     
-    
     <script type="application/dart" src="personne_contacts.dart">
     </script>
      <script src="packages/browser/dart.js"></script>

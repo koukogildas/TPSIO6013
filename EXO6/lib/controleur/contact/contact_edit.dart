@@ -5,7 +5,7 @@ class ContactEdit {
   Contacts contacts;
   Contact contact;
 
-  update() {
+  updateContact() {
     InputElement email = querySelector("#edit-contact-email");
     InputElement telephone = querySelector("#edit-contact-telephone");
     Element message = querySelector("#edit-contact-message");
