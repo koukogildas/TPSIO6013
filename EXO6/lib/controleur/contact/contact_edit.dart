@@ -2,13 +2,31 @@ part of dartlero_contacts_personne.dart;
 
 class ContactEdit {
   Personne personne;
-  Contacts contacts;
-  Contact contact;
-
-  updateContact() {
+  
+  ContactTable contactTable;
+  
+  ContactEdit(this.contactTable);
+  
+  void init(){
+    ButtonElement buttonShowContactEdit = querySelector("#updateContactButton");
+    buttonShowContactEdit.onClick.listen(updateContact);   
+  }
+  
+  void load(){
     InputElement email = querySelector("#edit-contact-email");
     InputElement telephone = querySelector("#edit-contact-telephone");
-    Element message = querySelector("#edit-contact-message");
+    email.value = contactTable.contact.email;
+    telephone.value = contactTable.contact.telephone;
+  }
+
+  updateContact(MouseEvent event){
+    
+    InputElement email = querySelector("#edit-contact-email");
+    InputElement telephone = querySelector("#edit-contact-telephone");
+    Element message = querySelector("#edit-contact-message"); 
+    
+    var contact = contactTable.contact;
+    var personne = contactTable.personne;
     var error = false;
     message.text = '';
     if (email.value.trim() == '') {
@@ -25,28 +43,35 @@ class ContactEdit {
       }
     }
     if (!error) {
-      if (contact.code != '${email} + ${telephone}') {
-        var existingContact = contacts.find(code.value);
+      if (contact.idContact != '${email} + ${telephone}') {
+        var existingContact = personne.contacts.find(contact.idContact);
         if (existingContact != null) {
           message.text = 'Le contact est déjà utilisé';
         } else {
-          contacts.remove(contact);
-          contact = new Link();
+          personne.contacts.remove(contact);
+          var oldContact = contact;
+          contact = new Contact();
           contact.email = email.value;
           contact.telephone = telephone.value;
-          if (contacts.add(contact)) {
-            message.text = 'added';
+          if (personne.contacts.add(contact)) {
+            this.contactTable.removeRow(oldContact.idContact);
+            this.contactTable.addRowData(contact);
+            message.text = 'Le contact a été modifié';
+            personne.contacts.order(); 
+            
+            DivElement divFormulaireEditContact = querySelector("#showContactEdit");
+         //   divFormulaireEditContact.style.visibility = "none";
           } else {
-            message.text = 'not added';
+            
+            message.text = "le contact n'a pas été modifié";
           }
         }
-      } else {
+      }/* else {
         contact.email = email.value;
         contact.telephone = telephone.value;
-      }
-      contacts.order(); // even if code not changed, to see the updated list
-      var contactTable = querySelector('#contact-table').xtag;
-      contactTable.showContactEdit = false;
+      }*/
+     
+     
     }
   }
 }

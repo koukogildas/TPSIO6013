@@ -9,19 +9,11 @@ Model_contacts_personne model_contacts_personne;
 Personnes personnes;
 PersonneTable personneTable;
 
-
 savePersonne(){
   window.localStorage['dartlero_contacts_personne'] =
       JSON.encode(personnes.toJson());
 }
 
-/*void AfficherContact(ButtonElement boutonContact){    
-      // afficher les personnes
-      //for (var personneCourant in personnes.internalList){
-      //  addRowData(personneCourant);      
-      //}
-    }
-*/
 
 void intialisation(){
   
@@ -40,7 +32,8 @@ void intialisation(){
     personnes.order();    
     personneTable = new PersonneTable();
     personneTable.personnes = personnes;
-    personneTable.initialisation();
+    personneTable.initialisation();  
+    
 }
 
 main() {  

@@ -75,26 +75,26 @@
      
      <!-- Ajouter un contact -->
         <div id="showContactAdd"  style="display:none;">
-          <span id="contactOf" class="marker">Contact de {{ personne.code }} </span>
+          <span id="contactOfAdd" class="marker"> </span>
           <br />
           <br/>
-          <label for="add-contact-code">email</label>
-          <input id="add-contac-code" type="email" size="32"/>
+          <label for="add-contact-email">email</label>
+          <input id="add-contact-email" type="email" size="32"/> 
           <br/>
-          <label for="add-contac-telephone">telephone</label>
-          <input id="add-contac-telephone" type="tel" size="96"/>
+          <label for="add-contact-telephone">telephone</label>
+          <input id="add-contact-telephone" type="tel" size="96"/>
           <br/>
-          <button on-click="addContact()">Add</button>
+          <button id ="addContact">Add</button>
           <span id="add-contact-message"></span>
         </div>        
       <!--       Fin ajouter un contact -->
            
      <!-- Modifier un contact    -->
        <div  id="showContactEdit" style="display:none;">
-          <span id = "ContactOf" class="marker">contact de </span>
+          <span id = "ContactOfEdit" class="marker"> </span>
           <br/> <br/>
           <label for="edit-contact-email">email</label>
-          <input id="edit-contact-code"
+          <input id="edit-contact-email"
             type="email" size="32" value=""
           />
           <br/>
@@ -103,18 +103,18 @@
             type="tel" size="96" value=""
           />
           <br/>
-          <button on-click="updateContact()">Update</button>
+          <button id= "updateContactButton">Update</button>
           <span id="edit-contact-message"></span>
-        </div>
+       </div>
      <!-- Fin modifier un contact -->
            
       <br/>
       
       <!-- Table contact -->
         <table id="table-contact">
-          <caption class="marker" >
-            <span id= "id-text-caption-contact"></span>
-            <button id="addContactButton" style="display: none;">Show Add</button>
+          <caption class="marker">
+            <span id= "id-text-caption-contact" ></span>
+            <button id="addContactButton" name="" style="display: none;">Show Add</button>
           </caption>
           <tr>
             <th>Email</th>

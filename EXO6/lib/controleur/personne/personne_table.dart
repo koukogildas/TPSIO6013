@@ -24,6 +24,7 @@ class PersonneTable{
   
   void initialisation(){
     contactTable= new ContactTable();
+    contactTable.personnes = personnes;
     contactTable.intialisation();    
   }
  
