@@ -8,12 +8,6 @@ class ContactTable {
   ContactAdd contactAdd;
   ContactEdit contactedit;
   
- // @observable
-  bool showContactAdd = false;
- // @observable
-  bool showContactEdit = false;
-  
- // Table pour afficher la liste des personnes
  TableElement contactTable;
  SpanElement textCaptionContactTable;
  ButtonElement buttonShowadd;
@@ -39,12 +33,12 @@ class ContactTable {
   }
   
   editFormContact(MouseEvent event){
+    contact = personne.contacts.find(event.target.id); 
     DivElement divFormulaireEditContact = querySelector("#showContactEdit");
-    divFormulaireEditContact.style.visibility = "block";
-    SpanElement spanTitreFormeEditContact = querySelector("#contactOf");
-//    spanTitreFormeEditContact.text = "contact de: ${personne.prenom} ${personne.nom}";
-//    contact = personne.contacts.find(event.target.id);  
-//    contactedit.load();
+    divFormulaireEditContact.style.visibility = "none";            
+    SpanElement spanTitreFormeEditContact = querySelector("#ContactOfEdit");
+    spanTitreFormeEditContact.text = " kouko contact de: ${personne.prenom} ${personne.nom}";
+    contactedit.load();
   }
   
 
@@ -116,8 +110,9 @@ class ContactTable {
        editButonConcact.text = "Edit";
        editButonConcact.title= "Modifier";
        editButonConcact.id = contact.idContact;
-       editCell.children.add(editButonConcact);
        editButonConcact.onClick.listen(editFormContact);
+       editCell.children.add(editButonConcact);
+     
        
            
        var deleteButonConcact = new ButtonElement();
@@ -138,7 +133,7 @@ class ContactTable {
       var r = 0;
       for (var row in contactTable.children) {
         if (row is TableRowElement && r++ > nbElementBase) {
-          if (row.id.text == idContact) {
+          if (row.id == idContact) {
             contactTable.rows.remove(row);
           }
         }

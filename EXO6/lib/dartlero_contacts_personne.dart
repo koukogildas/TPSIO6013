@@ -9,7 +9,6 @@ library dartlero_contacts_personne;
 
 import 'package:dartlero/dartlero.dart';
 import 'dart:html';
-import 'dart:convert';
 
 // Entité
 part 'model/entites_contact.dart';

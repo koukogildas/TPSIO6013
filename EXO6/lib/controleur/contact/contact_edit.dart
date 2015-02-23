@@ -13,6 +13,7 @@ class ContactEdit {
   }
   
   void load(){
+    
     InputElement email = querySelector("#edit-contact-email");
     InputElement telephone = querySelector("#edit-contact-telephone");
     email.value = contactTable.contact.email;
