@@ -76,6 +76,7 @@ class ContactTable {
        deleteButonConcact.text = "Delete";
        deleteButonConcact.title= "Supprier";
        deleteButonConcact.id = contact.idContact;
+       deleteButonConcact.onClick.listen(deleteContact);
        deleteCell.children.add(deleteButonConcact);   
      
        contactRow.children.add(emailCell);
@@ -84,9 +85,16 @@ class ContactTable {
        contactRow.children.add(deleteCell);
        contactRow.id = contact.idContact;
        contactTable.children.add(contactRow);        
-      } 
+      }
   
-  void removeRow(String idContact){
+    void deleteContact(MouseEvent event){
+      contact = personne.contacts.find(event.target.id);
+      personne.contacts.remove(contact);
+      personne.contacts.order();
+      this.load();
+    } 
+  
+  void removeContactRow(String idContact){
       var r = 0;
       for (var row in contactTable.children){
         if (row is TableRowElement && r++ > nbElementBase) {

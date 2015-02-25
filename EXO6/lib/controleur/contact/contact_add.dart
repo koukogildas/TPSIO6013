@@ -47,9 +47,7 @@ class ContactAdd{
     }
   
   addContact(MouseEvent event) {
-    //ButtonElement buttonShowContactAdd = querySelector("#addContactButton");
-    // personne = contactTable.personnes.find(buttonShowContactAdd.name);
- 
+   
     var error = false;
     message.text = '';
     if (email.value.trim() == '') {
