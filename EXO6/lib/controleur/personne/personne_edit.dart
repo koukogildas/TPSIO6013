@@ -1,4 +1,4 @@
-part of dartlero_contacts_personne.dart;
+part of dartlero_contacts_personne;
 
 class PersonneEdit{
   Personnes personnes;

@@ -15,7 +15,7 @@ savePersonne(){
 }
 
 
-void intialisation(){
+void LoadPersonneData(){
   
   // Recupération de la liste des personnes et des contacts
     model_contacts_personne = new Model_contacts_personne();
@@ -29,16 +29,18 @@ void intialisation(){
         model_contacts_personne.init();
       }
     }
-    personnes.order();    
-    personneTable = new PersonneTable();
-    personneTable.personnes = personnes;
-    personneTable.initialisation();  
+    personnes.order(); 
     
 }
 
 main() {  
-  intialisation();
-  personneTable.load();
+  
+  LoadPersonneData();
+  
+  personneTable = new PersonneTable();
+  personneTable.personnes = personnes;
+  personneTable.initialisation();
+  personneTable.ShowPeopleList();
 }
 
 

@@ -18,15 +18,14 @@
 <!--   Personne    -->
   
        <!-- Début: Formulaire pour ajouter une personne -->
-          <div id="showPersonneAdd" style="display:none;">
+          <div id="showPersonneAddForm"  style="display:none;">
             <label for="add-personne-nom">Nom:</label> 
-            <input
-              id="add-personne-nom" type="text" size="32" /> 
-              <br /> 
-              <label for="add-personne-prenom">Prenom:</label>
-             <input id="add-personne-prenom" type="text" size="96" /> 
-             <br />
-            <button on-click="AddPersonne()">Add</button>
+            <input id="add-personne-nom" type="text" size="32" /> 
+            <br /> 
+            <label for="add-personne-prenom">Prenom:</label>
+            <input id="add-personne-prenom" type="text" size="50" /> 
+             <br/>
+            <button id="AddPersonne">Add</button>
             <span id="add-personne-message"></span>
           </div>
        <!--Fin -->
@@ -37,11 +36,9 @@
           <input id= "edit-personne-name" readonly="true" value=""/>
           <br/>
           <label for="edit-personne-prenom">Prénom</label>
-          <input id="edit-personne-prenom"
-            type="text" size="96" value=""
-          />
+          <input id="edit-personne-prenom" type="text" size="50" value=""/>
           <br/>
-          <button on-click="update()">Update</button>
+          <button id="updatePersonneButton">Update</button>
         </div>         
        <!--Fin -->
        
@@ -51,19 +48,15 @@
        <table id="table-Personne">
         <caption class="marker">
           Personnes
-          <button id="addPersonneButton" on-click="addPersonneTable()">Show Add</button>
-          <button on-click="savePersonne()">Save</button>
+          <button id="showPersonneAddFormButton">Show Add</button>
+          <button id="savePersonne">Save</button>
         </caption>
         <tr>
           <th>Name</th>
           <th>Prénom</th>
           <th colspan="3">Actions</th>
-        <!--   <th>Supprimer</th>
-          <th>Contacts</th> -->
         </tr>
-        <tbody >
-         
-        </tbody>
+        <tbody >   </tbody>
        </table>          
       <!--Fin table personne --> 
       
@@ -74,34 +67,29 @@
 <!--      Contact     -->
      
      <!-- Ajouter un contact -->
-        <div id="showContactAdd"  style="display:none;">
+        <div id="showContactAddForm"  style="display:none;">
           <span id="contactOfAdd" class="marker"> </span>
-          <br />
-          <br/>
+          <br/> <br/>
           <label for="add-contact-email">email</label>
-          <input id="add-contact-email" type="email" size="32"/> 
+          <input id="add-contact-email" type="text" size="32"/> 
           <br/>
           <label for="add-contact-telephone">telephone</label>
-          <input id="add-contact-telephone" type="tel" size="96"/>
+          <input id="add-contact-telephone" type="text" size="50"/>
           <br/>
-          <button id ="addContact">Add</button>
+          <button id ="addContactButton">Add</button>
           <span id="add-contact-message"></span>
         </div>        
      <!--       Fin ajouter un contact -->
            
      <!-- Modifier un contact    -->
-       <div  id="showContactEdit" style="display:none;">
+       <div  id="showContactEditForm" style="display:none;">
           <span id = "ContactOfEdit" class="marker"> </span>
           <br/> <br/>
           <label for="edit-contact-email">email</label>
-          <input id="edit-contact-email"
-            type="email" size="32" value=""
-          />
+          <input id="edit-contact-email" type="text" size="32" value=""/>
           <br/>
           <label for="edit-contact-telephone">Téléphone</label>
-          <input id="edit-contact-telephone"
-            type="tel" size="96" value=""
-          />
+          <input id="edit-contact-telephone" type="text" size="50" value=""/>
           <br/>
           <button id= "updateContactButton">Update</button>
           <span id="edit-contact-message"></span>
@@ -113,23 +101,21 @@
       <!-- Table contact -->
         <table id="table-contact">
           <caption class="marker">
-            <span id= "id-text-caption-contact" ></span>
-            <button id="addContactButton" name="" style="display: none;">Show Add</button>
+            <span id = "id-text-caption-contact" ></span>
+            <button id="ShowAddContactFormButton" name="" style="display: none;">Show Add</button>
           </caption>
           <tr>
             <th>Email</th>
             <th>Telephone</th>
             <th colspan="2">Actions</th>
-           <!--  <th>Remove</th> -->
           </tr>
-          <tbody>   </tbody>
+          <tbody> </tbody>
         </table>
       <!-- Fin table contact --> 
                  
 <!--      Fin Concat      -->
      
-    <script type="application/dart" src="personne_contacts.dart">
-    </script>
+    <script type="application/dart" src="personne_contacts.dart"> </script>
      <script src="packages/browser/dart.js"></script>
 </body>
 </html>

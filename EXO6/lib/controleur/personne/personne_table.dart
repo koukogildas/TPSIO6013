@@ -1,37 +1,54 @@
-part of dartlero_contacts_personne.dart;
+part of dartlero_contacts_personne;
 
 class PersonneTable{
   
   Personnes personnes;
   Personne personne;
   ContactTable contactTable;  
-  //@observable
-  bool showPersonneAdd = false;
-  //@observable
-  bool showPersonneEdit = false;
-  //@observable
-  bool showPersonneContacts = false;
+  ButtonElement buttonPersonneShowaddForm;
+
   
   // Table pour afficher la liste des personnes
-  TableElement personneTable = querySelector('#table-Personne');
+  TableElement personneTable;
   
-  load(){    
-    // afficher les personnes
+  ShowPeopleList(){    
     for (var personneCourant in personnes.internalList){
       addRowData(personneCourant);      
     }
   }
   
   void initialisation(){
+    
+    personneTable = querySelector('#table-Personne');    
+    buttonPersonneShowaddForm = querySelector("#showPersonneAddFormButton");
+    buttonPersonneShowaddForm.onClick.listen(ShowAddFormPersonne);
+    
     contactTable= new ContactTable();
-    contactTable.personnes = personnes;
-    contactTable.intialisation();    
+    contactTable.personnes = personnes;    
+    contactTable.contactedit = new ContactEdit();    
+    contactTable.contactAdd = new ContactAdd();
+    contactTable.intialisation();         
   }
- 
-  afficherContact(MouseEvent event){  
-    personne = personnes.find(event.target.id);
-    contactTable.personne = personne;
-    contactTable.load();
+  
+  ShowAddFormPersonne(MouseEvent event){
+      DivElement divFormulaireAddPersonne = querySelector("#showPersonneAddForm");
+      if (buttonPersonneShowaddForm.text == 'Show Add') {      
+        divFormulaireAddPersonne.style.display = "block";
+        buttonPersonneShowaddForm.text = 'Hide Add';
+      } 
+      else {
+        divFormulaireAddPersonne.style.display = "none";
+        buttonPersonneShowaddForm.text = 'Show Add';
+        
+        Element message = querySelector("#add-personne-message");
+        InputElement nom = querySelector("#add-personne-nom");
+        InputElement prenom = querySelector("#add-personne-prenom");
+        
+        message.text = "";
+        nom.value = "";      
+        prenom.value = "";      
+        
+      }
   }
   
   addRowData(Personne personne){ 
@@ -49,7 +66,7 @@ class PersonneTable{
      ContactButonPersonne.text = "Contacts";
      ContactButonPersonne.title= "Afficher les contacts";
      ContactButonPersonne.id = personne.idPersonne;
-     ContactButonPersonne.onClick.listen(afficherContact);
+     ContactButonPersonne.onClick.listen(ShowContactPersonList);
      contactCell.children.add(ContactButonPersonne);
      
      var editButonPersonne = new ButtonElement();
@@ -70,43 +87,13 @@ class PersonneTable{
      personneRow.children.add(deleteCell);
      personneRow.children.add(contactCell);
      personneRow.id = personne.idPersonne;
-     personneTable.children.add(personneRow);
-      
+     personneTable.children.add(personneRow);      
     }
-    
   
-  addPersonneTable() {
-    ButtonElement addPersonne = querySelector('#addPersonneButton');
-    if (addPersonne.text == 'Show Add') {
-      showPersonneAdd = true;
-      addPersonne.text = 'Hide Add';
-    } else {
-      showPersonneAdd = false;
-      addPersonne.text = 'Show Add';
-    }
-  }
-
-  editPersonneTable(Personne personne) {
-    showPersonneEdit = true;
-    this.personne = personne;
-  }
-
-  deletePersonneTable(Personne personne) {
-    this.personnes.remove(personne);
-    showPersonneContacts = false;
-  }
-
-  showContactsPersonneTable(Personne personne) {
-    ButtonElement personneContacts = querySelector('#${personne.code}');
-    if (!showPersonneContacts && personneContacts.text == 'Show') {
-      showPersonneContacts = true;
-      this.personne = personne;
-     // this.personne.contacts.internalList = toObservable(this.personne.contacts.internalList);
-      this.personne.contacts.order();
-      personneContacts.text = 'Hide';
-    } else if (showPersonneContacts && personneContacts.text == 'Hide') {
-      showPersonneContacts = false;
-      personneContacts.text = 'Show';
-    }
-  }
+  ShowContactPersonList(MouseEvent event){  
+     personne = personnes.find(event.target.id);
+     contactTable.personne = personne;
+     contactTable.load();
+   }
+  
 }

@@ -1,82 +1,39 @@
-part of dartlero_contacts_personne.dart;
+part of dartlero_contacts_personne;
 
 class ContactTable {
   Personnes personnes;
   Personne personne;
+  
+  ContactEdit contactedit;
+  
   Contact contact;  
   
   ContactAdd contactAdd;
-  ContactEdit contactedit;
   
  TableElement contactTable;
  SpanElement textCaptionContactTable;
- ButtonElement buttonShowadd;
+ 
  int nbElementBase = 0;
  
-  void intialisation(){
-    
-    contactTable = querySelector('#table-contact');    
-    
-    contactAdd = new ContactAdd(this);
-    contactAdd.intialisation();
-    
-    contactedit = new ContactEdit(this);
-    contactedit.init();   
-   
-    nbElementBase =  contactTable.children.length;
-    
-    textCaptionContactTable = querySelector("#id-text-caption-contact");
-    textCaptionContactTable.text = "";
-    
-    buttonShowadd = querySelector("#addContactButton");
-    buttonShowadd.onClick.listen(addFormContact);    
+  void intialisation(){ 
+    textCaptionContactTable= querySelector('#id-text-caption-contact'); 
+    contactTable = querySelector('#table-contact');   
+    contactedit.contactTable = this;
+    contactedit.initialisation();    
+    contactAdd.contactTable = this;
+    contactAdd.intialisation(); 
+    nbElementBase =  contactTable.children.length;    
   }
   
-  editFormContact(MouseEvent event){
-    contact = personne.contacts.find(event.target.id); 
-    DivElement divFormulaireEditContact = querySelector("#showContactEdit");
-    divFormulaireEditContact.style.visibility = "none";            
-    SpanElement spanTitreFormeEditContact = querySelector("#ContactOfEdit");
-    spanTitreFormeEditContact.text = " kouko contact de: ${personne.prenom} ${personne.nom}";
-    contactedit.load();
-  }
-  
+  ShowEditFormContact(MouseEvent event){
+    contact = personne.contacts.find(event.target.id);  
+    contactedit.ShowEditFormContact(event);
+  }  
 
-  addFormContact(MouseEvent event){
+  ShowAddFormContact(MouseEvent event){
+  contact = personne.contacts.find(event.target.id);
+  contactAdd.ShowAddFormContact(event);  
     
-    DivElement divFormulaireAddContact = querySelector("#showContactAdd");
-    SpanElement spanTitreFormeAddContact = querySelector("#contactOfAdd");
-    spanTitreFormeAddContact.text = "contact de: ${personne.prenom} ${personne.nom}";
-
-    if (buttonShowadd.text == 'Show Add') {      
-      divFormulaireAddContact.style.display = "block";
-      buttonShowadd.text = 'Hide Add';
-      buttonShowadd.name = personne.idPersonne;
-    } else {
-      divFormulaireAddContact.style.display = "none";
-      buttonShowadd.text = 'Show Add';
-      buttonShowadd.name = "";
-      
-      // on vide les champs;
-      Element message = querySelector("#add-contact-message");
-      InputElement email = querySelector("#add-contact-email");
-      InputElement telephone = querySelector("#add-contact-telephone");
-      
-      message.text = "";
-      email.value = "";      
-      telephone.value = "";      
-      
-    }
-    
-  }
-
-  editContact(contact) {
-    showContactEdit = true;
-    this.contact = contact;
-  }
-
-  deleteContact(contact) {
-    personne.contacts.remove(contact);
   }
   
   load(){        
@@ -85,11 +42,11 @@ class ContactTable {
     }
     
     if(personne == null){
-      buttonShowadd.style.display = "none";
+      contactAdd.buttonShowaddContactForm.style.display = "none";
       textCaptionContactTable.text = "";
     }
     else{
-      buttonShowadd.style.display= "block";
+      contactAdd.buttonShowaddContactForm.style.display= "block";
       textCaptionContactTable.text= "contacts de: ${personne.prenom} ${personne.nom}";
       for (var contactsCourant in personne.contacts.internalList){
         addRowData(contactsCourant);      
@@ -110,7 +67,7 @@ class ContactTable {
        editButonConcact.text = "Edit";
        editButonConcact.title= "Modifier";
        editButonConcact.id = contact.idContact;
-       editButonConcact.onClick.listen(editFormContact);
+       editButonConcact.onClick.listen(ShowEditFormContact);
        editCell.children.add(editButonConcact);
      
        
@@ -129,9 +86,9 @@ class ContactTable {
        contactTable.children.add(contactRow);        
       } 
   
-  void  removeRow(String idContact){
+  void removeRow(String idContact){
       var r = 0;
-      for (var row in contactTable.children) {
+      for (var row in contactTable.children){
         if (row is TableRowElement && r++ > nbElementBase) {
           if (row.id == idContact) {
             contactTable.rows.remove(row);

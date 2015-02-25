@@ -1,23 +1,55 @@
-part of dartlero_contacts_personne.dart;
+part of dartlero_contacts_personne;
 
 class ContactAdd{
- // Personnes personnes;
- // Personne personne;
+
+  
   ContactTable contactTable;
   
-  ContactAdd(this.contactTable);
+  SpanElement spanTitleFormeAddContact;  
+  ButtonElement buttonAddContact, buttonShowaddContactForm;
+  DivElement divFormAddContact;
+  Element message;  
+  InputElement email, telephone;
   
   void intialisation(){
-    ButtonElement buttonContactAdd = querySelector("#addContact");
-    buttonContactAdd.onClick.listen(addContact);
+    spanTitleFormeAddContact = querySelector("#contactOfAdd");          
+    divFormAddContact = querySelector("#showContactAddForm");
+    message = querySelector("#add-contact-message");
+    email = querySelector("#add-contact-email");
+    telephone = querySelector("#add-contact-telephone");
+    
+    buttonShowaddContactForm = querySelector("#ShowAddContactFormButton");
+    buttonShowaddContactForm.onClick.listen(ShowAddFormContact);
+    
+    buttonAddContact = querySelector("#addContactButton");
+    buttonAddContact.onClick.listen(addContact);
+       
   }
+  
+  ShowAddFormContact(MouseEvent event){    
+    
+      spanTitleFormeAddContact.text = "contact de: ${contactTable.personne.prenom} ${contactTable.personne.nom}";
+
+      if (buttonShowaddContactForm.text == 'Show Add') {      
+        divFormAddContact.style.display = "block";
+        buttonShowaddContactForm.text = 'Hide Add';
+        buttonShowaddContactForm.name = contactTable.personne.idPersonne;
+      } else {
+        divFormAddContact.style.display = "none";
+        buttonShowaddContactForm.text = 'Show Add';
+        buttonShowaddContactForm.name = "";       
+              
+        message.text = "";
+        email.value = "";      
+        telephone.value = "";      
+      }
+      
+    }
   
   addContact(MouseEvent event) {
     //ButtonElement buttonShowContactAdd = querySelector("#addContactButton");
     // personne = contactTable.personnes.find(buttonShowContactAdd.name);
-    InputElement email = querySelector("#add-contact-email");
-    InputElement telephone = querySelector("#add-contact-telephone");
-    Element message = querySelector("#add-contact-message");
+ 
     var error = false;
     message.text = '';
     if (email.value.trim() == '') {
