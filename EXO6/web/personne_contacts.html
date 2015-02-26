@@ -49,7 +49,7 @@
         <caption class="marker">
           Personnes
           <button id="showPersonneAddFormButton">Show Add</button>
-          <button id="savePersonne">Save</button>
+          <button id="savePersonnesData">Save</button>
         </caption>
         <tr>
           <th>Name</th>
@@ -71,10 +71,10 @@
           <span id="contactOfAdd" class="marker"> </span>
           <br/> <br/>
           <label for="add-contact-email">email</label>
-          <input id="add-contact-email" type="text" size="32"/> 
+          <input id="add-contact-email" type="email" required="required" size="32"/> 
           <br/>
           <label for="add-contact-telephone">telephone</label>
-          <input id="add-contact-telephone" type="text" size="50"/>
+          <input id="add-contact-telephone" type="tel" required="required" pattern="\d\d\d-\d\d\d-\d\d\d\d" size="50"/>
           <br/>
           <button id ="addContactButton">Add</button>
           <span id="add-contact-message"></span>
@@ -86,10 +86,10 @@
           <span id = "ContactOfEdit" class="marker"> </span>
           <br/> <br/>
           <label for="edit-contact-email">email</label>
-          <input id="edit-contact-email" type="text" size="32" value=""/>
+          <input id="edit-contact-email" type="email" required="required" size="32" value=""/>
           <br/>
           <label for="edit-contact-telephone">Téléphone</label>
-          <input id="edit-contact-telephone" type="text" size="50" value=""/>
+          <input id="edit-contact-telephone" type="tel" required="required" pattern="\d\d\d-\d\d\d-\d\d\d\d" size="50" value=""/>
           <br/>
           <button id= "updateContactButton">Update</button>
           <span id="edit-contact-message"></span>

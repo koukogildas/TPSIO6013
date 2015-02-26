@@ -2,17 +2,13 @@
 // is governed by a BSD-style license that can be found in the LICENSE file.
 
 import 'dart:html';
-import 'dart:convert';
 import 'package:EXO6/dartlero_contacts_personne.dart';
+import 'dart:convert';
 
 Model_contacts_personne model_contacts_personne;
 Personnes personnes;
 PersonneTable personneTable;
 
-savePersonne(){
-  window.localStorage['dartlero_contacts_personne'] =
-      JSON.encode(personnes.toJson());
-}
 
 
 void LoadPersonneData(){

@@ -6,3 +6,4 @@ environment:
 dependencies:
   browser: any
   dartlero: any
+  validator: any

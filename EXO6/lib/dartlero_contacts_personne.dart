@@ -8,8 +8,9 @@
 library dartlero_contacts_personne;
 
 import 'package:dartlero/dartlero.dart';
+import 'package:validator/validator.dart';
 import 'dart:html';
-
+import 'dart:convert';
 // Entité
 part 'model/entites_contact.dart';
 part 'model/entites_personne.dart';

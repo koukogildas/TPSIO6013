@@ -6,6 +6,7 @@ class PersonneTable{
   Personne personne;
   ContactTable contactTable;  
   ButtonElement buttonPersonneShowaddForm;
+  ButtonElement buttonPersonneSaveData;
 
   
   // Table pour afficher la liste des personnes
@@ -17,11 +18,19 @@ class PersonneTable{
     }
   }
   
+  savePersonne(MouseEvent event){
+    window.localStorage['dartlero_contacts_personne'] =
+        JSON.encode(personnes.toJson());
+  }
+  
   void initialisation(){
     
     personneTable = querySelector('#table-Personne');    
     buttonPersonneShowaddForm = querySelector("#showPersonneAddFormButton");
     buttonPersonneShowaddForm.onClick.listen(ShowAddFormPersonne);
+    
+    buttonPersonneSaveData = querySelector("#savePersonnesData");
+    buttonPersonneSaveData.onClick.listen(savePersonne);
     
     contactTable= new ContactTable();
     contactTable.personnes = personnes;    

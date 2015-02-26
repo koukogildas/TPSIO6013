@@ -37,8 +37,8 @@ class ContactAdd{
       } else {
         divFormAddContact.style.display = "none";
         buttonShowaddContactForm.text = 'Show Add';
-        buttonShowaddContactForm.name = "";       
-              
+        buttonShowaddContactForm.name = "";      
+        
         message.text = "";
         email.value = "";      
         telephone.value = "";      
