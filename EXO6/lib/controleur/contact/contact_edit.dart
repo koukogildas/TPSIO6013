@@ -28,7 +28,8 @@ class ContactEdit {
     divFormEditContact.style.display = "block";  
     spanTitleFormEditContact.text = "Contact de: ${contactTable.personne.prenom} ${contactTable.personne.nom}";       
     email.value = contactTable.contact.email;
-    telephone.value = contactTable.contact.telephone; 
+    telephone.value = contactTable.contact.telephone;
+    message.text = '';
     
   }
    
@@ -40,7 +41,7 @@ class ContactEdit {
   }
   
 
-  updateContact(MouseEvent event){    
+  updateContact(MouseEvent event){  
      
     var contact = contactTable.contact;
     var personne = contactTable.personne;
@@ -60,32 +61,40 @@ class ContactEdit {
       }
     }
     if (!error) {
-      if (contact.idContact != '${email.value} + ${telephone.value}') {
+      if (contact.idContact != '${email.value}${telephone.value}') {
         var existingContact = personne.contacts.find(contact.idContact);
         if (existingContact != null) {
-          message.text = "Le contact n'exiate pas";
-        } else {
           var oldContact = contact; 
           personne.contacts.remove(contact);
           contact = new Contact();
           contact.email = email.value;
           contact.telephone = telephone.value;
-          contact.idContact = '${email.value} + ${telephone.value}';
-          if (personne.contacts.add(contact)) {
+          contact.idContact = '${email.value}${telephone.value}';
+          if(personne.contacts.contains(contact)){
+            message.text = "le contact existe déjà";
+          }            
+          else {
+            if(personne.contacts.add(contact)){
             personne.contacts.order(); 
-            this.contactTable.load();//removeRow(oldContact.idContact);
+            this.contactTable.showContactList();//removeRow(oldContact.idContact);
            // this.contactTable.addRowData(contact);
             message.text = 'Le contact a été modifié';        
          
             divFormEditContact.style.visibility = "none"; 
           } else {
             
-            message.text = "le contact n'a pas été modifié";
+            message.text = "le contact existe déjà";
           }
         }
       }   
      
     }
+      else {                  
+        message.text = "le contact existe déjà";
+      }
   }
+  }
+  
+  
 }
 
