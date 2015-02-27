@@ -1,7 +1,6 @@
 part of dartlero_contacts_personne;
 
 class ContactAdd{
-
   
   ContactTable contactTable;
   
@@ -26,10 +25,11 @@ class ContactAdd{
        
   }
   
+  
   ShowAddFormContact(MouseEvent event){    
     
       spanTitleFormeAddContact.text = "contact de: ${contactTable.personne.prenom} ${contactTable.personne.nom}";
-
+       
       if (buttonShowaddContactForm.text == 'Show Add') {      
         divFormAddContact.style.display = "block";
         buttonShowaddContactForm.text = 'Hide Add';
@@ -72,7 +72,8 @@ class ContactAdd{
       if (contactTable.personne.contacts.add(contact)) {
         message.text = 'Le contact a été ajouté';
         contactTable.personne.contacts.order();
-        contactTable.addRowData(contact);
+        contactTable.showContactList();
+        //contactTable.addRowData(contact);
         email.value = "";
         telephone.value = "";
       } else {

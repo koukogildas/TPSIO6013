@@ -13,7 +13,7 @@ class ContactTable {
  TableElement contactTable;
  SpanElement textCaptionContactTable;
  
- int nbElementBase = 0;
+ int nbContactBase = 0;
  
   void intialisation(){ 
     textCaptionContactTable= querySelector('#id-text-caption-contact'); 
@@ -22,7 +22,7 @@ class ContactTable {
     contactedit.initialisation();    
     contactAdd.contactTable = this;
     contactAdd.intialisation(); 
-    nbElementBase =  contactTable.children.length;    
+    nbContactBase =  contactTable.children.length;    
   }
   
   ShowEditFormContact(MouseEvent event){
@@ -36,18 +36,21 @@ class ContactTable {
     
   }
   
-  load(){        
-    while(contactTable.children.length > nbElementBase){
-      contactTable.children.removeLast();  
+  showContactList(){        
+    while(contactTable.children.length > nbContactBase){
+      contactTable.children.removeLast();      
     }
     
     if(personne == null){
       contactAdd.buttonShowaddContactForm.style.display = "none";
+      contactAdd.buttonShowaddContactForm.text = 'Show Add';
+      contactedit.divFormEditContact.style.display = "none";
       textCaptionContactTable.text = "";
     }
     else{
       contactAdd.buttonShowaddContactForm.style.display= "block";
       textCaptionContactTable.text= "contacts de: ${personne.prenom} ${personne.nom}";
+      contactedit.divFormEditContact.style.display = "none";
       for (var contactsCourant in personne.contacts.internalList){
         addRowData(contactsCourant);      
       }
@@ -68,9 +71,7 @@ class ContactTable {
        editButonConcact.title= "Modifier";
        editButonConcact.id = contact.idContact;
        editButonConcact.onClick.listen(ShowEditFormContact);
-       editCell.children.add(editButonConcact);
-     
-       
+       editCell.children.add(editButonConcact);       
            
        var deleteButonConcact = new ButtonElement();
        deleteButonConcact.text = "Delete";
@@ -91,13 +92,13 @@ class ContactTable {
       contact = personne.contacts.find(event.target.id);
       personne.contacts.remove(contact);
       personne.contacts.order();
-      this.load();
+      this.showContactList();
     } 
   
   void removeContactRow(String idContact){
       var r = 0;
       for (var row in contactTable.children){
-        if (row is TableRowElement && r++ > nbElementBase) {
+        if (row is TableRowElement && r++ > nbContactBase) {
           if (row.id == idContact) {
             contactTable.rows.remove(row);
           }

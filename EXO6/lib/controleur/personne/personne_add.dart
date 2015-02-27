@@ -1,12 +1,45 @@
 part of dartlero_contacts_personne;
 
 class PersonneAdd{
-  Personnes personnes;
+ 
+  PersonneTable personneTable;
+  
+  ButtonElement buttonPersonneShowaddForm, buttonAddPersonne;
+  DivElement divFormulaireAddPersonne;
+  InputElement nom, prenom;
+  Element message;   
 
-  AddPersonne() {
-    InputElement nom = querySelector('#add-personne-nom');
-    InputElement prenom = querySelector('#add-personne-prenom');
-    Element message = querySelector("#add-personne-message");
+  
+  
+  void intialisation(){
+    divFormulaireAddPersonne= querySelector("#showPersonneAddForm");
+    message = querySelector("#add-personne-message");
+    nom = querySelector("#add-personne-nom");
+    prenom = querySelector("#add-personne-prenom");
+    
+    buttonPersonneShowaddForm = querySelector("#showPersonneAddFormButton");
+    buttonPersonneShowaddForm.onClick.listen(showAddFormPersonne);
+    buttonAddPersonne = querySelector("#AddPersonne");
+    buttonAddPersonne.onClick.listen(addPersonne);
+
+  }
+  
+  showAddFormPersonne(MouseEvent event){    
+        if (buttonPersonneShowaddForm.text == 'Show Add') {      
+          divFormulaireAddPersonne.style.display = "block"; 
+          buttonPersonneShowaddForm.text = 'Hide Add';
+        } 
+        else {
+          divFormulaireAddPersonne.style.display = "none";
+          buttonPersonneShowaddForm.text = 'Show Add';    
+          
+          message.text = "";
+          nom.value = "";      
+          prenom.value = "";          
+        }
+    }
+  
+  addPersonne(MouseEvent event) {
     var error = false;
     message.text = '';
     if (nom.value.trim() == '') {
@@ -29,9 +62,14 @@ class PersonneAdd{
       personne.nom = nom.value;
       personne.prenom = prenom.value;
       personne.idPersonne = '${nom} + ${prenom}';
-      if (personnes.add(personne)) {
-        message.text = 'added';
-        personnes.order();
+      personne.contacts = new Contacts();
+      if (personneTable.personnes.add(personne)) {
+        message.text = 'La personne est ajoutée.';
+        personneTable.personnes.order();
+        personneTable.showPeopleList();
+        message.text = "";
+        nom.value = "";      
+        prenom.value = "";
       } else {
         message.text = 'La personne existe déjà.';
       }

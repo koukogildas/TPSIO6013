@@ -6,37 +6,31 @@ import 'package:EXO6/dartlero_contacts_personne.dart';
 import 'dart:convert';
 
 Model_contacts_personne model_contacts_personne;
-Personnes personnes;
 PersonneTable personneTable;
-
-
 
 void LoadPersonneData(){
   
+   personneTable = new PersonneTable();
   // Recupération de la liste des personnes et des contacts
     model_contacts_personne = new Model_contacts_personne();
-    personnes = model_contacts_personne.personnes;
+    personneTable.personnes = model_contacts_personne.personnes;
     String json = window.localStorage['dartlero_contacts_personne'];
     if (json == null) {
       model_contacts_personne.init();
     } else {
-      personnes.fromJson(JSON.decode(json));
-      if (personnes.length == 0) {
+      personneTable.personnes.fromJson(JSON.decode(json));
+      if (personneTable.personnes.length == 0) {
         model_contacts_personne.init();
       }
     }
-    personnes.order(); 
-    
+    personneTable.personnes.order();
+    personneTable.initialisation();
+    personneTable.showPeopleList();
+
 }
 
 main() {  
-  
   LoadPersonneData();
-  
-  personneTable = new PersonneTable();
-  personneTable.personnes = personnes;
-  personneTable.initialisation();
-  personneTable.ShowPeopleList();
 }
 
 

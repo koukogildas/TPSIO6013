@@ -11,7 +11,7 @@ class ContactEdit {
    
   void initialisation(){
     
-    divFormEditContact = querySelector("#showContactEditForm");
+    divFormEditContact = querySelector("#showContactEditForm");    
     spanTitleFormEditContact = querySelector("#ContactOfEdit");
     email = querySelector("#edit-contact-email");
     telephone = querySelector("#edit-contact-telephone");
@@ -25,12 +25,8 @@ class ContactEdit {
     
     contactTable.contactAdd.buttonShowaddContactForm.text = 'Hide Add';
     contactTable.ShowAddFormContact(event);
-   
-    divFormEditContact.style.visibility = "block";  
-    spanTitleFormEditContact.text = "Contact de: ${contactTable.personne.prenom} ${contactTable.personne.nom}";
-    
-    print("visibilité formulaire après modif: ${contactTable.contact.idContact}");
-   
+    divFormEditContact.style.display = "block";  
+    spanTitleFormEditContact.text = "Contact de: ${contactTable.personne.prenom} ${contactTable.personne.nom}";       
     email.value = contactTable.contact.email;
     telephone.value = contactTable.contact.telephone; 
     

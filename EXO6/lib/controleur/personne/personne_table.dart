@@ -4,19 +4,32 @@ class PersonneTable{
   
   Personnes personnes;
   Personne personne;
-  ContactTable contactTable;  
-  ButtonElement buttonPersonneShowaddForm;
-  ButtonElement buttonPersonneSaveData;
-
   
+  PersonneAdd personneAdd;  
+  ContactTable contactTable;
+  
+  int nbPersonneBase = 0;
+ 
   // Table pour afficher la liste des personnes
   TableElement personneTable;
+  ButtonElement buttonPersonneSaveData;
   
-  ShowPeopleList(){    
-    for (var personneCourant in personnes.internalList){
-      addRowData(personneCourant);      
+  showPeopleList(){    
+         
+      while(personneTable.children.length > nbPersonneBase){
+        personneTable.children.removeLast();  
+       }
+       
+       if(personnes.length == 0){
+         buttonPersonneSaveData.style.display = "none";
+       }
+       else{
+         buttonPersonneSaveData.style.display= "block";
+         for (var personneCourant in personnes.internalList){
+               addRowData(personneCourant);      
+         }
+       }
     }
-  }
   
   savePersonne(MouseEvent event){
     window.localStorage['dartlero_contacts_personne'] =
@@ -25,10 +38,8 @@ class PersonneTable{
   
   void initialisation(){
     
-    personneTable = querySelector('#table-Personne');    
-    buttonPersonneShowaddForm = querySelector("#showPersonneAddFormButton");
-    buttonPersonneShowaddForm.onClick.listen(ShowAddFormPersonne);
-    
+    personneTable = querySelector('#table-Personne'); 
+    nbPersonneBase = personneTable.children.length;
     buttonPersonneSaveData = querySelector("#savePersonnesData");
     buttonPersonneSaveData.onClick.listen(savePersonne);
     
@@ -36,29 +47,19 @@ class PersonneTable{
     contactTable.personnes = personnes;    
     contactTable.contactedit = new ContactEdit();    
     contactTable.contactAdd = new ContactAdd();
-    contactTable.intialisation();         
+    contactTable.intialisation(); 
+    
+    personneAdd =  new PersonneAdd();
+    personneAdd.personneTable = this;
+    personneAdd.intialisation();
+        
   }
   
-  ShowAddFormPersonne(MouseEvent event){
-      DivElement divFormulaireAddPersonne = querySelector("#showPersonneAddForm");
-      if (buttonPersonneShowaddForm.text == 'Show Add') {      
-        divFormulaireAddPersonne.style.display = "block";
-        buttonPersonneShowaddForm.text = 'Hide Add';
-      } 
-      else {
-        divFormulaireAddPersonne.style.display = "none";
-        buttonPersonneShowaddForm.text = 'Show Add';
-        
-        Element message = querySelector("#add-personne-message");
-        InputElement nom = querySelector("#add-personne-nom");
-        InputElement prenom = querySelector("#add-personne-prenom");
-        
-        message.text = "";
-        nom.value = "";      
-        prenom.value = "";      
-        
-      }
+  showAddFormPersonne(MouseEvent event){
+    personne = personnes.find(event.target.id);  
+        personneAdd.showAddFormPersonne(event);
   }
+  
   
   addRowData(Personne personne){ 
      var personneRow = new Element.tr();
@@ -75,7 +76,7 @@ class PersonneTable{
      ContactButonPersonne.text = "Contacts";
      ContactButonPersonne.title= "Afficher les contacts";
      ContactButonPersonne.id = personne.idPersonne;
-     ContactButonPersonne.onClick.listen(ShowContactPersonList);
+     ContactButonPersonne.onClick.listen(showContactPersonList);
      contactCell.children.add(ContactButonPersonne);
      
      var editButonPersonne = new ButtonElement();
@@ -88,6 +89,7 @@ class PersonneTable{
      deleteButonPersonne.text = "Delete";
      deleteButonPersonne.title= "Supprier";
      deleteButonPersonne.id = personne.idPersonne;
+     deleteButonPersonne.onClick.listen(deletePersonne);
      deleteCell.children.add(deleteButonPersonne);   
    
      personneRow.children.add(nomCell);
@@ -99,10 +101,26 @@ class PersonneTable{
      personneTable.children.add(personneRow);      
     }
   
-  ShowContactPersonList(MouseEvent event){  
-     personne = personnes.find(event.target.id);
+  void deletePersonne(MouseEvent event){
+    contactTable.contactAdd.divFormAddContact.style.display = "none";
+    contactTable.contactedit.divFormEditContact.style.display = "none";
+    personne = personnes.find(event.target.id);
+         personne.contacts.clear();
+         personnes.remove(personne);
+         personne = null;
+         this.showContactPersonList(null);
+         this.showPeopleList();          
+   personnes.order();
+     
+  }
+  
+  showContactPersonList(MouseEvent event){ 
+    if(event!= null)
+     personne = personnes.find(event.target.id);     
+      
      contactTable.personne = personne;
-     contactTable.load();
+     contactTable.showContactList();
+     
    }
   
 }

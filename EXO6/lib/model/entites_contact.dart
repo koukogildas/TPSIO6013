@@ -34,6 +34,7 @@ class Contact extends ConceptEntity<Contact> {
       Map<String, Object> entityMap = super.toJson();
       entityMap['email'] = email;
       entityMap['telephone'] = telephone;
+      entityMap['idContact'] = idContact;
       return entityMap;
     }
    
@@ -41,6 +42,7 @@ class Contact extends ConceptEntity<Contact> {
       super.fromJson(entityMap);
       email = entityMap['email'];
       telephone = entityMap['telephone'];
+      idContact = entityMap['idContact']; 
     }
  
 }
