@@ -32,7 +32,8 @@ class ContactAdd{
        
       if (buttonShowaddContactForm.text == 'Show Add') {      
         divFormAddContact.style.display = "block";
-        buttonShowaddContactForm.text = 'Hide Add';
+        buttonShowaddContactForm.text = 'Hide Add';        
+        contactTable.contactedit.divFormEditContact.style.display = "none";
         buttonShowaddContactForm.name = contactTable.personne.idPersonne;
       } else {
         divFormAddContact.style.display = "none";

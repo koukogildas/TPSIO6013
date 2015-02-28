@@ -7,6 +7,7 @@ class PersonneTable{
   
   PersonneAdd personneAdd;  
   ContactTable contactTable;
+  PersonneEdit personneEdit;
   
   int nbPersonneBase = 0;
  
@@ -44,14 +45,19 @@ class PersonneTable{
     buttonPersonneSaveData.onClick.listen(savePersonne);
     
     contactTable= new ContactTable();
+    
     contactTable.personnes = personnes;    
-    contactTable.contactedit = new ContactEdit();    
+    contactTable.contactedit = new ContactEdit();     
     contactTable.contactAdd = new ContactAdd();
     contactTable.intialisation(); 
     
     personneAdd =  new PersonneAdd();
     personneAdd.personneTable = this;
     personneAdd.intialisation();
+    
+    personneEdit = new PersonneEdit();
+    personneEdit.personneTable = this;
+    personneEdit.intialisation();
         
   }
   
@@ -60,6 +66,10 @@ class PersonneTable{
         personneAdd.showAddFormPersonne(event);
   }
   
+  showEditFormPersonne(MouseEvent event){
+      personne = personnes.find(event.target.id);  
+          personneEdit.showEditFormPersonne(event);
+    }
   
   addRowData(Personne personne){ 
      var personneRow = new Element.tr();
@@ -82,8 +92,10 @@ class PersonneTable{
      var editButonPersonne = new ButtonElement();
      editButonPersonne.text = "Edit";
      editButonPersonne.title= "Modifier";
-     editButonPersonne.id = personne.code;
+     editButonPersonne.id = personne.idPersonne;
+     editButonPersonne.onClick.listen(showEditFormPersonne);
      editCell.children.add(editButonPersonne);
+     
          
      var deleteButonPersonne = new ButtonElement();
      deleteButonPersonne.text = "Delete";

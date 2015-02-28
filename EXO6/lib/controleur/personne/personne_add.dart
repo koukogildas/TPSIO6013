@@ -28,6 +28,7 @@ class PersonneAdd{
         if (buttonPersonneShowaddForm.text == 'Show Add') {      
           divFormulaireAddPersonne.style.display = "block"; 
           buttonPersonneShowaddForm.text = 'Hide Add';
+          personneTable.personneEdit.divFormulaireEditPersonne.style.display = "none";
         } 
         else {
           divFormulaireAddPersonne.style.display = "none";
