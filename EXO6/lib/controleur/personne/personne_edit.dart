@@ -5,12 +5,14 @@ class PersonneEdit {
   PersonneTable personneTable;
   ButtonElement buttonEditPersonne;
   DivElement divFormulaireEditPersonne;//, buttonPersonneShowEditForm;
-  //SpanElement spanTitleFormEditPersonne;
+  SpanElement personneCaptionOfEdit;
   InputElement nom, prenom;
   Element message;
 
   void intialisation() {
+    
     divFormulaireEditPersonne = querySelector("#showPersonneEditForm");
+    personneCaptionOfEdit = querySelector("#personneCaptionOfEdit");
     message = querySelector("#edit-personne-message");
     nom = querySelector("#edit-personne-name");
     prenom = querySelector("#edit-personne-prenom");
@@ -24,8 +26,10 @@ class PersonneEdit {
   }
 
   showEditFormPersonne(MouseEvent event) {
-    buttonEditPersonne.name =
-        personneTable.personnes.find(event.target.id).idPersonne;
+    var personne =  personneTable.personnes.find(event.target.id);
+    buttonEditPersonne.name = personne.idPersonne;
+    personneCaptionOfEdit.text =
+        "Personne courante: ${personne.prenom} ${personne.nom}";    
     personneTable.personneAdd.buttonPersonneShowaddForm.text = 'Hide Add';
     personneTable.showAddFormPersonne(event);
     divFormulaireEditPersonne.style.display = "block";
@@ -63,6 +67,7 @@ class PersonneEdit {
               null) {
             message.text = "La personne existe déjà";
           } else {
+            personneCaptionOfEdit.text = "";
             personne.nom = nom.value;
             personne.prenom = prenom.value;
             personneTable.personnes.order();

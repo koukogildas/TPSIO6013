@@ -14,9 +14,12 @@
 <body>
 
     <div class="page-title"> Mon Agenda </div>          
-      <br />                  
+      <br /> 
+  <table>  
+  <tr > 
+     <td >              
 <!--   Personne    -->
-  
+     <section>
        <!-- Début: Formulaire pour ajouter une personne -->
           <div id="showPersonneAddForm"  style="display:none;">
             <label for="add-personne-nom">Nom:</label> 
@@ -32,6 +35,8 @@
              
        <!-- Début: Formulaire pour éditer une personne -->       
         <div id="showPersonneEditForm" style="display:none;">
+         <span id = "personneCaptionOfEdit" class="marker"> </span>
+         <br/> <br/>
           <label for="edit-personne-name" >Name</label>
           <input id= "edit-personne-name" readonly="true" value=""/>
           <br/>
@@ -60,13 +65,13 @@
         <tbody >   </tbody>
        </table>          
       <!--Fin table personne --> 
-      
+  </section>    
 <!--    Fin personne  -->  
-   
-         <br />
-         
+    </td>  
+    
+     <td >        
 <!--      Contact     -->
-     
+    <section> 
      <!-- Ajouter un contact -->
         <div id="showContactAddForm"  style="display:none;">
           <span id="contactOfAdd" class="marker"> </span>
@@ -113,9 +118,11 @@
           <tbody> </tbody>
         </table>
       <!-- Fin table contact --> 
-                 
+    </section>             
 <!--      Fin Concat      -->
-     
+    </td> 
+  </tr>
+ </table>    
     <script type="application/dart" src="personne_contacts.dart"> </script>
      <script src="packages/browser/dart.js"></script>
 </body>

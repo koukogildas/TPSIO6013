@@ -50,6 +50,7 @@ class ContactTable {
     else{
       contactAdd.buttonShowaddContactForm.style.display= "block";
       textCaptionContactTable.text= "contacts de: ${personne.prenom} ${personne.nom}";
+      contactAdd.spanTitleFormeAddContact.text = "contact de: ${personne.prenom} ${personne.nom}";
       contactedit.divFormEditContact.style.display = "none";
       for (var contactsCourant in personne.contacts.internalList){
         addRowData(contactsCourant);      
