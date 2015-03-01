@@ -25,7 +25,7 @@ class PersonneAdd{
   }
   
   showAddFormPersonne(MouseEvent event){    
-        if (buttonPersonneShowaddForm.text == 'Show Add') {      
+        if (buttonPersonneShowaddForm.text == 'Show Add'){      
           divFormulaireAddPersonne.style.display = "block"; 
           buttonPersonneShowaddForm.text = 'Hide Add';
           personneTable.personneEdit.divFormulaireEditPersonne.style.display = "none";
