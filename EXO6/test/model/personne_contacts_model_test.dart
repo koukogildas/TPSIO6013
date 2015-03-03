@@ -23,4 +23,3 @@ testModel() {
 main() {
   testModel();
 }
-

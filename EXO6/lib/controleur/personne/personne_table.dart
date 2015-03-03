@@ -4,14 +4,11 @@ class PersonneTable {
 
   Personnes personnes;
   Personne personne;
-
   PersonneAdd personneAdd;
   ContactTable contactTable;
   PersonneEdit personneEdit;
-
   int nbPersonneBase = 0;
 
-  // Table pour afficher la liste des personnes
   TableElement personneTable;
   ButtonElement buttonPersonneSaveData;
 
@@ -113,19 +110,20 @@ class PersonneTable {
   }
 
   void deletePersonne(MouseEvent event) {
-    
+
     var personToDelete = personnes.find(event.target.id);
-    
-    if (personToDelete.idPersonne == personne.idPersonne) {
-    contactTable.contactAdd.divFormAddContact.style.display = "none";
-    contactTable.contactedit.divFormEditContact.style.display = "none";
+
+    if (personne !=
+        null) if (personToDelete.idPersonne == personne.idPersonne) {
+      contactTable.contactAdd.divFormAddContact.style.display = "none";
+      contactTable.contactedit.divFormEditContact.style.display = "none";
       personne = null;
-    }   
-    
+    }
     
     if (personneEdit.buttonEditPersonne.name == personToDelete.idPersonne) {
       personneEdit.divFormulaireEditPersonne.style.display = "none";
     }
+    
     personToDelete.contacts.clear();
     personnes.remove(personToDelete);
     this.showContactPersonList(null);
@@ -136,10 +134,8 @@ class PersonneTable {
 
   showContactPersonList(MouseEvent event) {
     if (event != null) personne = personnes.find(event.target.id);
-
     contactTable.personne = personne;
     contactTable.showContactList();
-
   }
 
 }

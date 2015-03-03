@@ -4,10 +4,10 @@ class ContactEdit {
 
   ContactTable contactTable;
 
-  DivElement divFormEditContact;
-  SpanElement spanTitleFormEditContact;
   Element message;
+  DivElement divFormEditContact;
   InputElement email, telephone;
+  SpanElement spanTitleFormEditContact;
 
   void initialisation() {
 
@@ -41,22 +41,24 @@ class ContactEdit {
     divFormEditContact.style.visibility = "none";
   }
 
-
   updateContact(MouseEvent event) {
 
     var contact = contactTable.contact;
     var personne = contactTable.personne;
     var error = false;
     message.text = '';
-    if (email.value.trim() == '') {
+    if (!isEmail(email.value)) {
       message.text = 'Veuillez saisir un email svp.';
       error = true;
     }
-    if (telephone.value.trim() == '') {
+
+    if (!matches(telephone.value, telephone.pattern)) {
       if (error) {
-        message.text = 'Veuillez saisir un email et un télephone svp.';
+        message.text =
+            'Veuillez saisir un email et un télephone dans ce format: 111-555-4444 svp.';
       } else {
-        message.text = 'Veuillez saisir un télephone svp.';
+        message.text =
+            'Veuillez saisir un télephone dans ce format: 111-555-4444 svp.';
         error = true;
       }
     }
@@ -65,27 +67,21 @@ class ContactEdit {
         var existingContact = personne.contacts.find(contact.idContact);
         if (existingContact != null) {
           var oldContact = contact;
-         // personne.contacts.remove(contact);
-         // contact = new Contact();
-         
-          if (personne.contacts.find('${email.value}${telephone.value}') != null) {
+
+          if (personne.contacts.find('${email.value}${telephone.value}') !=
+              null) {
             message.text = "le contact existe déjà";
           } else {
             contactTable.contact.email = email.value;
-                     contactTable.contact.telephone = telephone.value;
-                     contactTable.contact.idContact = '${email.value}${telephone.value}';
-            //if (personne.contacts.add(contact)) {
-              personne.contacts.order();
-                  this.contactTable.showContactList();//removeRow(oldContact.idContact);
-              // this.contactTable.addRowData(contact);
-              message.text = 'Le contact a été modifié';
+            contactTable.contact.telephone = telephone.value;
+            contactTable.contact.idContact = '${email.value}${telephone.value}';
 
-              divFormEditContact.style.display = "none";
-            } //else {
+            personne.contacts.order();
+            this.contactTable.showContactList();
+            message.text = 'Le contact a été modifié';
 
-             // message.text = "le contact existe déjà";
-            //}
-          //}
+            divFormEditContact.style.display = "none";
+          }
         }
 
       } else {
@@ -93,6 +89,4 @@ class ContactEdit {
       }
     }
   }
-
-
 }

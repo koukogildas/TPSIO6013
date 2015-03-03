@@ -5,7 +5,8 @@ testPersonneContacts() {
   Personne personne;
   group("Test Personne Contacts: ", () {
     setUp(() {
-      Model_contacts_personne personneContactsModel = new Model_contacts_personne();
+      Model_contacts_personne personneContactsModel =
+          new Model_contacts_personne();
       personneContactsModel.init();
       Personnes personnes = personneContactsModel.personnes;
       personne = personnes.find('KoukoGildas');
@@ -23,7 +24,7 @@ testPersonneContacts() {
     test('Ajouter un contact sans données', () {
       var contact = new Contact();
       expect(contact, isNotNull);
-      var added =  personne.contacts.add(contact);
+      var added = personne.contacts.add(contact);
       expect(added, isTrue);
       personne.contacts.display('Ajout de contact sans données');
     });

@@ -4,21 +4,18 @@ class PersonneEdit {
 
   PersonneTable personneTable;
   ButtonElement buttonEditPersonne;
-  DivElement divFormulaireEditPersonne;//, buttonPersonneShowEditForm;
+  DivElement divFormulaireEditPersonne;
   SpanElement personneCaptionOfEdit;
   InputElement nom, prenom;
   Element message;
 
-  void intialisation() {
+  void intialisation(){
     
     divFormulaireEditPersonne = querySelector("#showPersonneEditForm");
     personneCaptionOfEdit = querySelector("#personneCaptionOfEdit");
     message = querySelector("#edit-personne-message");
     nom = querySelector("#edit-personne-name");
     prenom = querySelector("#edit-personne-prenom");
-
-    //buttonPersonneShowEditForm = querySelector("#showPersonneEditForm");
-    //buttonPersonneShowEditForm.onClick.listen(showEditFormPersonne);
 
     buttonEditPersonne = querySelector("#updatePersonneButton");
     buttonEditPersonne.onClick.listen(UpdatePersonne);
@@ -37,10 +34,8 @@ class PersonneEdit {
     nom.value = personneTable.personne.nom;
     prenom.value = personneTable.personne.prenom;
     message.text = '';
-
   }
-
-
+  
   UpdatePersonne(MouseEvent event) {
 
     var personne = personneTable.personnes.find(buttonEditPersonne.name);

@@ -2,128 +2,123 @@
 
 <html>
 <head>
-    <meta charset="utf-8">
-    <title>Travail pratique</title>
-    <link rel="stylesheet" href="styles/input.css"/>
-    <link rel="stylesheet" href="styles/contact.css"/>
-    <link rel="stylesheet" href="styles/marker.css"/>
-    <link rel="stylesheet" href="styles/page.css"/>
-    <link rel="stylesheet" href="styles/table.css"/>
+<meta charset="utf-8">
+<title>Travail pratique</title>
+<link rel="stylesheet" href="styles/input.css" />
+<link rel="stylesheet" href="styles/contact.css" />
+<link rel="stylesheet" href="styles/marker.css" />
+<link rel="stylesheet" href="styles/page.css" />
+<link rel="stylesheet" href="styles/table.css" />
 </head>
 
 <body>
-    <div class="page-title"> Mon Agenda </div>          
-      <br /> 
-  <table>  
-  <tr > 
-     <td >              
-<!--   Personne    -->
-     <section>
-       <!-- Début: Formulaire pour ajouter une personne -->
-          <div id="showPersonneAddForm"  style="display:none;">
-            <label for="add-personne-nom">Nom:</label> 
-            <input id="add-personne-nom" type="text" size="32" /> 
-            <br /> 
-            <label for="add-personne-prenom">Prenom:</label>
-            <input id="add-personne-prenom" type="text" size="50" /> 
-             <br/>
+  <div class="page-title">Mon Agenda</div>
+  <br />
+  <table>
+    <tr>
+      <td>
+        <!--   Personne    -->
+        <section>
+          <!-- Début: Formulaire pour ajouter une personne -->
+          <div id="showPersonneAddForm" style="display: none;">
+            <label for="add-personne-nom">Nom:</label> <input
+              id="add-personne-nom" type="text" size="32" /> <br /> <label
+              for="add-personne-prenom">Prenom:</label> <input
+              id="add-personne-prenom" type="text" size="50" /> <br />
             <button id="AddPersonne">Add</button>
             <span id="add-personne-message"></span>
           </div>
-       <!--Fin -->
-             
-       <!-- Début: Formulaire pour éditer une personne -->       
-        <div id="showPersonneEditForm" style="display:none;">
-         <span id = "personneCaptionOfEdit" class="marker"> </span>
-         <br/> <br/>
-          <label for="edit-personne-name" >Name</label>
-          <input id= "edit-personne-name" readonly="true" value=""/>
-          <br/>
-          <label for="edit-personne-prenom">Prénom</label>
-          <input id="edit-personne-prenom" type="text" size="50" value=""/>
-          <br/>
-          <button id="updatePersonneButton">Update</button>
-           <span id="edit-personne-message"></span>
-        </div>         
-       <!--Fin -->
-       
-       <br /> 
-       
-       <!-- Début:Table qui affiche une personne -->
-       <table id="table-Personne">
-        <caption class="marker">
-          Personnes
-          <button id="showPersonneAddFormButton">Show Add</button>
-          <button id="savePersonnesData">Save</button>
-        </caption>
-        <tr>
-          <th>Name</th>
-          <th>Prénom</th>
-          <th colspan="3">Actions</th>
-        </tr>
-        <tbody >   </tbody>
-       </table>          
-      <!--Fin table personne --> 
-  </section>    
-<!--    Fin personne  -->  
-    </td>  
-    
-     <td >        
-<!--      Contact     -->
-    <section> 
-     <!-- Ajouter un contact -->
-        <div id="showContactAddForm"  style="display:none;">
-          <span id="contactOfAdd" class="marker"> </span>
-          <br/> <br/>
-          <label for="add-contact-email">email</label>
-          <input id="add-contact-email" type="email" required="required" size="32"/> 
-          <br/>
-          <label for="add-contact-telephone">telephone</label>
-          <input id="add-contact-telephone" type="tel" required="required" pattern="\d\d\d-\d\d\d-\d\d\d\d" size="50"/>
-          <br/>
-          <button id ="addContactButton">Add</button>
-          <span id="add-contact-message"></span>
-        </div>        
-     <!--       Fin ajouter un contact -->
-           
-     <!-- Modifier un contact    -->
-       <div  id="showContactEditForm" style="display:none;">
-          <span id = "ContactOfEdit" class="marker"> </span>
-          <br/> <br/>
-          <label for="edit-contact-email">email</label>
-          <input id="edit-contact-email" type="email" required="required" size="32" value=""/>
-          <br/>
-          <label for="edit-contact-telephone">Téléphone</label>
-          <input id="edit-contact-telephone" type="tel" required="required" pattern="\d\d\d-\d\d\d-\d\d\d\d" size="50" value=""/>
-          <br/>
-          <button id= "updateContactButton">Update</button>
-          <span id="edit-contact-message"></span>
-       </div>
-     <!-- Fin modifier un contact -->
-           
-      <br/>
-      
-      <!-- Table contact -->
-        <table id="table-contact">
-          <caption class="marker">
-            <span id = "id-text-caption-contact" ></span>
-            <button id="ShowAddContactFormButton" style="display: none;">Show Add</button>
-          </caption>
-          <tr>
-            <th>Email</th>
-            <th>Telephone</th>
-            <th colspan="2">Actions</th>
-          </tr>
-          <tbody> </tbody>
-        </table>
-      <!-- Fin table contact --> 
-    </section>             
-<!--      Fin Concat      -->
-    </td> 
-  </tr>
- </table>
-   
-    <script type="application/dart" src="personne_contacts.dart"> </script>
-     <script src="packages/browser/dart.js"></script>
+          <!--Fin -->
+
+          <!-- Début: Formulaire pour éditer une personne -->
+          <div id="showPersonneEditForm" style="display: none;">
+            <span id="personneCaptionOfEdit" class="marker"> </span> <br />
+            <br /> <label for="edit-personne-name">Name</label> <input
+              id="edit-personne-name" readonly="true" value="" /> <br />
+            <label for="edit-personne-prenom">Prénom</label> <input
+              id="edit-personne-prenom" type="text" size="50" value="" />
+            <br />
+            <button id="updatePersonneButton">Update</button>
+            <span id="edit-personne-message"></span>
+          </div>
+          <!--Fin -->
+
+          <br />
+
+          <!-- Début:Table qui affiche une personne -->
+          <table id="table-Personne">
+            <caption class="marker">
+              Personnes
+              <button id="showPersonneAddFormButton">Show Add</button>
+              <button id="savePersonnesData">Save</button>
+            </caption>
+            <tr>
+              <th>Name</th>
+              <th>Prénom</th>
+              <th colspan="3">Actions</th>
+            </tr>
+            <tbody>
+            </tbody>
+          </table>
+          <!--Fin table personne -->
+        </section> <!--    Fin personne  -->
+      </td>
+
+      <td>
+        <!--      Contact     -->
+        <section>
+          <!-- Ajouter un contact -->
+          <div id="showContactAddForm" style="display: none;">
+            <span id="contactOfAdd" class="marker"> </span> <br /> <br />
+            <label for="add-contact-email">email</label> <input
+              id="add-contact-email" type="email" required="required"
+              size="32" /> <br /> <label for="add-contact-telephone">telephone</label>
+            <input id="add-contact-telephone" type="tel"
+              required="required" pattern="\d\d\d-\d\d\d-\d\d\d\d"
+              size="50" /> <br />
+            <button id="addContactButton">Add</button>
+            <span id="add-contact-message"></span>
+          </div>
+          <!--       Fin ajouter un contact -->
+
+          <!-- Modifier un contact    -->
+          <div id="showContactEditForm" style="display: none;">
+            <span id="ContactOfEdit" class="marker"> </span> <br /> <br />
+            <label for="edit-contact-email">email</label> <input
+              id="edit-contact-email" type="email" required="required"
+              size="32" value="" /> <br /> <label
+              for="edit-contact-telephone">Téléphone</label> <input
+              id="edit-contact-telephone" type="tel" required="required"
+              pattern="\d\d\d-\d\d\d-\d\d\d\d" size="50" value="" /> <br />
+            <button id="updateContactButton">Update</button>
+            <span id="edit-contact-message"></span>
+          </div>
+          <!-- Fin modifier un contact -->
+
+          <br />
+
+          <!-- Table contact -->
+          <table id="table-contact">
+            <caption class="marker">
+              <span id="id-text-caption-contact"></span>
+              <button id="ShowAddContactFormButton"
+                style="display: none;">Show Add</button>
+            </caption>
+            <tr>
+              <th>Email</th>
+              <th>Telephone</th>
+              <th colspan="2">Actions</th>
+            </tr>
+            <tbody>
+            </tbody>
+          </table>
+          <!-- Fin table contact -->
+        </section> <!--      Fin Concat      -->
+      </td>
+    </tr>
+  </table>
+
+  <script type="application/dart" src="personne_contacts.dart"> </script>
+  <script src="packages/browser/dart.js"></script>
 </body>
 </html>

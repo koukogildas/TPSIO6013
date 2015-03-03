@@ -5,7 +5,8 @@ testPersonnes() {
   Personnes personnes;
   group("Testing Categories: ", () {
     setUp(() {
-      Model_contacts_personne personneContactsModel = new Model_contacts_personne();
+      Model_contacts_personne personneContactsModel =
+          new Model_contacts_personne();
       personneContactsModel.init();
       personnes = personneContactsModel.personnes;
     });
@@ -44,7 +45,7 @@ testPersonnes() {
       personnes.order();
       personnes.display('Ordonner une liste de personnes par son code');
     });
-    
+
     test('Conversion de personnes en JSON', () {
       List<Map<String, Object>> json = personnes.toJson();
       expect(json, isNotNull);

@@ -1,72 +1,79 @@
 part of dartlero_contacts_personne;
 
-class ContactAdd{
-  
+class ContactAdd {
+
   ContactTable contactTable;
-  
-  SpanElement spanTitleFormeAddContact;  
-  ButtonElement buttonAddContact, buttonShowaddContactForm;
+
+  Element message;
   DivElement divFormAddContact;
-  Element message;  
   InputElement email, telephone;
-  
-  void intialisation(){
-    spanTitleFormeAddContact = querySelector("#contactOfAdd");          
+  SpanElement spanTitleFormeAddContact;
+  ButtonElement buttonAddContact, buttonShowaddContactForm;
+   
+
+  void intialisation() {
+    
+    spanTitleFormeAddContact = querySelector("#contactOfAdd");
     divFormAddContact = querySelector("#showContactAddForm");
+    
     message = querySelector("#add-contact-message");
     email = querySelector("#add-contact-email");
     telephone = querySelector("#add-contact-telephone");
-    
+
     buttonShowaddContactForm = querySelector("#ShowAddContactFormButton");
     buttonShowaddContactForm.onClick.listen(ShowAddFormContact);
-    
+
     buttonAddContact = querySelector("#addContactButton");
     buttonAddContact.onClick.listen(addContact);
-       
+
   }
-  
-  
-  ShowAddFormContact(MouseEvent event){    
-    
-      spanTitleFormeAddContact.text = "contact de: ${contactTable.personne.prenom} ${contactTable.personne.nom}";
-       
-      if (buttonShowaddContactForm.text == 'Show Add') {      
-        divFormAddContact.style.display = "block";
-        buttonShowaddContactForm.text = 'Hide Add';        
-        contactTable.contactedit.divFormEditContact.style.display = "none";
-        buttonShowaddContactForm.name = contactTable.personne.idPersonne;
-      } else {
-        divFormAddContact.style.display = "none";
-        buttonShowaddContactForm.text = 'Show Add';
-        buttonShowaddContactForm.name = "";      
-        
-        message.text = "";
-        email.value = "";      
-        telephone.value = "";      
-      }
+
+
+  ShowAddFormContact(MouseEvent event) {
+
+    spanTitleFormeAddContact.text =
+        "contact de: ${contactTable.personne.prenom} ${contactTable.personne.nom}";
+
+    if (buttonShowaddContactForm.text == 'Show Add') {
+      divFormAddContact.style.display = "block";
+      buttonShowaddContactForm.text = 'Hide Add';
+      buttonShowaddContactForm.name = contactTable.personne.idPersonne;
+      contactTable.contactedit.divFormEditContact.style.display = "none";
       
-    }
-  
-  addContact(MouseEvent event) {
-   
-    var error = false;
-    message.text = '';
-    if (email.value.trim() == '') {
-      message.text = 'Veuillez saisir le email.';
-      error = true;
+    } else {
+      divFormAddContact.style.display = "none";
+      buttonShowaddContactForm.text = 'Show Add';
+      buttonShowaddContactForm.name = "";
+
+      message.text = "";
+      email.value = "";
+      telephone.value = "";
     }
 
-    if (telephone.value.trim() == '') {
+  }
+
+  addContact(MouseEvent event) {
+
+    var error = false;
+    message.text = '';
+    if (!isEmail(email.value)) {
+      message.text = 'Veuillez saisir un email.';
+      error = true;
+    }
+    
+    if (!matches(telephone.value, telephone.pattern)) {
       if (error) {
-        message.text = 'Veuillez saisir le email et le téléphone svp.';
+        message.text =
+            'Veuillez saisir un email et un télephone dans ce format: 111-555-4444 svp.';
       } else {
-        message.text = 'Veuillez saisir le téléphone svp.';
+        message.text =
+            'Veuillez saisir un téléphone dans ce format: 111-555-4444 svp.';
         error = true;
       }
     }
 
     if (!error) {
-      var contact = new Contact();      
+      var contact = new Contact();
       contact.email = email.value;
       contact.telephone = telephone.value;
       contact.idContact = '${email.value} + ${telephone.value}';
@@ -74,7 +81,6 @@ class ContactAdd{
         message.text = 'Le contact a été ajouté';
         contactTable.personne.contacts.order();
         contactTable.showContactList();
-        //contactTable.addRowData(contact);
         email.value = "";
         telephone.value = "";
       } else {
