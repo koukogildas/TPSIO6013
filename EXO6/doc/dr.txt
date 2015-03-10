@@ -1,0 +1,15 @@
+ex06
+20/20
+
+voir :
+https://www.dartlang.org/articles/style-guide/
+
+EX06 --> ex06
+
+LoadPersonneData() --> loadPersonneData()
+
+README.md :
+- modifier un contact d'une personne;
+apparaît deux fois
+
+
