@@ -7,7 +7,7 @@ contacts et offre les fonctionnalités suivantes:
 - modifier le prénom d'une personne;
 - supprimer une personne;
 - ajouter un contact (email et téléphone) à une personne;
-- modifier un contact d'une personne;
+- modifier le contact d'une personne;
 - supprimer le contact d'une personne;
 - sauvegarder l'agenda.
 
