@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+  	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="import" href="../../../../packages/polymer/polymer.html">
+    <link rel="import" href="personne_add.html"/>
+    <link rel="import" href="personne_edit.html"/>
+    <link rel="import" href="../contact/contact_table.html">
+    <title>personne_table</title>
+  </head>
+ 
+   <body>   
+   <polymer-element name="personne-table">
+    <template>
+      <style>
+        table {
+          border-top: 1px solid #999;
+          border-left: 1px solid #999;
+          border-collapse: collapse;
+        }  
+        caption {
+          font-family: arial, sans-serif;
+          font-size: 16px;
+          font-weight: bold;
+          color: #003366;
+          padding: 1px;
+        }    
+        th, td {
+          padding: 1px;
+          border-right: 1px solid #999999;
+          border-bottom: 1px solid #999999;
+        }
+        th {
+          font-family: verdana, sans-serif;
+          font-weight: bold;
+          color: #ffffff;
+          background: #336799;
+        }
+        td {
+          background: #ffe4b5;
+        }  
+        button {
+          padding: 1px;
+          background: #ffcc99;
+          border-right: 1px solid #999;
+          border-bottom: 1px solid #999;
+          border-style: outset;
+          border-color: #d7b9c9;
+          font-weight: bold;
+          text-align: center;
+          margin-left: auto;
+          margin-right: auto;
+        }
+        button:active {
+          background: orangered;
+          border-color: blue;
+        } 
+        .marker {
+          font-family: arial, sans-serif;
+          font-size: 16px;
+          font-weight: bold;
+          color: #003366;
+          background: #ffe4b5;
+          padding: 1px;
+        } 
+      </style>
+      
+      <table>
+        <tr>
+          <td>
+            <section>
+            
+              <template if="{{showAdd}}">
+                <personne-add personnes="{{personnes}}">  </personne-add>
+              </template>
+    
+              <template if="{{showEdit}}">
+                <personne-edit id= "personne-edit" personnes="{{personnes}}" personne="{{personne}}" > </personne-edit>
+              </template>
+              
+              <br />
+   
+              <table id="table-Personne">
+                <caption class="marker">
+                  Personnes
+                  <button id="showPersonneAddFormButton" on-click="{{showAddFormPersonne}}">Show Add</button>
+                  <button id="savePersonnesData" on-click="{{savePersonne}}" >Save</button>
+                </caption>
+                
+                <tr>
+                  <th>Nom</th>
+                  <th>Prénom</th>
+                  <th colspan="3">Actions</th>
+                </tr>
+                
+                <tbody template repeat="{{personne in personnes.internalList}}">
+                 <tr>
+                  <td>{{personne.nom}}</td>
+                  <td>{{personne.prenom}}</td>
+                  <td><button  idPersonne = {{personne.idPersonne}} on-click="{{showEditFormPersonne}}">Edit</button></td>
+                  <td><button  idPersonne = {{personne.idPersonne}} on-click="{{deletePersonne}}">Delete</button></td>
+                  <td><button  idPersonne = {{personne.idPersonne}} on-click="{{showContactPersonList}}">Contacts</button></td>                                 
+                 </tr>                
+                </tbody>                
+              </table>
+              
+            </section> 
+          </td> 
+          
+          <td>          
+            <template if="{{showPersonneContacts}}">
+                  <contact-table id="contact-table" personne="{{personne}}" contacts="{{personne.contacts}}"> </contact-table>
+            </template>          
+          </td>
+        </tr>
+      </table> 
+      <script type="application/dart" src="../../controleur/personne/personne_table.dart"></script> 
+     </template>
+   </polymer-element>     
+  </body>
+</html>

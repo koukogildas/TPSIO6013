@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="import" href="../../../../packages/polymer/polymer.html">
+<link rel="import" href="contact_add.html">
+<link rel="import" href="contact_edit.html">
+<title>Contact table</title>
+</head>
+
+<body>
+  <polymer-element name="contact-table"> 
+      <template>
+            <style>
+              table {
+                border-top: 1px solid #999;
+                border-left: 1px solid #999;
+                border-collapse: collapse;
+              }
+              
+              caption {
+                font-family: arial, sans-serif;
+                font-size: 16px;
+                font-weight: bold;
+                color: #003366;
+                padding: 1px;
+              }
+              
+              th,td {
+                padding: 1px;
+                border-right: 1px solid #999999;
+                border-bottom: 1px solid #999999;
+              }
+              
+              th {
+                font-family: verdana, sans-serif;
+                font-weight: bold;
+                color: #ffffff;
+                background: #336799;
+              }
+              
+              td {
+                background: #ffe4b5;
+              }
+              
+              button {
+                padding: 1px;
+                background: #ffcc99;
+                border-right: 1px solid #999;
+                border-bottom: 1px solid #999;
+                border-style: outset;
+                border-color: #d7b9c9;
+                font-weight: bold;
+                text-align: center;
+                margin-left: auto;
+                margin-right: auto;
+              }
+              
+              button:active {
+                background: orangered;
+                border-color: blue;
+              }
+              
+              a:link {
+                text-decoration: none;
+                font-weight: bold;
+                color: #003366;
+              }
+              
+              a:visited {
+                text-decoration: none;
+                font-weight: bold;
+                color: #c50000;
+              }
+              
+              a:hover {
+                text-decoration: none;
+                color: #d9ece2;
+                background: #663117;
+              }
+              
+              .marker {
+                font-family: arial, sans-serif;
+                font-size: 16px;
+                font-weight: bold;
+                color: #003366;
+                background: #ffe4b5;
+                padding: 1px;
+              }
+          </style>
+
+        <template if="{{showContactAdd}}"> <contact-add
+          personne="{{personne}}" contact="{{contact}}"> </contact-add> <br />
+        </template> <template if="{{showContactEdit}}"> <contact-edit
+          personne="{{personne}}" contact="{{contact}}"> </contact-edit> <br />
+        </template>
+      
+        <table id="table-contact">
+          <caption class="marker">
+            <span id="id-text-caption-contact">Contacts de:
+              {{personne.prenom}} {{personne.nom}}</span> <br />
+            <br />
+            <button id="showAddContactFormButton"
+              on-click="{{showAddFormContact}}">Show Add</button>
+          </caption>
+          <tr>
+            <th>Email</th>
+            <th>Telephone</th>
+            <th colspan="2">Actions</th>
+          </tr>
+          <tbody template
+            repeat="{{contact in personne.contacts.internalList}}">
+            <tr>
+              <td>{{contact.email }}</td>
+              <td>{{ contact.telephone }}</td>
+              <td><button idContact="{{contact.idContact}}"
+                  on-click="{{showEditFormContact}}">Edit</button></td>
+              <td><button idContact="{{contact.idContact}}"
+                  on-click="{{deleteContact}}">Delete</button></td>
+            </tr>
+          </tbody>
+        </table>
+        <script type="application/dart"
+          src="../../controleur/contact/contact_table.dart"></script>
+     </template>
+  </polymer-element>
+</body>
+</html>
