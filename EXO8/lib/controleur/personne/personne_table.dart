@@ -1,8 +1,8 @@
 //part of dartlero_contacts_personne;
-import 'package:EXO8/dartlero_contacts_personne.dart';
+import '../../dartlero_contacts_personne.dart';
 import 'package:polymer/polymer.dart';
 import 'dart:html';
-import 'package:EXO8/controleur/contact/contact_table.dart';
+import '../../controleur/contact/contact_table.dart';
 import 'dart:convert';
 
 @CustomTag('personne-table')

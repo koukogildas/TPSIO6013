@@ -1,7 +1,7 @@
 import 'dart:html';
 import 'dart:convert';
 import 'package:polymer/polymer.dart';
-import 'package:EXO8/dartlero_contacts_personne.dart';
+import 'dartlero_contacts_personne.dart';
 
 @CustomTag('personne-contact-app')
 class personneContactApp extends PolymerElement {

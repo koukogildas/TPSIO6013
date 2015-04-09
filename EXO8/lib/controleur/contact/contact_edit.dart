@@ -1,9 +1,9 @@
 //part of dartlero_contacts_personne;
 
-import 'package:EXO8/dartlero_contacts_personne.dart';
+import '../../dartlero_contacts_personne.dart';
 import 'package:polymer/polymer.dart';
-import 'package:EXO8/controleur/personne/personne_table.dart';
-import 'package:EXO8/controleur/contact/contact_table.dart';
+import '../../controleur/personne/personne_table.dart';
+import 'contact_table.dart';
 import 'package:validator/validator.dart';
 import 'dart:html';
 

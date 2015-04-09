@@ -1,5 +1,5 @@
 import 'package:unittest/unittest.dart';
-import 'package:EXO8/dartlero_contacts_personne.dart';
+import '../../lib/dartlero_contacts_personne.dart';
 
 testModel() {
   Model_contacts_personne personneContactsModel = new Model_contacts_personne();

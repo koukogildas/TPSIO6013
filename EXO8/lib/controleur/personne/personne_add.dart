@@ -1,4 +1,4 @@
-import 'package:EXO8/dartlero_contacts_personne.dart';
+import '../../dartlero_contacts_personne.dart';
 import 'package:polymer/polymer.dart';
 import 'dart:html';
 
