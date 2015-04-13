@@ -1,5 +1,11 @@
 <link rel="import" href="../../../../packages/polymer/polymer.html">
 <link rel="import" href="../../../../packages/paper_elements/paper_input.html">
+<link rel="import" href="../../../../packages/paper_elements/paper_item.html">
+<link rel="import" href="../../../../packages/core_elements/core_a11y_keys.html">
+<link rel="import" href="../../../../packages/core_elements/core_scaffold.html">
+<link rel="import" href="../../../../packages/core_elements/core_menu.html">
+<link rel="import" href="../../../../packages/core_elements/core_animated_pages.html">
+
 
  
 <polymer-element name="gobs-app">
@@ -15,7 +21,7 @@
       <core-scaffold id="scaffold">
         <nav>
           <core-toolbar>
-            <span>Single Page Polymer</span>
+            <span>Global Optimum Business Solutions</span>
           </core-toolbar>
           <core-menu id="menu" valueattr="hash" selected="{{route}}">
             <template repeat="{{page in pages}}">

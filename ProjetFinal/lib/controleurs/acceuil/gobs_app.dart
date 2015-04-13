@@ -1,7 +1,7 @@
 import 'package:polymer/polymer.dart';
 import 'dart:html';
 import 'dart:js';
-import 'package:polymer/polymer.dart';
+
 import 'package:route_hierarchical/client.dart';
 import 'acceuil_elements.dart';
 
