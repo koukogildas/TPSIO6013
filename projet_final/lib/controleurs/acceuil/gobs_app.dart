@@ -2,8 +2,10 @@ import 'package:polymer/polymer.dart';
 import 'dart:html';
 import 'dart:js';
 
-import 'package:route_hierarchical/client.dart';
+//import '../../../packages/route_hierarchical/client.dart';
+
 import 'acceuil_elements.dart';
+import 'package:route_hierarchical/client.dart';
 
 /// Simple class which maps page names to paths.
 class Page {
