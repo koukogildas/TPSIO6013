@@ -5,6 +5,8 @@
 <link rel="import" href="../../../../packages/core_elements/core_scaffold.html">
 <link rel="import" href="../../../../packages/core_elements/core_menu.html">
 <link rel="import" href="../../../../packages/core_elements/core_animated_pages.html">
+<link rel="import" href="../../../../packages/core_elements/core_tooltip.html">
+<link rel="import" href="../../../../packages/projet_final/vues/acceuil/connexion/connexion_user.html">
 
 
 <polymer-element name="gobs-app">
@@ -34,10 +36,15 @@
           </core-menu>
         </nav>
   
-        <core-toolbar tool flex>
+        <core-toolbar tool flex >
           <div flex>{{selectedPage.name}}</div>
           <core-icon-button icon="refresh"></core-icon-button>
-          <core-icon-button icon="add"></core-icon-button>
+          <core-tooltip label="Connexion">
+            <core-icon-button icon="account-box"></core-icon-button>
+<!--               <div  style="background-color:menu;" tip> -->
+<!--                 <connexion-user></connexion-user> -->
+<!--               </div> -->
+          </core-tooltip>
         </core-toolbar>
   
         <div layout horizontal center-center fit>
