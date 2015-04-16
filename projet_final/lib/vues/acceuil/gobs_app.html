@@ -13,6 +13,15 @@
   <template>
       <link rel="stylesheet" href="../../css/styles.css">
       
+      <style> 
+        .example {
+          margin: 100px 100px;
+         }
+         core-tooltip {
+          background-color: #03A9F4;
+         }
+      </style> 
+      
       <!-- Keyboard nav controller. -->
       <core-a11y-keys id="keys" target="{{body}}"
                     keys="up down left right space space+shift"
@@ -22,7 +31,7 @@
       <core-scaffold id="scaffold">
         <nav>
           <core-toolbar>
-            <span>Global Optimum Business Solutions</span>
+            <span>GOBS</span>
           </core-toolbar>
           <core-menu id="menu" valueattr="hash" selected="{{route}}">
             <template repeat="{{page in pages}}">
@@ -39,25 +48,24 @@
         <core-toolbar tool flex >
           <div flex>{{selectedPage.name}}</div>
           <core-icon-button icon="refresh"></core-icon-button>
-          <core-tooltip label="Connexion">
-            <core-icon-button icon="account-box"></core-icon-button>
-<!--               <div  style="background-color:menu;" tip> -->
-<!--                 <connexion-user></connexion-user> -->
-<!--               </div> -->
+          <core-tooltip id='core-tooltip' label="Ouvrir une session" >
+            <connexion-user id ="connexion-user"></connexion-user>
+            <core-icon-button icon="account-box" on-tap="{{toggleDialog1}}">              
+            </core-icon-button>             
           </core-tooltip>
         </core-toolbar>
   
-        <div layout horizontal center-center fit>
-          <core-animated-pages id="pages" selected="{{route}}" valueattr="hash"
-                               transitions="slide-from-right"
-                               on-tap="{{cyclePages}}">
-            <template repeat="{{page in pages}}">
-              <section hash="{{page.path}}" layout vertical center-center>
-                <div>{{page.name}}</div>
-              </section>
-            </template>
-          </core-animated-pages>
-        </div>
+<!--         <div layout horizontal center-center fit> -->
+<!--           <core-animated-pages id="pages" selected="{{route}}" valueattr="hash" -->
+<!--                                transitions="slide-from-right" -->
+<!--                                on-tap="{{cyclePages}}"> -->
+<!--             <template repeat="{{page in pages}}"> -->
+<!--               <section hash="{{page.path}}" layout vertical center-center> -->
+<!--                 <div>{{page.name}}</div> -->
+<!--               </section> -->
+<!--             </template> -->
+<!--           </core-animated-pages> -->
+<!--         </div> -->
   
       </core-scaffold>
        

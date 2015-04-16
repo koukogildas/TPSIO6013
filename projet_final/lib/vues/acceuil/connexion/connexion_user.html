@@ -14,27 +14,32 @@
  
  <body fullbleed>   
    <polymer-element name="connexion-user">
-     <template>
-<!--          <button> -->
-<!--           	test -->
-<!--          </button> -->
-    
-<!--         <paper-action-dialog heading="Title"> -->
-
-
-        <p>   affaire de connexion 
-           <paper-input> </paper-input>
-            <br/>
-          <input type="text">
-           <br/>
-          <paper-button dismissive>More Info...</paper-button>
-          <br/>
-          <paper-button affirmative>Decline</paper-button>
-          <paper-button affirmative autofocus>Accept</paper-button>
-         </p>
-<!--         </paper-action-dialog> -->
-
-   
+     <template>    
+     <style> 
+        .example {
+          margin: 400px 300px;
+         }
+         
+      </style> 
+<!--     <section on-tap="{{toggleDialog1}}"> -->
+<!--     <button>   -->
+<!--         <div horizontal end-justified layout> -->
+           <paper-action-dialog id='paper-action-dialog' heading="Ouvrir une session" class="">
+  
+            <paper-input label="User name"> </paper-input> <br/>
+             
+            <paper-input label= "Passeword"> </paper-input> <br/>
+           
+           <paper-button affirmative autofocus>Connexion</paper-button><br/> 
+           
+           <paper-button dismissive>Besoin d'aide?</paper-button> 
+           
+            <paper-button affirmative>Créer un compte</paper-button>
+          
+           </paper-action-dialog>
+<!--         </div> -->
+<!--   </button> -->
+<!--   </section> -->
      </template>
      <script type="application/dart" src="../../../controleurs/acceuil/connexion/connexion_user.dart"></script>
    </polymer-element>

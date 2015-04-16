@@ -63,6 +63,19 @@ class GobsApp extends PolymerElement {
     var keysToAdd = pages.map((page) => ++i);
     keys.keys = '${keys.keys} ${keysToAdd.join(' ')}';
   }
+  void toggleDialog1(e) {
+    /*  if (e.target.localName != 'core-icon-button') {
+        return;
+      }*/
+    var formConDialog = shadowRoot
+        .querySelector('core-tooltip')
+        .querySelector('paper-dialog,paper-action-dialog,connexion-user');
+    formConDialog =
+        formConDialog.shadowRoot.querySelector('#paper-action-dialog');
+    if (formConDialog == null) 
+      return;
+    formConDialog.toggle();
+  }
 
 /// Updates [selectedPage] and the current route whenever the route changes.
   void routeChanged() {
