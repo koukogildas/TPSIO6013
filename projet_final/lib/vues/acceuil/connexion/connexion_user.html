@@ -1,53 +1,48 @@
 <!DOCTYPE html>
 
 <html>
-  <head>
-  	<meta charset="utf-8">
-  	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="import" href="../../../../../packages/polymer/polymer.html">
-    <link rel="import" href="../../../../../packages/paper_elements/paper_action_dialog.html">
-    <link rel="import" href="../../../../../packages/paper_elements/paper_button.html">
-    <link rel="import" href="../../../../../packages/paper_elements/paper_input.html">
-    <link rel="import" href="../../../../../packages/core_elements/core_header_panel.html">
-    <title>Connexion à GOBS</title>
-  </head>
- 
- <body fullbleed>   
-   <polymer-element name="connexion-user">
-     <template>    
-     <style>      
-        .example {
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="import" href="../../../../../packages/polymer/polymer.html">
+<link rel="import"
+  href="../../../../../packages/paper_elements/paper_action_dialog.html">
+<link rel="import"
+  href="../../../../../packages/paper_elements/paper_button.html">
+<link rel="import"
+  href="../../../../../packages/paper_elements/paper_input.html">
+<link rel="import"
+  href="../../../../../packages/core_elements/core_header_panel.html">
+<title>Connexion à GOBS</title>
+</head>
 
-               border-radius: 100px;
-         }
-        
-      </style> 
-
-        <div layout horizontal center-center class="example">
-           <paper-action-dialog id='paper-action-dialog' heading="Ouvrir une session" center>
-                <paper-shadow z="10">
-                    <paper-input  label="Nom d'utilisateur"  floatingLabel required> </paper-input> 
-                    
-                    <br/>
-                     
-                     <paper-input-decorator label="Mot de passe" floatingLabel  error="input is required!" autoValidate>
-                        <input is="core-input" name="password" type="password" required>
-                     </paper-input-decorator>
-                   <br/>
-                   
-                   <div style="text-align: center;">afficher message erreur au besoin</div><br/>
-                   
-                   <paper-button raised> Connexion</paper-button>
-
-<!--                     <paper-button raised> <span style="heigh:5px;">Connexion</span></paper-button> -->
-<!--                     <paper-button raised style="text-transform: none;"> Connexion</paper-button> -->
-                        
-
-                </paper-shadow>
-           </paper-action-dialog>
-        </div>
-     </template>
-     <script type="application/dart" src="../../../controleurs/acceuil/connexion/connexion_user.dart"></script>
-   </polymer-element>
+<body fullbleed>
+  <polymer-element name="connexion-user"> <template>
+    <style type="text/css">
+        .connexion {
+          position:inherit;
+          margin-left: -500px; 
+          margin-top: 200px       
+        }
+    </style>
+  
+    <div>
+      <paper-action-dialog id='paper-action-dialog' heading="Ouvrir une session"
+       transition="core-transition-center"  class="connexion" backdrop>           
+          <paper-input label="Entrez votre nom d'utilisateur" floatingLabel required > </paper-input>
+          
+          <paper-input-decorator label="Entrer votre votre de passe" floatingLabel
+            error="input is required!" autoValidate> <input
+            is="core-input" name="password" type="password" required>
+          </paper-input-decorator>
+      
+          <div style="text-align: center;">afficher message erreur au besoin</div>
+      
+          <paper-button affirmative  raised> Connexion</paper-button>
+     </paper-action-dialog>
+    </div>
+    </template> 
+    <script type="application/dart" src="../../../controleurs/acceuil/connexion/connexion_user.dart"></script>
+  </polymer-element>
 </body>
 </html>
