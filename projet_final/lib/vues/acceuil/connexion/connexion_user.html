@@ -15,31 +15,37 @@
  <body fullbleed>   
    <polymer-element name="connexion-user">
      <template>    
-     <style> 
+     <style>      
         .example {
-          margin: 400px 300px;
+
+               border-radius: 100px;
          }
-         
+        
       </style> 
-<!--     <section on-tap="{{toggleDialog1}}"> -->
-<!--     <button>   -->
-<!--         <div horizontal end-justified layout> -->
-           <paper-action-dialog id='paper-action-dialog' heading="Ouvrir une session" class="">
-  
-            <paper-input label="User name"> </paper-input> <br/>
-             
-            <paper-input label= "Passeword"> </paper-input> <br/>
-           
-           <paper-button affirmative autofocus>Connexion</paper-button><br/> 
-           
-           <paper-button dismissive>Besoin d'aide?</paper-button> 
-           
-            <paper-button affirmative>Créer un compte</paper-button>
-          
+
+        <div layout horizontal center-center class="example">
+           <paper-action-dialog id='paper-action-dialog' heading="Ouvrir une session" center>
+                <paper-shadow z="10">
+                    <paper-input  label="Nom d'utilisateur"  floatingLabel required> </paper-input> 
+                    
+                    <br/>
+                     
+                     <paper-input-decorator label="Mot de passe" floatingLabel  error="input is required!" autoValidate>
+                        <input is="core-input" name="password" type="password" required>
+                     </paper-input-decorator>
+                   <br/>
+                   
+                   <div style="text-align: center;">afficher message erreur au besoin</div><br/>
+                   
+                   <paper-button raised> Connexion</paper-button>
+
+<!--                     <paper-button raised> <span style="heigh:5px;">Connexion</span></paper-button> -->
+<!--                     <paper-button raised style="text-transform: none;"> Connexion</paper-button> -->
+                        
+
+                </paper-shadow>
            </paper-action-dialog>
-<!--         </div> -->
-<!--   </button> -->
-<!--   </section> -->
+        </div>
      </template>
      <script type="application/dart" src="../../../controleurs/acceuil/connexion/connexion_user.dart"></script>
    </polymer-element>

@@ -13,15 +13,6 @@
   <template>
       <link rel="stylesheet" href="../../css/styles.css">
       
-      <style> 
-        .example {
-          margin: 100px 100px;
-         }
-         core-tooltip {
-          background-color: #03A9F4;
-         }
-      </style> 
-      
       <!-- Keyboard nav controller. -->
       <core-a11y-keys id="keys" target="{{body}}"
                     keys="up down left right space space+shift"
@@ -48,9 +39,9 @@
         <core-toolbar tool flex >
           <div flex>{{selectedPage.name}}</div>
           <core-icon-button icon="refresh"></core-icon-button>
-          <core-tooltip id='core-tooltip' label="Ouvrir une session" >
+          <core-tooltip id='core-tooltip' label="Ouvrir une session">
             <connexion-user id ="connexion-user"></connexion-user>
-            <core-icon-button icon="account-box" on-tap="{{toggleDialog1}}">              
+              <core-icon-button icon="account-box" on-tap="{{toggleDialog1}}">              
             </core-icon-button>             
           </core-tooltip>
         </core-toolbar>
