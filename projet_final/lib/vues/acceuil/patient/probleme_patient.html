@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="import" href="../../../../../packages/polymer/polymer.html">
+<link rel="import"
+  href="../../../../../packages/paper_elements/paper_action_dialog.html">
+<link rel="import"
+  href="../../../../../packages/paper_elements/paper_button.html">
+<link rel="import"
+  href="../../../../../packages/paper_elements/paper_input.html">
+<link rel="import"
+  href="../../../../../packages/core_elements/core_header_panel.html">
+  <link rel="import" href="../../../../../packages/core_elements/core_tooltip.html">
+<title>Connexion à GOBS</title>
+</head>
+
+<body fullbleed>
+  <polymer-element name="probleme-patient"> 
+  
+   <template>
+   
+    <style type="text/css">
+                  .page {
+            margin : auto; 
+            height:auto;
+            width: 60%;
+            margin-top:5%;
+            background: #fff;
+            border: 1px solid black;
+            border-top-color: #fff;
+            }
+            
+            .lienDroite {
+              float:right;             
+              }
+         
+
+    </style>
+    <section class="page">
+    <paper-shadow z="5">
+              
+                    <div class="lienDroite" > 
+                        <core-tooltip id='core-tooltip-diagnostic' label="Ajouter un diagnostic" position="top">
+                                  <core-icon icon="create"></core-icon>
+                                  <paper-ripple raised  fit></paper-ripple>
+                          </core-tooltip>
+                   </div>
+               
+             <table >
+                <tr>
+                  <td>
+<!--                     <section>       -->
+                      <table id="table-patient">
+                        <caption>
+<!--                            <span class="lienDroite">liste prblm</span>                                           -->
+                        </caption>                        
+                        <tr>
+                          <th>Diagnostics</th> 
+<!--                             <th class="lienDroite">Actions</th>  -->
+                         </tr>                        
+<!--                         <tbody template repeat="{{personne in personnes.internalList}}"> -->
+                        <tbody>
+                         <tr>
+                          <td>test test</td>
+<!--                           <td>  -->
+<!--                                 <div class="fab green"> -->
+<!--                                   <core-icon icon="create"></core-icon> -->
+<!--                                   <paper-ripple raised class="circle recenteringTouch" fit></paper-ripple> -->
+<!--                                 </div> -->
+<!--                           </td>                                 -->
+                         </tr>                
+                        </tbody>                
+                      </table>                      
+<!--                     </section>  -->
+                  </td>           
+                </tr>
+              </table>
+        </paper-shadow>
+        </section>
+      </template>
+    <script type="application/dart" src="../../../controleurs/acceuil/patient/probleme_patient.dart"></script>
+  </polymer-element>
+</body>
+</html>

@@ -1,5 +1,6 @@
 <link rel="import" href="../../../../packages/polymer/polymer.html">
 <link rel="import" href="../../../../packages/paper_elements/paper_input.html">
+<link rel="import" href="../../../../packages/paper_elements/paper_shadow.html">
 <link rel="import" href="../../../../packages/paper_elements/paper_item.html">
 <link rel="import" href="../../../../packages/core_elements/core_a11y_keys.html">
 <link rel="import" href="../../../../packages/core_elements/core_scaffold.html">
@@ -8,6 +9,7 @@
 <link rel="import" href="../../../../packages/core_elements/core_tooltip.html">
 <link rel="import" href="../../../../packages/projet_final/vues/acceuil/connexion/connexion_user.html">
 <link rel="import" href="../../../../packages/projet_final/vues/acceuil/patient/patient_user.html">
+<link rel="import" href="../../../../packages/projet_final/vues/acceuil/patient/probleme_patient.html">
 <link rel="import" href="../../../../packages/projet_final/vues/acceuil/connexion/menu_principal.html">
 
 
@@ -19,7 +21,7 @@
         <nav>
           <core-toolbar>          
             <span>
-                      Patients
+                      test
             </span>
           </core-toolbar>
   
@@ -36,26 +38,17 @@
            
            <core-tooltip id='core-tooltip-dossier' label="Ajouter un dossier">
                                    <core-icon-button icon="folder"></core-icon-button>                                  
-                               </core-tooltip>         
+           </core-tooltip>         
            
-          <core-tooltip id='core-tooltip' label="Ouvrir une session">        
+          <core-tooltip id='core-tooltip-connexion' label="Ouvrir une session">        
             <connexion-user id ="connexion-user"></connexion-user>            
-              <core-icon-button icon="account-box" on-tap="{{toggleDialog1}}">              
-            </core-icon-button>             
+              <core-icon-button icon="account-box" on-tap="{{toggleDialog1}}"> </core-icon-button>             
           </core-tooltip>
         </core-toolbar>
   
-<!--         <div layout horizontal center-center fit> -->
-<!--           <core-animated-pages id="pages" selected="{{route}}" valueattr="hash" -->
-<!--                                transitions="slide-from-right" -->
-<!--                                on-tap="{{cyclePages}}"> -->
-<!--             <template repeat="{{page in pages}}"> -->
-<!--               <section hash="{{page.path}}" layout vertical center-center> -->
-<!--                 <div>{{page.name}}</div> -->
-<!--               </section> -->
-<!--             </template> -->
-<!--           </core-animated-pages> -->
-<!--         </div> -->
+        <div  >        
+            <probleme-patient id ="probleme-patient"></probleme-patient> 
+        </div>
   
       </core-scaffold>
        

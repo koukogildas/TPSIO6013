@@ -69,8 +69,8 @@ class GobsApp extends PolymerElement {
       }*/
     
     var formConDialog = shadowRoot
-        .querySelector('core-tooltip')
-        .querySelector('paper-dialog,paper-action-dialog,connexion-user');
+        .querySelector('#core-tooltip-connexion')
+        .querySelector('connexion-user');
     formConDialog =
         formConDialog.shadowRoot.querySelector('#paper-action-dialog');
     if (formConDialog == null) 
