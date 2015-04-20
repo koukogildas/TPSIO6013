@@ -7,40 +7,39 @@
 <link rel="import" href="../../../../packages/core_elements/core_animated_pages.html">
 <link rel="import" href="../../../../packages/core_elements/core_tooltip.html">
 <link rel="import" href="../../../../packages/projet_final/vues/acceuil/connexion/connexion_user.html">
+<link rel="import" href="../../../../packages/projet_final/vues/acceuil/patient/patient_user.html">
+<link rel="import" href="../../../../packages/projet_final/vues/acceuil/connexion/menu_principal.html">
 
 
 <polymer-element name="gobs-app">
   <template>
       <link rel="stylesheet" href="../../css/styles.css">
-      
-      <!-- Keyboard nav controller. -->
-      <core-a11y-keys id="keys" target="{{body}}"
-                    keys="up down left right space space+shift"
-                    on-keys-pressed="{{keyHandler}}">
-      </core-a11y-keys>
 
       <core-scaffold id="scaffold">
         <nav>
-          <core-toolbar>
-            <span>GOBS</span>
+          <core-toolbar>          
+            <span>
+                      Patients
+            </span>
           </core-toolbar>
-          <core-menu id="menu" valueattr="hash" selected="{{route}}">
-            <template repeat="{{page in pages}}">
-              <paper-item hash="{{page.path}}"
-                          on-click="{{menuItemClicked}}" noink>
-                <core-icon icon="label{{route != page.path ? '-outline' : ''}}">
-                </core-icon>
-                <a _href="#{{page.path}}">{{page.name}}</a>
-              </paper-item>
-            </template>
+  
+          <core-menu>
+            <patient-user id ="connexion-user"></patient-user>
           </core-menu>
         </nav>
   
         <core-toolbar tool flex >
-          <div flex>{{selectedPage.name}}</div>
-          <core-icon-button icon="refresh"></core-icon-button>
-          <core-tooltip id='core-tooltip' label="Ouvrir une session">
-            <connexion-user id ="connexion-user"></connexion-user>
+<!--           <div flex>{{selectedPage.name}}</div> -->
+           <div flex>
+<!--            <menu-principal></menu-principal> -->
+           </div>
+           
+           <core-tooltip id='core-tooltip-dossier' label="Ajouter un dossier">
+                                   <core-icon-button icon="folder"></core-icon-button>                                  
+                               </core-tooltip>         
+           
+          <core-tooltip id='core-tooltip' label="Ouvrir une session">        
+            <connexion-user id ="connexion-user"></connexion-user>            
               <core-icon-button icon="account-box" on-tap="{{toggleDialog1}}">              
             </core-icon-button>             
           </core-tooltip>

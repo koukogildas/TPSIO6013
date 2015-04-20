@@ -58,10 +58,10 @@ class GobsApp extends PolymerElement {
     }
     router.listen();
 
-    // Set up the number keys to send you to pages.
-    int i = 0;
-    var keysToAdd = pages.map((page) => ++i);
-    keys.keys = '${keys.keys} ${keysToAdd.join(' ')}';
+//    // Set up the number keys to send you to pages.
+//    int i = 0;
+//    var keysToAdd = pages.map((page) => ++i);
+//    keys.keys = '${keys.keys} ${keysToAdd.join(' ')}';
   }
   void toggleDialog1(e) {
     /*  if (e.target.localName != 'core-icon-button') {
