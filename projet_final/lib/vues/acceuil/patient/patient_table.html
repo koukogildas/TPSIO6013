@@ -54,7 +54,7 @@
 
      </style>
     
-    <paper-shadow z="5">
+      <paper-shadow z="5">
           <div class="lienDroite" > 
                         <core-tooltip id='core-tooltip-diagnostic' label="Ajouter un patient" position="top">
                                   <core-icon icon="create" on-tap={{ajouterUnPatient}}></core-icon>
@@ -66,7 +66,7 @@
                 <tr>
                   <td>
                     <section>      
-                      <table id="table-Patient">
+                      <table id="tablePatient">
 <!--                         <caption class="marker"> -->
 <!--                           liste test     -->
                                            
@@ -78,9 +78,10 @@
 <!--                         <tbody template repeat="{{personne in personnes.internalList}}"> -->
                         <tbody template repeat="{{patient in patients.internalList}}">
                          <tr>
-                                <td>
-<!--                                    <ligne_table_patient id='test' patient="{{patient}}"></ligne_table_patient> -->
-                                   <ligne_table_patient id='test' ></ligne_table_patient>
+                                <td> 
+<!--                                       {{patient.nom patient.prenom}} {{patient.prenom}} -->
+                                   <ligne-table-patient id={{patient.idPersonne}} patient="{{patient}}"></ligne-table-patient>
+<!--                                    <ligne_table_patient></ligne_table_patient> -->
                                 </td>
                           
                                                    

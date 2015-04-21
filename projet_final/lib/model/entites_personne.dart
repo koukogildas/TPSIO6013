@@ -4,13 +4,12 @@ class Personne extends ConceptEntity<Personne> {
 
   String nom;
   String prenom;
-  String nas;
 //  Contacts contacts = new Contacts();
 
   String get idPersonne => super.code;
   set idPersonne(String idPersonne) {
     if (code == null) {
-      code = '${nas}';
+      code = idPersonne;
     }
   }
 

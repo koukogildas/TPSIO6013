@@ -3,9 +3,6 @@ import 'dart:html';
 import 'dart:js';
 import '../../model/systeme_gestion_patient.dart';
 
-
-//import '../../../packages/route_hierarchical/client.dart';
-
 import 'acceuil_elements.dart';
 import 'package:route_hierarchical/client.dart';
 
@@ -26,10 +23,6 @@ class GobsApp extends PolymerElement {
   
   
   
- 
-  
- 
-
   GobsApp.created() : super.created(){
     
     loadPersonneData();
@@ -37,20 +30,21 @@ class GobsApp extends PolymerElement {
 
   void loadPersonneData() {
      patients =  new Personnes();
-     patients.order();
      patients.internalList = toObservable(patients.internalList);
      
-//        var patient = new Personne();
-//        
-//        patient.nom = "kouko";
-//        patient.prenom = "gildas";
-//        patient.nas = (patients.length + 1).toString();
-//        patients.add(patient);
+        var patient = new Personne();
+        var patient1 = new Personne();
+        
+        patient.nom = "exe";
+        patient.prenom = "exe";
+        patient.idPersonne= (patients.length + 1).toString();
+        patients.add(patient);
       
+        patient1.nom = "ppp";
+                patient1.prenom = "xxx";
+                patient1.idPersonne= (patients.length + 1).toString();
+                patients.add(patient1);
     }
-
-
- 
 
  
   void toggleDialog1(e) {
