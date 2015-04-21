@@ -6,6 +6,7 @@ environment:
 dependencies:
   browser: any
   core_elements: any
+  dartlero: any
   paper_elements: '>=0.6.1 <0.7.0'
   polymer: '>=0.15.4 <0.16.0'
   route_hierarchical: any

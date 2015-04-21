@@ -9,15 +9,18 @@
   href="../../../../../packages/paper_elements/paper_action_dialog.html">
 <link rel="import"
   href="../../../../../packages/paper_elements/paper_button.html">
+
+  <link rel="import" href="../../../../../packages/core_elements/core_tooltip.html">
 <link rel="import"
   href="../../../../../packages/paper_elements/paper_input.html">
 <link rel="import"
   href="../../../../../packages/core_elements/core_header_panel.html">
+  <link rel="import"  href="ligne_table_patient.html">
 <title>Connexion à GOBS</title>
 </head>
 
 <body fullbleed>
-  <polymer-element name="patient-user"> 
+  <polymer-element name="patient-table"> 
   
    <template>
    
@@ -44,8 +47,21 @@
     .fab > core-icon {
       margin: 16px;
     }
+    
+     .lienDroite {
+              float:right;             
+              }
 
-    </style>
+     </style>
+    
+    <paper-shadow z="5">
+          <div class="lienDroite" > 
+                        <core-tooltip id='core-tooltip-diagnostic' label="Ajouter un patient" position="top">
+                                  <core-icon icon="create" on-tap={{ajouterUnPatient}}></core-icon>
+                                  <paper-ripple raised  fit></paper-ripple>
+                          </core-tooltip>
+                   </div>
+    
              <table style="">
                 <tr>
                   <td>
@@ -60,9 +76,16 @@
 <!-- <!--                            <th >Actions</th> --> 
 <!--                         </tr>                         -->
 <!--                         <tbody template repeat="{{personne in personnes.internalList}}"> -->
-                        <tbody>
+                        <tbody template repeat="{{patient in patients.internalList}}">
                          <tr>
-                          <td>test test</td>
+                                <td>
+<!--                                    <ligne_table_patient id='test' patient="{{patient}}"></ligne_table_patient> -->
+                                   <ligne_table_patient id='test' ></ligne_table_patient>
+                                </td>
+                          
+                                                   
+                          
+                          
 <!--                           <td>  -->
 <!--                                 <div class="fab green"> -->
 <!--                                   <core-icon icon="create"></core-icon> -->
@@ -76,8 +99,9 @@
                   </td>           
                 </tr>
               </table> 
+         </paper-shadow>
       </template>
-    <script type="application/dart" src="../../../controleurs/acceuil/patient/patient_user.dart"></script>
+    <script type="application/dart" src="../../../controleurs/acceuil/patient/patient_table.dart"></script>
   </polymer-element>
 </body>
 </html>
