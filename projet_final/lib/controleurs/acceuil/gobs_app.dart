@@ -19,30 +19,45 @@ class Page {
 class GobsApp extends PolymerElement {
 
   @observable Personnes patients;
+  @observable Personne patientCourant;
   
   
-  
-  GobsApp.created() : super.created(){
-    
+  GobsApp.created() : super.created(){    
     loadPersonneData();
   }
 
   void loadPersonneData() {
      patients =  new Personnes();
      patients.internalList = toObservable(patients.internalList);
+     patients.internalList = toObservable(patients.internalList);
      
         var patient = new Personne();
         var patient1 = new Personne();
         
+        Probleme p = new Probleme();
+                p.diagnostic = "sida";
+                p.commentaire = "prendre medicament";
+                
         patient.nom = "exe";
         patient.prenom = "exe";
         patient.idPersonne= (patients.length + 1).toString();
+        patient.problemes.internalList = toObservable(patient.problemes.internalList);
+        patient.problemes.add(p);
         patients.add(patient);
+        
+        
+        Probleme p1 = new Probleme();
+                        p1.diagnostic = "testo";
+                        p1.commentaire = "test";
       
         patient1.nom = "ppp";
                 patient1.prenom = "xxx";
                 patient1.idPersonne= (patients.length + 1).toString();
+                patient1.problemes.internalList = toObservable(patient1.problemes.internalList);
+                patient1.problemes.add(p1);
                 patients.add(patient1);
+                
+                patientCourant = patient1;
     }
 
  

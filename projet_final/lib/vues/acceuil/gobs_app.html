@@ -9,7 +9,7 @@
 <link rel="import" href="../../../../packages/core_elements/core_tooltip.html">
 <link rel="import" href="../../../../packages/projet_final/vues/acceuil/connexion/connexion_user.html">
 <link rel="import" href="../../../../packages/projet_final/vues/acceuil/patient/patient_table.html">
-<link rel="import" href="../../../../packages/projet_final/vues/acceuil/patient/probleme_patient.html">
+<link rel="import" href="../../../../packages/projet_final/vues/acceuil/patient/probleme_table.html">
 <link rel="import" href="../../../../packages/projet_final/vues/acceuil/connexion/menu_principal.html">
 
 
@@ -45,9 +45,9 @@
                   <core-icon-button icon="account-box" on-tap="{{toggleDialog1}}"> </core-icon-button>             
               </core-tooltip>
         </core-toolbar>
-  
+       
         <div>        
-            <probleme-patient-table id ="problemePatient"  ></probleme-patient-table> 
+            <probleme-table patient="{{patientCourant}}" id="probleme-table"></probleme-table> 
         </div>  
       </core-scaffold>
        

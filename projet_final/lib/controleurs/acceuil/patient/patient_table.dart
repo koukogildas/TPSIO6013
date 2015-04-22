@@ -15,8 +15,9 @@ class PatientTable extends PolymerElement {
   
   }
   
-  void ajouterUnPatient(Event e, detail, sender) {
+  void afficherDossierPatient(Event e, var detail, Node target){
     
+
   }
 
 }

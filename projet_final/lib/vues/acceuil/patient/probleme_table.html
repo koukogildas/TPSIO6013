@@ -14,11 +14,12 @@
 <link rel="import"
   href="../../../../../packages/core_elements/core_header_panel.html">
   <link rel="import" href="../../../../../packages/core_elements/core_tooltip.html">
+    <link rel="import"  href="ligne_table_probleme.html">
 <title>Connexion à GOBS</title>
 </head>
 
 <body fullbleed>
-  <polymer-element name="probleme-patient-table"> 
+  <polymer-element name="probleme-table"> 
   
    <template>
    
@@ -44,7 +45,7 @@
               
                     <div class="lienDroite" > 
                         <core-tooltip id='core-tooltip-diagnostic' label="Ajouter un diagnostic" position="left">
-                                  <core-icon icon="create"></core-icon>
+                                  <core-icon icon="create" on-tap={{afficherUnProbleme}}></core-icon>
                                   <paper-ripple raised  fit></paper-ripple>
                           </core-tooltip>
                    </div>
@@ -52,36 +53,26 @@
              <table >
                 <tr>
                   <td>
-<!--                     <section>       -->
-                      <table id="table-patient">
-                        <caption>
-<!--                            <span class="lienDroite">liste prblm</span>                                           -->
-                        </caption>                        
-                        <tr>
-                          <th>Diagnostics</th> 
-<!--                             <th class="lienDroite">Actions</th>  -->
-                         </tr>                        
-<!--                         <tbody template repeat="{{personne in personnes.internalList}}"> -->
-                        <tbody>
+                    <section>      
+                      <table id="table-patient">                                         
+                        <tr><th>Diagnostics</th></tr>                        
+                                                 
+                        <tbody template repeat="{{probleme in patient.problemes.internalList}}">
                          <tr>
-                          <td>test test</td>
-<!--                           <td>  -->
-<!--                                 <div class="fab green"> -->
-<!--                                   <core-icon icon="create"></core-icon> -->
-<!--                                   <paper-ripple raised class="circle recenteringTouch" fit></paper-ripple> -->
-<!--                                 </div> -->
-<!--                           </td>                                 -->
+                          <td> 
+                              <ligne-table-probleme probleme="{{probleme}}" id="{{patient.idPersonne}}"></ligne-table-probleme>
+                          </td>
                          </tr>                
                         </tbody>                
                       </table>                      
-<!--                     </section>  -->
+                    </section> 
                   </td>           
                 </tr>
               </table>
         </paper-shadow>
         </section>
       </template>
-    <script type="application/dart" src="../../../controleurs/acceuil/patient/probleme_patient_table.dart"></script>
+    <script type="application/dart" src="../../../controleurs/acceuil/patient/probleme_table.dart"></script>
   </polymer-element>
 </body>
 </html>

@@ -4,7 +4,7 @@ class Personne extends ConceptEntity<Personne> {
 
   String nom;
   String prenom;
-//  Contacts contacts = new Contacts();
+  Problemes problemes = new Problemes();
 
   String get idPersonne => super.code;
   set idPersonne(String idPersonne) {
@@ -24,7 +24,7 @@ class Personne extends ConceptEntity<Personne> {
     entityMap['nom'] = nom;
     entityMap['prenom'] = prenom;
     entityMap['idPersonne'] = idPersonne;
-//    entityMap['contacts'] = contacts.toJson();
+    entityMap['problemes'] = problemes.toJson();
     return entityMap;
   }
 
@@ -33,7 +33,7 @@ class Personne extends ConceptEntity<Personne> {
     nom = entityMap['nom'];
     prenom = entityMap['prenom'];
     idPersonne = entityMap['idPersonne'];
-//    contacts.fromJson(entityMap['contacts']);
+    problemes.fromJson(entityMap['contacts']);
   }
 
 }
