@@ -4,7 +4,6 @@ import 'dart:js';
 import '../../model/systeme_gestion_patient.dart';
 
 import 'acceuil_elements.dart';
-import 'package:route_hierarchical/client.dart';
 
 /// Simple class which maps page names to paths.
 class Page {

@@ -67,33 +67,13 @@
                   <td>
                     <section>      
                       <table id="tablePatient">
-<!--                         <caption class="marker"> -->
-<!--                           liste test     -->
-                                           
-<!--                         </caption>                         -->
-<!--                         <tr> -->
-<!-- <!--                           <th>Nom </th> --> 
-<!-- <!--                            <th >Actions</th> --> 
-<!--                         </tr>                         -->
-<!--                         <tbody template repeat="{{personne in personnes.internalList}}"> -->
                         <tbody template repeat="{{patient in patients.internalList}}">
-                         <tr>
-                                <td> 
-<!--                                       {{patient.nom patient.prenom}} {{patient.prenom}} -->
-                                   <ligne-table-patient id={{patient.idPersonne}} patient="{{patient}}"></ligne-table-patient>
-<!--                                    <ligne_table_patient></ligne_table_patient> -->
-                                </td>
-                          
-                                                   
-                          
-                          
-<!--                           <td>  -->
-<!--                                 <div class="fab green"> -->
-<!--                                   <core-icon icon="create"></core-icon> -->
-<!--                                   <paper-ripple raised class="circle recenteringTouch" fit></paper-ripple> -->
-<!--                                 </div> -->
-<!--                           </td>                                 -->
-                         </tr>                
+                                 <tr>
+                                        <td> 
+                                           <ligne-table-patient patient="{{patient}}" id="{{patient.idPersonne}}"></ligne-table-patient>
+                                        </td>
+                                  
+                                 </tr>   
                         </tbody>                
                       </table>                      
                     </section> 

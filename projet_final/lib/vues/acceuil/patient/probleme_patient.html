@@ -18,7 +18,7 @@
 </head>
 
 <body fullbleed>
-  <polymer-element name="probleme-patient"> 
+  <polymer-element name="probleme-patient-table"> 
   
    <template>
    
@@ -26,8 +26,8 @@
                   .page {
             margin : auto; 
             height:auto;
-            width: 80%;
-            margin-top:5%;
+            width: 90%;
+            margin-top:2%;
             background: #fff;
             border: 1px solid black;
             border-top-color: #fff;
@@ -43,7 +43,7 @@
     <paper-shadow z="5">
               
                     <div class="lienDroite" > 
-                        <core-tooltip id='core-tooltip-diagnostic' label="Ajouter un diagnostic" position="top">
+                        <core-tooltip id='core-tooltip-diagnostic' label="Ajouter un diagnostic" position="left">
                                   <core-icon icon="create"></core-icon>
                                   <paper-ripple raised  fit></paper-ripple>
                           </core-tooltip>
@@ -81,7 +81,7 @@
         </paper-shadow>
         </section>
       </template>
-    <script type="application/dart" src="../../../controleurs/acceuil/patient/probleme_patient.dart"></script>
+    <script type="application/dart" src="../../../controleurs/acceuil/patient/probleme_patient_table.dart"></script>
   </polymer-element>
 </body>
 </html>

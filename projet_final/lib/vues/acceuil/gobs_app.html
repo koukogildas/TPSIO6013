@@ -21,7 +21,7 @@
         <nav>
           <core-toolbar>          
             <span>
-                      test
+                      Dossier des patients
             </span>
           </core-toolbar>
   
@@ -40,16 +40,15 @@
                                    <core-icon-button icon="folder"></core-icon-button>                                  
            </core-tooltip>         
            
-          <core-tooltip id='core-tooltip-connexion' label="Ouvrir une session">        
-            <connexion-user id ="connexion-user"></connexion-user>            
-              <core-icon-button icon="account-box" on-tap="{{toggleDialog1}}"> </core-icon-button>             
-          </core-tooltip>
+              <core-tooltip id='core-tooltip-connexion' label="Ouvrir une session">        
+                <connexion-user id ="connexion-user"></connexion-user>            
+                  <core-icon-button icon="account-box" on-tap="{{toggleDialog1}}"> </core-icon-button>             
+              </core-tooltip>
         </core-toolbar>
   
-        <div  >        
-            <probleme-patient id ="problemePatient"  ></probleme-patient> 
-        </div>
-  
+        <div>        
+            <probleme-patient-table id ="problemePatient"  ></probleme-patient-table> 
+        </div>  
       </core-scaffold>
        
   </template>

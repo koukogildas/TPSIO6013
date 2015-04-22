@@ -9,16 +9,41 @@
       href="../../../../../packages/paper_elements/paper_button.html">
     <link rel="import" href="../../../../../packages/core_elements/core_collapse.html">
     <link rel="import"
-      href="../../../../../packages/paper_elements/paper_input.html">
+      href="../../../../../packages/paper_elements/paper_input.html">            
+      <link rel="import" href="../../../../../packages/core_elements/core_tooltip.html">
+      
     <title>ligne-table-patient</title>
   </head>
  
   <body>   
   <polymer-element name="ligne-table-patient"> 
       <template>
-        <style type="text/css">    
+        <style type="text/css">  
+        
+                .fab {
+                        position: relative;
+                        display: inline-block;
+                        width: 56px;
+                        height: 56px;
+                        border-radius: 50%;
+                        color: #fff;
+                        overflow: hidden;
+                        transition: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+                        transition-delay: 0.2s;
+                        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+                      }
+                      
+                      .fab.green {
+                        background-color: #0f9d58;
+                      }
+                     
+                      
+                      .fab > core-icon {
+                        margin: 16px;
+    }
+      
              .heading { 
-               padding: 10px 15px; 
+               padding: 5px 5px; 
                background-color: #f3f3f3; 
                border: 1px solid #dedede; 
                border-top-left-radius: 5px; 
@@ -39,24 +64,57 @@
                border-bottom-left-radius: 5px; 
                border-bottom-right-radius: 5px; 
              } 
-
+             
+              .lienDroite {
+              float:left;             
+              }
+             
         </style>
-  
-<!--          <div class="heading"  on-click="{{afficherDossierPatient}}"> {{patient.nom}} {{patient.prenom}}</div>  -->
-         <div class="heading"  on-click="{{afficherDossierPatient}}"> {{patient.nom}} {{patient.prenom}}</div> 
-          <core-collapse id="{{patient.idPersonne}}">
+         <div class="heading"  on-click="{{afficherDossierPatient}}"> {{patient.nom}} {{patient.prenom}}: {{patient.idPersonne}}</div> 
+          <core-collapse>
             <div class="content">
               <div>  
                   <paper-input label="Entrez le nom" floatingLabel required > </paper-input>
-                  <paper-input label="Entrez le prenom" floatingLabel required >  </paper-input>
-                  <paper-input label="Entrez le NAS" floatingLabel required > </paper-input>
+                  <paper-input label="Entrez le prénom" floatingLabel required >  </paper-input>
+                  <paper-input label="Entrez le numero d'assurance social" floatingLabel required > </paper-input>
                   <div style="text-align: center;">afficher message erreur au besoin</div>
-                  <paper-button affirmative  raised>Enregistrer</paper-button>
-                  <paper-button affirmative  raised>Annuler</paper-button>
+                  
+                  <table style="border-spacing: 15px;">
+                        <tr>
+                          <th>
+                                <div class=""> 
+                                  <core-tooltip id='core-tooltip-diagnostic' label="Annuler" position="bottom">
+                                        <core-icon icon="cancel" on-tap={{ajouterUnPatient}}></core-icon>
+                                        <paper-ripple raised  fit></paper-ripple>
+                                  </core-tooltip>
+                              </div>
+                        </th>
+                          <th> 
+                              <div class=""> 
+                                <core-tooltip id='core-tooltip-diagnostic' label="Modifier" position="bottom">
+                                          <core-icon icon="add-box" on-tap={{ajouterUnPatient}}></core-icon>
+                                          <paper-ripple raised  fit></paper-ripple>
+                                  </core-tooltip>
+                              </div>
+                          <th>
+                          
+                          <th>
+                              <div class=""> 
+                                <core-tooltip id='core-tooltip-diagnostic' label="Supprimer" position="bottom">
+                                          <core-icon icon="delete" on-tap={{ajouterUnPatient}}></core-icon>
+                                          <paper-ripple raised  fit></paper-ripple>
+                                  </core-tooltip>
+                            </div>
+                          <th>
+                          
+                        </tr>                        
+                 </table> 
+                                     
+<!--                   <paper-button  affirmative  raised>Enregistrer</paper-button> -->
+<!--                   <paper-button   dismissive   raised>Annuler</paper-button> -->
               </div>
             </div>
-          </core-collapse>
-        
+          </core-collapse>        
       </template>
           <script type="application/dart" src="../../../controleurs/acceuil/patient/ligne_table_patient.dart"></script>        
    </polymer-element> 
