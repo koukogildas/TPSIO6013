@@ -13,7 +13,7 @@ class Probleme extends ConceptEntity<Probleme> {
     }
   }
 
-  Personne newEntity() => new Personne();
+  Probleme newEntity() => new Probleme();
 
   String toString() {
     return '  {\n ' '   nom: ${diagnostic},' '   commentaire: ${commentaire}\n' '  }\n';
