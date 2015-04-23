@@ -12,4 +12,4 @@ class LigneTablePatient extends PolymerElement {
   void afficherDossierPatient(Event e, var detail, Node target) {
     (this.shadowRoot.querySelector("core-collapse") as CoreCollapse).toggle();
   }
-}
+} 

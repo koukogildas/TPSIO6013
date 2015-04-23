@@ -3,7 +3,7 @@ import 'dart:html';
 import 'dart:js';
 import '../../model/systeme_gestion_patient.dart';
 
-import 'acceuil_elements.dart';
+//import 'acceuil_elements.dart';
 
 /// Simple class which maps page names to paths.
 class Page {
@@ -20,14 +20,17 @@ class GobsApp extends PolymerElement {
 
   @observable Personnes patients;
   @observable Personne patientCourant;
+  ConnexionDb connexionDb;
   
   
-  GobsApp.created() : super.created(){    
+  GobsApp.created() : super.created(){   
+    connexionDb.ouvrirUneConnexion();
     loadPersonneData();
   }
 
   void loadPersonneData() {
-     patients =  new Personnes();
+    // patients = connexionDb.listePatients(); 
+     patients = new Personnes();
      patients.internalList = toObservable(patients.internalList);
      patients.internalList = toObservable(patients.internalList);
      

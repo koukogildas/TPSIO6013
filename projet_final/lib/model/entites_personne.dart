@@ -4,6 +4,8 @@ class Personne extends ConceptEntity<Personne> {
 
   String nom;
   String prenom;
+  String password = '';
+  String username = '';
   Problemes problemes = new Problemes();
 
   String get idPersonne => super.code;
