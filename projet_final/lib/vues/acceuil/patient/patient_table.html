@@ -55,19 +55,19 @@
      </style>
     
       <paper-shadow z="5">
-          <div class="lienDroite" > 
-                        <core-tooltip id='core-tooltip-diagnostic' label="Ajouter un patient" position="top">
-                                  <core-icon icon="create" on-tap={{ajouterUnPatient}}></core-icon>
-                                  <paper-ripple raised  fit></paper-ripple>
-                          </core-tooltip>
-                   </div>
+<!--           <div class="lienDroite" >  -->
+<!--                         <core-tooltip id='core-tooltip-diagnostic' label="Ajouter un patient" position="top"> -->
+<!--                                   <core-icon icon="create" on-tap={{ajouterUnPatient}}></core-icon> -->
+<!--                                   <paper-ripple raised  fit></paper-ripple> -->
+<!--                           </core-tooltip> -->
+<!--                    </div> -->
     
              <table style="">
                 <tr>
                   <td>
                     <section>      
                       <table id="tablePatient">
-                        <tbody template repeat="{{patient in patients.internalList}}">
+                        <tbody template repeat="{{patient in utilisateurConnecte.patients}}">
                                  <tr>
                                         <td> 
                                            <ligne-table-patient patient="{{patient}}" id="{{patient.idPersonne}}"></ligne-table-patient>

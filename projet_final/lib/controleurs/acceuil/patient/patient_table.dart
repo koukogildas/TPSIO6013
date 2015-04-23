@@ -1,14 +1,13 @@
 import 'package:polymer/polymer.dart';
-import '../../../model/systeme_gestion_patient.dart';
-import 'dart:js';
+import 'package:projet_final/model/systeme_gestion_patient.dart';
 import 'dart:html';
 
 @CustomTag('patient-table')
 class PatientTable extends PolymerElement {
   
-  @published Personnes patients;
+  @published Utilisateur utilisateurConnecte;
   
-  @observable  Personne patient;
+  @observable  Patient patient;
   
   PatientTable.created() : super.created(){
   

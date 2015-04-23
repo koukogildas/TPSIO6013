@@ -1,7 +1,4 @@
-<!DOCTYPE html>
 
-<html>
-<head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="import" href="../../../../../packages/polymer/polymer.html">
@@ -11,38 +8,32 @@
   href="../../../../../packages/paper_elements/paper_button.html">
 <link rel="import"
   href="../../../../../packages/paper_elements/paper_input.html">
-<link rel="import"
-  href="../../../../../packages/core_elements/core_header_panel.html">
-<title>Connexion à GOBS</title>
-</head>
-
-<body fullbleed>
-  <polymer-element name="connexion-user"> <template>
+<polymer-element name="connexion-user"> 
+  <template>
     <style type="text/css">
-        .connexion {
-          position:inherit;
-/*           margin-left: -500px;  */
-/*           margin-top: 200px        */
-        }
+      .connexion {
+        position: inherit;
+      }
     </style>
-  
     <div>
-      <paper-action-dialog id='paper-action-dialog' heading="Ouvrir une session"
-       transition="core-transition-center"  class="connexion" backdrop>           
-          <paper-input label="Entrez votre nom d'utilisateur" floatingLabel required > </paper-input>
-          
-          <paper-input-decorator label="Entrer votre votre de passe" floatingLabel
-            error="input is required!" autoValidate> <input
-            is="core-input" name="password" type="password" required>
-          </paper-input-decorator>
+      <paper-action-dialog id='paper-action-dialog'
+        heading="Ouvrir une session" transition="core-transition-center"
+        class="connexion" backdrop>
+        
+         <paper-input-decorator label="Entrez un nom d'utilisateur" floatingLabel
+          error="veuillez entrer un nom d'utilisateur" autoValidate>
+            <input is="core-input" name="username" type="text" required>
+         </paper-input-decorator>
+    
+      <paper-input-decorator label="Entrer votre votre de passe"
+        floatingLabel error="veuillez entrer un mot de passe" autoValidate>
+          <input is="core-input" name="password" type="password" required>
+      </paper-input-decorator> 
       
-          <div style="text-align: center;">afficher message erreur au besoin</div>
+      <paper-button affirmative raised on-tap={{authentifierUtilisateur}}>Connexion</paper-button> 
       
-          <paper-button affirmative  raised> Connexion</paper-button>
      </paper-action-dialog>
     </div>
-    </template> 
-    <script type="application/dart" src="../../../controleurs/acceuil/connexion/connexion_user.dart"></script>
-  </polymer-element>
-</body>
-</html>
+  </template> <script type="application/dart"
+    src="../../../controleurs/acceuil/connexion/connexion_user.dart"></script>
+</polymer-element>

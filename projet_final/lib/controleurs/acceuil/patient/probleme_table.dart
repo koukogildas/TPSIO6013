@@ -6,7 +6,8 @@ import '../../../model/systeme_gestion_patient.dart';
 @CustomTag('probleme-table')
 class ProblemeTable extends PolymerElement {
 
-  @published Personne patient;
+  @published Patient patient;
+  @published String message;
   
   ProblemeTable.created() : super.created(){
 //    patient = toObservable(new Personne());

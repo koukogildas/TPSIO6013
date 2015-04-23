@@ -7,7 +7,7 @@ class Probleme extends ConceptEntity<Probleme> {
  
 
   String get idPersonne => super.code;
-  set idPersonne(String idPersonne) {
+  set idProbleme(String idPersonne) {
     if (code == null) {
       code = idPersonne;
     }

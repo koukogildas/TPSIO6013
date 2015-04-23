@@ -44,10 +44,11 @@
     <paper-shadow z="5">
               
                     <div class="lienDroite" > 
-                        <core-tooltip id='core-tooltip-diagnostic' label="Ajouter un diagnostic" position="left">
-                                  <core-icon icon="create" on-tap={{afficherUnProbleme}}></core-icon>
-                                  <paper-ripple raised  fit></paper-ripple>
-                          </core-tooltip>
+                      Diagnostics identifié pour {{patient.prenom}} {{patient.nom}}
+<!--                         <core-tooltip id='core-tooltip-diagnostic' label="Ajouter un diagnostic" position="left"> -->
+<!--                                   <core-icon icon="create" on-tap={{afficherUnProbleme}}></core-icon> -->
+<!--                                   <paper-ripple raised  fit></paper-ripple> -->
+<!--                           </core-tooltip> -->
                    </div>
                
              <table >
@@ -55,12 +56,12 @@
                   <td>
                     <section>      
                       <table id="table-patient">                                         
-                        <tr><th>Diagnostics</th></tr>                        
+<!--                         <tr><th>Diagnostics</th></tr>                         -->
                                                  
                         <tbody template repeat="{{probleme in patient.problemes.internalList}}">
                          <tr>
                           <td> 
-                              <ligne-table-probleme probleme="{{probleme}}" id="{{patient.idPersonne}}"></ligne-table-probleme>
+                              <ligne-table-probleme message ={{message}} probleme="{{probleme}}" id="{{patient.idPersonne}}"></ligne-table-probleme>
                           </td>
                          </tr>                
                         </tbody>                

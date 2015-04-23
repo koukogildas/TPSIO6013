@@ -18,24 +18,34 @@ class Page {
 @CustomTag('gobs-app')
 class GobsApp extends PolymerElement {
 
-  @observable Personnes patients;
-  @observable Personne patientCourant;
-  ConnexionDb connexionDb;
+  @observable Utilisateur utilisateurConnecte;
+  @observable bool showTiteTablePatient = false;
+  @observable Patient patientCourant;
+  @observable String message;
+  @observable String infoConnexion;
+
+  
+//  ConnexionDb connexionDb;
   
   
   GobsApp.created() : super.created(){   
-    connexionDb.ouvrirUneConnexion();
+    //connexionDb.ouvrirUneConnexion();
     loadPersonneData();
   }
 
   void loadPersonneData() {
-    // patients = connexionDb.listePatients(); 
-     patients = new Personnes();
-     patients.internalList = toObservable(patients.internalList);
-     patients.internalList = toObservable(patients.internalList);
+     //patients = connexionDb.listePatients(); 
+    
+    message = 'Veuillez vous connecter svp.';
+    infoConnexion= 'Ouvrir une session';
+   // utilisateurConnecte = null;
+    
+//     patients = new Personnes();
+     utilisateurConnecte = toObservable(new Utilisateur());
+     utilisateurConnecte.patients = toObservable(utilisateurConnecte.patients);
      
-        var patient = new Personne();
-        var patient1 = new Personne();
+        var patient = new Patient();
+        var patient1 = new Patient();
         
         Probleme p = new Probleme();
                 p.diagnostic = "sida";
@@ -43,10 +53,10 @@ class GobsApp extends PolymerElement {
                 
         patient.nom = "exe";
         patient.prenom = "exe";
-        patient.idPersonne= (patients.length + 1).toString();
+        patient.idPersonne= (utilisateurConnecte.patients.length + 1).toString();
         patient.problemes.internalList = toObservable(patient.problemes.internalList);
         patient.problemes.add(p);
-        patients.add(patient);
+        utilisateurConnecte.patients.add(patient);
         
         
         Probleme p1 = new Probleme();
@@ -55,10 +65,10 @@ class GobsApp extends PolymerElement {
       
         patient1.nom = "ppp";
                 patient1.prenom = "xxx";
-                patient1.idPersonne= (patients.length + 1).toString();
+                patient1.idPersonne= (utilisateurConnecte.patients.length + 1).toString();
                 patient1.problemes.internalList = toObservable(patient1.problemes.internalList);
                 patient1.problemes.add(p1);
-                patients.add(patient1);
+                utilisateurConnecte.patients.add(patient1);
                 
                 patientCourant = patient1;
     }

@@ -1,48 +1,27 @@
 part of systeme_gestion_patient;
 
-class Personne extends ConceptEntity<Personne> {
-
+class Personne {
   String nom;
   String prenom;
-  String password = '';
-  String username = '';
-  Problemes problemes = new Problemes();
-
-  String get idPersonne => super.code;
-  set idPersonne(String idPersonne) {
-    if (code == null) {
-      code = idPersonne;
-    }
-  }
-
-  Personne newEntity() => new Personne();
+  String idPersonne;
 
   String toString() {
     return '  {\n ' '   nom: ${nom},' '   prenom: ${prenom}\n' '  }\n';
   }
-
-  Map<String, Object> toJson() {
-    Map<String, Object> entityMap = super.toJson();
-    entityMap['nom'] = nom;
-    entityMap['prenom'] = prenom;
-    entityMap['idPersonne'] = idPersonne;
-    entityMap['problemes'] = problemes.toJson();
-    return entityMap;
-  }
-
-  fromJson(Map<String, Object> entityMap) {
-    super.fromJson(entityMap);
-    nom = entityMap['nom'];
-    prenom = entityMap['prenom'];
-    idPersonne = entityMap['idPersonne'];
-    problemes.fromJson(entityMap['contacts']);
-  }
-
 }
 
-class Personnes extends ConceptEntities<Personne> {
+class Patient extends Personne {
+  String nas;
+  Problemes problemes = new Problemes();
+}
 
-  Personnes newEntities() => new Personnes();
-  Personne newEntity() => new Personne();
-
+@observable 
+class Utilisateur extends Personne {
+  String password = '';
+  String username = '';
+  String type = '';
+  @observable  bool statutConnexion = false;
+  @observable  bool profilMedecin = false;
+  @observable  bool profilAdministrateur = false;
+  @observable List<Patient> patients = new List<Patient>();
 }

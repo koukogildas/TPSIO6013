@@ -1,57 +1,75 @@
 <link rel="import" href="../../../../packages/polymer/polymer.html">
-<link rel="import" href="../../../../packages/paper_elements/paper_input.html">
-<link rel="import" href="../../../../packages/paper_elements/paper_shadow.html">
-<link rel="import" href="../../../../packages/paper_elements/paper_item.html">
-<link rel="import" href="../../../../packages/core_elements/core_a11y_keys.html">
-<link rel="import" href="../../../../packages/core_elements/core_scaffold.html">
-<link rel="import" href="../../../../packages/core_elements/core_menu.html">
-<link rel="import" href="../../../../packages/core_elements/core_animated_pages.html">
-<link rel="import" href="../../../../packages/core_elements/core_tooltip.html">
-<link rel="import" href="../../../../packages/projet_final/vues/acceuil/connexion/connexion_user.html">
-<link rel="import" href="../../../../packages/projet_final/vues/acceuil/patient/patient_table.html">
-<link rel="import" href="../../../../packages/projet_final/vues/acceuil/patient/probleme_table.html">
-<link rel="import" href="../../../../packages/projet_final/vues/acceuil/connexion/menu_principal.html">
+<link rel="import"
+  href="../../../../packages/paper_elements/paper_input.html">
+<link rel="import"
+  href="../../../../packages/paper_elements/paper_shadow.html">
+<link rel="import"
+  href="../../../../packages/paper_elements/paper_item.html">
+<link rel="import"
+  href="../../../../packages/core_elements/core_a11y_keys.html">
+<link rel="import"
+  href="../../../../packages/core_elements/core_scaffold.html">
+<link rel="import"
+  href="../../../../packages/core_elements/core_menu.html">
+<link rel="import"
+  href="../../../../packages/core_elements/core_animated_pages.html">
+<link rel="import"
+  href="../../../../packages/core_elements/core_tooltip.html">
+<link rel="import"
+  href="../../../../packages/projet_final/vues/acceuil/connexion/connexion_user.html">
+<link rel="import"
+  href="../../../../packages/projet_final/vues/acceuil/patient/patient_table.html">
+<link rel="import"
+  href="../../../../packages/projet_final/vues/acceuil/patient/probleme_table.html">
+<link rel="import"
+  href="../../../../packages/projet_final/vues/acceuil/connexion/menu_principal.html">
 
 
 <polymer-element name="gobs-app">
-  <template>
-      <link rel="stylesheet" href="../../css/styles.css">
-
-      <core-scaffold id="scaffold">
+ <template> 
+    <link rel="stylesheet" href="../../css/styles.css">    
+    <core-scaffold id="scaffold">
         <nav>
-          <core-toolbar>          
-            <span>
-                      Dossier des patients
-            </span>
-          </core-toolbar>
-  
-          <core-menu>
-            <patient-table id ="patientTtable" patients="{{patients}}"></patient-table>
-          </core-menu>
-        </nav>
-  
-        <core-toolbar tool flex >
-<!--           <div flex>{{selectedPage.name}}</div> -->
-           <div flex>
-<!--            <menu-principal></menu-principal> -->
-           </div>
-           
-           <core-tooltip id='core-tooltip-dossier' label="Ajouter un médécin">
-                                   <core-icon-button icon="folder"></core-icon-button>                                  
-           </core-tooltip>         
-           
-              <core-tooltip id='core-tooltip-connexion' label="Ouvrir une session">        
-                <connexion-user id ="connexion-user"></connexion-user>            
-                  <core-icon-button icon="account-box" on-tap="{{toggleDialog1}}"> </core-icon-button>             
-              </core-tooltip>
+            <core-toolbar>            
+              <template if="{{utilisateurConnecte.statutConnexion}}">
+                <span> Dossier des patients </span>
+              </template> 
+            </core-toolbar>           
+            <core-menu>
+              <template if="{{utilisateurConnecte.statutConnexion}}"> 
+                <patient-table id="patientTtable" utilisateurConnecte="{{utilisateurConnecte}}"></patient-table>
+              </template>  
+            </core-menu>
+        </nav>        
+        <core-toolbar tool flex>        
+            <div id="information" style="text-align: center;" flex>{{message}}</div>             
+            <template if="{{utilisateurConnecte.profilAdministrateur}}">  
+              <core-tooltip id='core-tooltip-compte' label="Créer un compte">
+                  <core-icon-button icon="face"></core-icon-button> 
+              </core-tooltip> 
+            </template>   
+            <template if="{{utilisateurConnecte.profilMedecin}}">
+                <core-tooltip id='core-tooltip-dossier' label="Créer un dossier">
+                    <core-icon-button icon="folder"></core-icon-button> 
+                </core-tooltip>              
+                <core-tooltip id='core-tooltip-diagnostic' label="Ajouter un diagnostic">
+                    <core-icon-button icon="create"></core-icon-button> 
+                </core-tooltip>  
+            </template>   
+             
+            <core-tooltip id='core-tooltip-connexion' label={{infoConnexion}} position="left">
+                  <connexion-user id="connexion-user" message= {{message}}
+                    infoConnexion={{infoConnexion}} utilisateurConnecte ={{utilisateurConnecte}}>
+                  </connexion-user> 
+                  <core-icon-button icon="account-box" on-tap="{{toggleDialog1}}"> </core-icon-button> 
+            </core-tooltip>            
         </core-toolbar>
-       
-        <div>        
-            <probleme-table patient="{{patientCourant}}" id="probleme-table"></probleme-table> 
-        </div>  
-      </core-scaffold>
-       
-  </template>
- <script type="application/dart" src="../../controleurs/acceuil/gobs_app.dart"></script>  
+        <template if="{{utilisateurConnecte.statutConnexion}}"> 
+          <div><probleme-table patient="{{patientCourant}}" id="probleme-table" message="{{message}}"></probleme-table></div>
+        </template>  
+    </core-scaffold> 
+  </template> 
+    <script type="application/dart"
+      src="../../controleurs/acceuil/gobs_app.dart"></script> 
 </polymer-element>
 
