@@ -6,10 +6,10 @@ class Probleme extends ConceptEntity<Probleme> {
   String commentaire;
  
 
-  String get idPersonne => super.code;
-  set idProbleme(String idPersonne) {
+  String get idProbleme => super.code;
+  set idProbleme(String idProbleme ) {
     if (code == null) {
-      code = idPersonne;
+      code = idProbleme ;
     }
   }
 
@@ -23,7 +23,7 @@ class Probleme extends ConceptEntity<Probleme> {
     Map<String, Object> entityMap = super.toJson();
     entityMap['diagnostic'] = diagnostic;
     entityMap['commentaire'] = commentaire;
-    entityMap['idPersonne'] = idPersonne;
+    entityMap['idPersonne'] = idProbleme;
 //    entityMap['problemes'] = problemes.toJson();
     return entityMap;
   }
@@ -32,7 +32,7 @@ class Probleme extends ConceptEntity<Probleme> {
     super.fromJson(entityMap);
     diagnostic = entityMap['diagnostic'];
     commentaire = entityMap['commentaire'];
-    idPersonne = entityMap['idPersonne'];
+    idProbleme  = entityMap['idPersonne'];
 //    problemes.fromJson(entityMap['problemes']);
   }
 

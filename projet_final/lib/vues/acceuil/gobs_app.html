@@ -21,8 +21,7 @@
   href="../../../../packages/projet_final/vues/acceuil/patient/patient_table.html">
 <link rel="import"
   href="../../../../packages/projet_final/vues/acceuil/patient/probleme_table.html">
-<link rel="import"
-  href="../../../../packages/projet_final/vues/acceuil/connexion/menu_principal.html">
+
 
 
 <polymer-element name="gobs-app">
@@ -31,24 +30,24 @@
     <core-scaffold id="scaffold">
         <nav>
             <core-toolbar>            
-              <template if="{{utilisateurConnecte.statutConnexion}}">
+              <template if="{{connexionBase.utilisateurConnecte.statutConnexion}}">
                 <span> Dossier des patients </span>
               </template> 
             </core-toolbar>           
             <core-menu>
-              <template if="{{utilisateurConnecte.statutConnexion}}"> 
-                <patient-table id="patientTtable" utilisateurConnecte="{{utilisateurConnecte}}"></patient-table>
+              <template if="{{connexionBase.utilisateurConnecte.statutConnexion}}"> 
+                <patient-table id="patientTtable" connexionBase="{{connexionBase}}"></patient-table>
               </template>  
             </core-menu>
         </nav>        
         <core-toolbar tool flex>        
             <div id="information" style="text-align: center;" flex>{{message}}</div>             
-            <template if="{{utilisateurConnecte.profilAdministrateur}}">  
+            <template if="{{connexionBase.utilisateurConnecte.profilAdministrateur}}">  
               <core-tooltip id='core-tooltip-compte' label="Créer un compte">
                   <core-icon-button icon="face"></core-icon-button> 
               </core-tooltip> 
             </template>   
-            <template if="{{utilisateurConnecte.profilMedecin}}">
+            <template if="{{connexionBase.utilisateurConnecte.profilMedecin}}">
                 <core-tooltip id='core-tooltip-dossier' label="Créer un dossier">
                     <core-icon-button icon="folder"></core-icon-button> 
                 </core-tooltip>              
@@ -57,15 +56,15 @@
                 </core-tooltip>  
             </template>   
              
-            <core-tooltip id='core-tooltip-connexion' label={{infoConnexion}} position="left">
+            <core-tooltip id='core-tooltip-connexion' label={{connexionBase.infoConnexion}} position="left">
                   <connexion-user id="connexion-user" message= {{message}}
-                    infoConnexion={{infoConnexion}} utilisateurConnecte ={{utilisateurConnecte}}>
+                    infoConnexion={{connexionBase.infoConnexion}} connexionBase ={{connexionBase}}>
                   </connexion-user> 
                   <core-icon-button icon="account-box" on-tap="{{toggleDialog1}}"> </core-icon-button> 
             </core-tooltip>            
         </core-toolbar>
-        <template if="{{utilisateurConnecte.statutConnexion}}"> 
-          <div><probleme-table patient="{{patientCourant}}" id="probleme-table" message="{{message}}"></probleme-table></div>
+        <template if="{{connexionBase.utilisateurConnecte.statutConnexion}}"> 
+          <div><probleme-table patient="{{connexionBase.utilisateurConnecte.patientCourant}}" id="probleme-table" message="{{message}}"></probleme-table></div>
         </template>  
     </core-scaffold> 
   </template> 

@@ -9,6 +9,7 @@ dependencies:
   dartlero: any
   paper_elements: any
   polymer: any
+  sqljocky: any
 transformers:
 - polymer:
     entry_points: web/index.html

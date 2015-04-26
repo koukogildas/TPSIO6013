@@ -27,7 +27,7 @@
                   .page {
             margin : auto; 
             height:auto;
-            width: 90%;
+            width: 45%;
             margin-top:2%;
             background: #fff;
             border: 1px solid black;
@@ -42,22 +42,16 @@
     </style>
     <section class="page">
     <paper-shadow z="5">
-              
+                  
                     <div class="lienDroite" > 
-                      Diagnostics identifié pour {{patient.prenom}} {{patient.nom}}
-<!--                         <core-tooltip id='core-tooltip-diagnostic' label="Ajouter un diagnostic" position="left"> -->
-<!--                                   <core-icon icon="create" on-tap={{afficherUnProbleme}}></core-icon> -->
-<!--                                   <paper-ripple raised  fit></paper-ripple> -->
-<!--                           </core-tooltip> -->
+                      Diagnostics identifiés pour {{patient.prenom}} {{patient.nom}}
                    </div>
                
              <table >
                 <tr>
                   <td>
                     <section>      
-                      <table id="table-patient">                                         
-<!--                         <tr><th>Diagnostics</th></tr>                         -->
-                                                 
+                      <table id="table-patient">                                                                                          
                         <tbody template repeat="{{probleme in patient.problemes.internalList}}">
                          <tr>
                           <td> 

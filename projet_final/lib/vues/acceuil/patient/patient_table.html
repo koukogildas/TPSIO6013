@@ -1,88 +1,38 @@
-<!DOCTYPE html>
-
-<html>
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="import" href="../../../../../packages/polymer/polymer.html">
 <link rel="import"
   href="../../../../../packages/paper_elements/paper_action_dialog.html">
 <link rel="import"
   href="../../../../../packages/paper_elements/paper_button.html">
 
-  <link rel="import" href="../../../../../packages/core_elements/core_tooltip.html">
+<link rel="import"
+  href="../../../../../packages/core_elements/core_tooltip.html">
 <link rel="import"
   href="../../../../../packages/paper_elements/paper_input.html">
 <link rel="import"
   href="../../../../../packages/core_elements/core_header_panel.html">
-  <link rel="import"  href="ligne_table_patient.html">
-<title>Connexion à GOBS</title>
-</head>
+<link rel="import" href="ligne_table_patient.html">
 
-<body fullbleed>
-  <polymer-element name="patient-table"> 
-  
-   <template>
-   
-    <style type="text/css">
-/* FAB */
-    .fab {
-      position: relative;
-      display: inline-block;
-      width: 56px;
-      height: 56px;
-      border-radius: 50%;
-      color: #fff;
-      overflow: hidden;
-      transition: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-      transition-delay: 0.2s;
-      box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
-    }
-    
-    .fab.green {
-      background-color: #0f9d58;
-    }
-   
-    
-    .fab > core-icon {
-      margin: 16px;
-    }
-    
-     .lienDroite {
-              float:right;             
-              }
+<polymer-element name="patient-table"> <template>
+<paper-shadow z="5">
+<table style="">
+  <tr>
+    <td>
+      <section>
+        <table id="tablePatient">
+          <tbody template
+            repeat="{{patient in connexionBase.utilisateurConnecte.patients}}">
+            <tr>
+              <td><ligne-table-patient patient="{{patient}}"
+                  id="{{patient.idPersonne}}" connexionBase="{{connexionBase}}"></ligne-table-patient></td>
 
-     </style>
-    
-      <paper-shadow z="5">
-<!--           <div class="lienDroite" >  -->
-<!--                         <core-tooltip id='core-tooltip-diagnostic' label="Ajouter un patient" position="top"> -->
-<!--                                   <core-icon icon="create" on-tap={{ajouterUnPatient}}></core-icon> -->
-<!--                                   <paper-ripple raised  fit></paper-ripple> -->
-<!--                           </core-tooltip> -->
-<!--                    </div> -->
-    
-             <table style="">
-                <tr>
-                  <td>
-                    <section>      
-                      <table id="tablePatient">
-                        <tbody template repeat="{{patient in utilisateurConnecte.patients}}">
-                                 <tr>
-                                        <td> 
-                                           <ligne-table-patient patient="{{patient}}" id="{{patient.idPersonne}}"></ligne-table-patient>
-                                        </td>
-                                  
-                                 </tr>   
-                        </tbody>                
-                      </table>                      
-                    </section> 
-                  </td>           
-                </tr>
-              </table> 
-         </paper-shadow>
-      </template>
-    <script type="application/dart" src="../../../controleurs/acceuil/patient/patient_table.dart"></script>
-  </polymer-element>
-</body>
-</html>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </td>
+  </tr>
+</table>
+</paper-shadow> </template> <script type="application/dart"
+  src="../../../controleurs/acceuil/patient/patient_table.dart"></script>
+</polymer-element>
+
