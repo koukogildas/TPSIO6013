@@ -1,12 +1,15 @@
+//part of systeme_gestion_patient;
+
 import 'package:polymer/polymer.dart';
-import 'package:core_elements/core_input.dart';
 import 'dart:html';
 //import 'package:projet_final/model/systeme_gestion_patient.dart';
 import '../../../model/systeme_gestion_patient.dart';
 
+
+
 @CustomTag('add-patient')
 class AddPatient extends PolymerElement {
-  @published Patient patient;
+  @published Patient patient; 
 
   // @published String infoConnexion;
   @published ConnexionBase connexionBase;
@@ -15,6 +18,12 @@ class AddPatient extends PolymerElement {
 //
 //  inInputElement passeword;
 
+//  Patient get monPatient => patient;
+//  set monPatient(Patient monPatient ) {
+//    patient = monPatient;
+//    }
+  
+  
   AddPatient.created() : super.created() {
     patient = new Patient();
 //    patient.nom = "";
@@ -38,7 +47,6 @@ class AddPatient extends PolymerElement {
         messageErr = "Entrer un nom svp.";
       }
     }
-
     if (!error) {
       if (connexionBase.utilisateurConnecte
               .trouverUnPatient(patient.idPersonne) ==

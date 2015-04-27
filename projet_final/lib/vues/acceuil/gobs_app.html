@@ -22,6 +22,9 @@
   <link rel="import"
   href="../../../../packages/projet_final/vues/acceuil/patient/add_patient.html">
   
+    <link rel="import"
+  href="../../../../packages/projet_final/vues/probleme/add_probleme.html">
+  
 <link rel="import"
   href="../../../../packages/projet_final/vues/acceuil/patient/probleme_table.html">
   
@@ -50,22 +53,24 @@
                   <core-icon-button icon="face"></core-icon-button> 
               </core-tooltip> 
             </template>   
+            
             <template if="{{connexionBase.utilisateurConnecte.profilMedecin}}">
             
                 <core-tooltip id='core-tooltip-dossier' label="Créer un dossier">
-                     <add-patient id="add-patient" connexionBase ={{connexionBase}}>
+                     <add-patient id="add-patient" connexionBase ="{{connexionBase}}">
                      </add-patient> 
                     <core-icon-button icon="folder" on-tap="{{afficherFenetreAjouterPatient}}"></core-icon-button> 
-                </core-tooltip> 
-                
+                </core-tooltip>                 
                              
                 <core-tooltip id='core-tooltip-diagnostic' label="Ajouter un diagnostic">
-                    <core-icon-button icon="create"></core-icon-button> 
+                  <add-probleme id="add-probleme" connexionBase ="{{connexionBase}}">
+                  </add-probleme>
+                  <core-icon-button icon="create" on-tap="{{afficherFenetreAjouterDiagnostic}}"></core-icon-button> 
                 </core-tooltip>  
             </template>   
              
             <core-tooltip id='core-tooltip-connexion' label={{connexionBase.infoConnexion}} position="left">
-                  <connexion-user id="connexion-user" connexionBase ={{connexionBase}}>
+                  <connexion-user id="connexion-user" connexionBase ="{{connexionBase}}">
                   </connexion-user> 
                   <core-icon-button icon="account-box" on-tap="{{afficherFenetreConnexion}}"> </core-icon-button> 
             </core-tooltip>            

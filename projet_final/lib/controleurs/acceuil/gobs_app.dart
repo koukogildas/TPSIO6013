@@ -2,7 +2,9 @@ import 'package:polymer/polymer.dart';
 import 'dart:html';
 import 'dart:js';
 import 'patient/add_patient.dart';
+import '../probleme/add_probleme.dart';
 import '../../model/systeme_gestion_patient.dart';
+import 'connexion/connexion_user.dart';
 //import '../../model/connexion_bd.dart';
 
 //import 'acceuil_elements.dart';
@@ -25,18 +27,40 @@ class GobsApp extends PolymerElement {
 
   void afficherFenetreConnexion(e) {
     if (connexionBase.infoConnexion == "Ouvrir une session") {
-      var formConDialog = shadowRoot
+      ConnexionUser connexionUser = shadowRoot
           .querySelector('#core-tooltip-connexion')
           .querySelector('connexion-user');
-      formConDialog =
-          formConDialog.shadowRoot.querySelector('#paper-action-dialog');
+   //   ConnexionUser.
+      var formConDialog =
+        ConnexionUser.shadowRoot.querySelector('#paper-action-dialog');
       if (formConDialog == null) return;
       formConDialog.toggle();
     } else {
       connexionBase.authentificationDeconnexion();
     }
-  }
+  }  
+  
+  void afficherFenetreAjouterDiagnostic(e) {
+      if (!(connexionBase.utilisateurConnecte.patientCourant == null)) {
+        AddProbleme addProbleme = shadowRoot
+            .querySelector('#core-tooltip-diagnostic')
+            .querySelector('add-probleme');
 
+        addProbleme.probleme = new Probleme();  
+//      addPatient.patient.nom = "";
+//      addPatient.patient.prenom = "";
+
+        var formConDialog =
+            addProbleme.shadowRoot.querySelector('#paper-action-dialog');
+        if (formConDialog == null) return;
+        formConDialog.toggle();
+      } else {
+        connexionBase.message = "Veuillez choisir un patient svp.";
+      }
+    }
+  
+  
+  
   void afficherFenetreAjouterPatient(e) {
     if (connexionBase.utilisateurConnecte != null) {
       AddPatient addPatient = shadowRoot

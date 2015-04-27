@@ -38,6 +38,7 @@ class ConnexionBase {
       Utilisateur user = new Utilisateur();
       user.nom = "";
       user.prenom = "";
+      user.idPersonne="";
       user.statutConnexion = false;
       user.profilMedecin = false;
       user.profilAdministrateur = false;

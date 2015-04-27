@@ -1,0 +1,54 @@
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="import" href="../../../../packages/polymer/polymer.html">
+<link rel="import"
+  href="../../../../packages/paper_elements/paper_action_dialog.html">
+<link rel="import"
+  href="../../../../packages/paper_elements/paper_button.html">
+<link rel="import"
+  href="../../../../packages/paper_elements/paper_input.html">
+<polymer-element name="add-probleme"> 
+  <template>
+    <style type="text/css">
+      .add_Probleme {
+        position: inherit;
+      }
+      
+      .content { 
+               padding: 20px; 
+               border: 2px solid #dedede; 
+               border-top: none; 
+               border-bottom-left-radius: 10px; 
+               border-bottom-right-radius: 10px; 
+             } 
+    </style>
+    <div>
+      <paper-action-dialog id='paper-action-dialog'
+        heading="Ajouter un diagnostic pour: {{connexionBase.utilisateurConnecte.patientCourant.nom}}
+        {{connexionBase.utilisateurConnecte.patientCourant.prenom}}" transition="core-transition-center"
+        class="add_Probleme" backdrop>
+        
+        <div class="content">
+             <paper-input-decorator id="decoratorPatientName" label="Diagnostic" floatingLabel
+              error="Entrez un diagnostic svp." autoValidate>
+                <input  id="diagnostic" is="core-input" name="nomdiagnostic" type="text" value= "{{probleme.diagnostic}}" required>
+             </paper-input-decorator>
+             
+             Commentaire:
+             
+             <paper-autogrow-textarea  id="paper-autogrow-textarea" label="Commentaire" maxrow:2>
+                          <textarea id="textarea"  label="Entrez un commentaire" value= "{{probleme.commentaire}}"></textarea>
+             </paper-autogrow-textarea>       
+        </div>
+<!--       <paper-input-decorator label="Commentaire" floatingLabel error="Entrez un mommentaire." autoValidate> -->
+<!--           <input id="commentaire" is="core-input" name="Commentaire" type="text" value= "{{probleme.commentaire}}"> -->
+<!--       </paper-input-decorator>   -->
+      
+      <paper-button affirmative raised on-tap="{{ajouterProbleme}}">Ajouter</paper-button> 
+      
+     </paper-action-dialog>
+    </div>
+  </template> <script type="application/dart"
+    src="../../controleurs/probleme/add_probleme.dart"></script>
+</polymer-element>
