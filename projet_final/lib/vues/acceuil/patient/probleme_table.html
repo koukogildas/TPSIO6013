@@ -35,19 +35,31 @@
             }
             
             .lienDroite {
-              float:right;             
+/*               float:right;              */
+                text-align: center;
               }
+              .marker {
+                  font-family: arial, sans-serif;
+                  font-size: 16px;
+                  font-weight: bold;
+/*                   color: #003366; */
+                  background: #ffe4b5;
+                  padding: 1px;
+                  text-align: center;
+                } 
          
 
     </style>
+    
+    <br/>
+    <div class="marker"> 
+                      Diagnostics identifiés pour: {{patient.prenom}} {{patient.nom}}
+     </div>
+     <br/>
     <section class="page">
-    <paper-shadow z="5">
-                  
-                    <div class="lienDroite" > 
-                      Diagnostics identifiés pour {{patient.prenom}} {{patient.nom}}
-                   </div>
+    <paper-shadow z="5">             
                
-             <table >
+             <table >             
                 <tr>
                   <td>
                     <section>      

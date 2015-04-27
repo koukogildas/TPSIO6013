@@ -1,8 +1,9 @@
 part of systeme_gestion_patient;
 
+
 class Personne {
-  String nom;
-  String prenom;
+  @observable String nom = "";
+  @observable String prenom = "";
   String idPersonne;
 
   String toString() {
@@ -11,11 +12,11 @@ class Personne {
 }
 
 class Patient extends Personne {
-  String nas;
-  Problemes problemes = new Problemes();
+  @observable String nas = "";
+  @observable Problemes problemes = new Problemes();
 }
 
-@observable
+//@observable
 class Utilisateur extends Personne {
   String password = '';
   String username = '';
@@ -26,8 +27,16 @@ class Utilisateur extends Personne {
   @observable bool profilAdministrateur = false;
   @observable List<Patient> patients = new List<Patient>();
 
-  definirPatientCourant(idPatient) {
+  definirPatientCourant(String idPatient) {
     patientCourant = patients.firstWhere(
+        (Patient p) => (p.idPersonne == idPatient), orElse: () => null);
+//    if( patientCourant== null){
+//      
+//    } 
+  }
+  
+  Patient trouverUnPatient(String idPatient){
+    return patients.firstWhere(
         (Patient p) => (p.idPersonne == idPatient), orElse: () => null);
   }
 

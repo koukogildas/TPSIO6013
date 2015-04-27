@@ -6,48 +6,24 @@ import '../../../model/systeme_gestion_patient.dart';
 
 @CustomTag('connexion-user')
 class ConnexionUser extends PolymerElement {
-  @published String message;
-  @published String infoConnexion;
+ // @published String message;
+ // @published String infoConnexion;
   @published ConnexionBase connexionBase;
 
 //  inInputElement username;
 //
 //  inInputElement passeword;
 
-  ConnexionUser.created() : super.created() {}
-
-  void connexion() {
-    CoreInput username = this.$["username"];
-    CoreInput password = this.$["password"];
-    Utilisateur user =
-        connexionBase.trouverUnUtilisateur(username.value, password.value);
-    if (user == null) {
-      connexionBase.utilisateurConnecte.statutConnexion = false;
-    } else {
-      message = 'Bienvenu ${user.prenom} ${user.nom}';
-      user.statutConnexion = true;
-      connexionBase.utilisateurConnecte = user;
-    }
-  }
-
-  void deconnexion() {
-    Utilisateur user = new Utilisateur();
-    user.nom = "";
-    user.prenom = "";
-    user.statutConnexion = false;
-    user.profilMedecin = false;
-    user.profilAdministrateur = false;
-    connexionBase.utilisateurConnecte = user;
-    message = 'Veuillez vous connecter svp.';
-    infoConnexion = 'Ouvrir une session';
-    connexionBase.utilisateurConnecte = user;
-  }
+  ConnexionUser.created() : super.created() {} 
 
   authentifierUtilisateur(Event e, var detail, Node target) {
-    if (infoConnexion != 'déconnexion') {
-      connexion();
+    CoreInput username = this.$["username"];
+    CoreInput password = this.$["password"];
+    if (connexionBase.infoConnexion != 'déconnexion') {
+      connexionBase.authentificationConnexion(username.value,password.value);
     } else {
-      deconnexion();
+      connexionBase.authentificationDeconnexion();
     }
+ //   message = connexionBase.message;
   }
 }

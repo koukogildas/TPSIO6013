@@ -5,8 +5,8 @@
   href="../../../../packages/paper_elements/paper_shadow.html">
 <link rel="import"
   href="../../../../packages/paper_elements/paper_item.html">
-<link rel="import"
-  href="../../../../packages/core_elements/core_a11y_keys.html">
+<!-- <link rel="import" -->
+<!--   href="../../../../packages/core_elements/core_a11y_keys.html"> -->
 <link rel="import"
   href="../../../../packages/core_elements/core_scaffold.html">
 <link rel="import"
@@ -19,10 +19,13 @@
   href="../../../../packages/projet_final/vues/acceuil/connexion/connexion_user.html">
 <link rel="import"
   href="../../../../packages/projet_final/vues/acceuil/patient/patient_table.html">
+  <link rel="import"
+  href="../../../../packages/projet_final/vues/acceuil/patient/add_patient.html">
+  
 <link rel="import"
   href="../../../../packages/projet_final/vues/acceuil/patient/probleme_table.html">
-
-
+  
+<link rel="import" href="../../../../packages/core_elements/core_icon_button.html">
 
 <polymer-element name="gobs-app">
  <template> 
@@ -41,30 +44,34 @@
             </core-menu>
         </nav>        
         <core-toolbar tool flex>        
-            <div id="information" style="text-align: center;" flex>{{message}}</div>             
+            <div id="information" style="text-align: center;" flex>{{connexionBase.message}}</div>             
             <template if="{{connexionBase.utilisateurConnecte.profilAdministrateur}}">  
               <core-tooltip id='core-tooltip-compte' label="Créer un compte">
                   <core-icon-button icon="face"></core-icon-button> 
               </core-tooltip> 
             </template>   
             <template if="{{connexionBase.utilisateurConnecte.profilMedecin}}">
+            
                 <core-tooltip id='core-tooltip-dossier' label="Créer un dossier">
-                    <core-icon-button icon="folder"></core-icon-button> 
-                </core-tooltip>              
+                     <add-patient id="add-patient" connexionBase ={{connexionBase}}>
+                     </add-patient> 
+                    <core-icon-button icon="folder" on-tap="{{afficherFenetreAjouterPatient}}"></core-icon-button> 
+                </core-tooltip> 
+                
+                             
                 <core-tooltip id='core-tooltip-diagnostic' label="Ajouter un diagnostic">
                     <core-icon-button icon="create"></core-icon-button> 
                 </core-tooltip>  
             </template>   
              
             <core-tooltip id='core-tooltip-connexion' label={{connexionBase.infoConnexion}} position="left">
-                  <connexion-user id="connexion-user" message= {{message}}
-                    infoConnexion={{connexionBase.infoConnexion}} connexionBase ={{connexionBase}}>
+                  <connexion-user id="connexion-user" connexionBase ={{connexionBase}}>
                   </connexion-user> 
-                  <core-icon-button icon="account-box" on-tap="{{toggleDialog1}}"> </core-icon-button> 
+                  <core-icon-button icon="account-box" on-tap="{{afficherFenetreConnexion}}"> </core-icon-button> 
             </core-tooltip>            
         </core-toolbar>
         <template if="{{connexionBase.utilisateurConnecte.statutConnexion}}"> 
-          <div><probleme-table patient="{{connexionBase.utilisateurConnecte.patientCourant}}" id="probleme-table" message="{{message}}"></probleme-table></div>
+          <div><probleme-table patient="{{connexionBase.utilisateurConnecte.patientCourant}}" id="probleme-table"></probleme-table></div>
         </template>  
     </core-scaffold> 
   </template> 

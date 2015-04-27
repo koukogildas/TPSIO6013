@@ -1,9 +1,3 @@
-<!DOCTYPE html>
-
-<html>
-  <head>
-  	<meta charset="utf-8">
-  	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="import" href="../../../../../packages/polymer/polymer.html">
     <link rel="import"
       href="../../../../../packages/paper_elements/paper_button.html">
@@ -12,10 +6,8 @@
       href="../../../../../packages/paper_elements/paper_input.html">            
       <link rel="import" href="../../../../../packages/core_elements/core_tooltip.html">
       
-    <title>ligne-table-patient</title>
-  </head>
- 
-  <body>   
+       <link rel="import" href="../../../../../packages/core_elements/core_icon_button.html">
+
   <polymer-element name="ligne-table-patient"> 
       <template>
         <style type="text/css">
@@ -33,6 +25,8 @@
                -ms-user-select: none; 
                user-select: none; 
                -webkit-tap-highlight-color: rgba(0,0,0,0); 
+               float:left;"
+               
              } 
         
              .content { 
@@ -46,51 +40,25 @@
               .lienDroite {
               float:left;             
               }
+              .table{
+                border-spacing: 15px;
+              }
              
         </style>
-         <div class="heading"  on-click="{{afficherDossierPatient}}"> {{patient.nom}} {{patient.prenom}}: {{patient.idPersonne}}</div> 
+
+         <div class="heading"  on-click="{{afficherDossierPatient}}" id="dossierPatient">{{patient.nom}} {{patient.prenom}}: {{patient.nas}}</div> 
+         <core-tooltip  label="Supprimer">
+                                  <core-icon-button icon="delete" on-click="{{supprimerUnPatient}}"></core-icon-button> 
+                                </core-tooltip>  
           <core-collapse>
             <div class="content">
-              <div>  
-                  <paper-input label="Entrez le nom" floatingLabel required > </paper-input>
-                  <paper-input label="Entrez le prénom" floatingLabel required >  </paper-input>
-                  <paper-input label="Entrez le numero d'assurance social" floatingLabel required > </paper-input>
-                                    
-                  <table style="border-spacing: 15px;">
-                        <tr>
-                          <th>
-                                <div class=""> 
-                                  <core-tooltip id='core-tooltip-diagnostic' label="Annuler" position="bottom">
-                                        <core-icon icon="cancel" on-tap={{ajouterUnPatient}}></core-icon>
-                                        <paper-ripple raised  fit></paper-ripple>
-                                  </core-tooltip>
-                              </div>
-                        </th>
-                          <th> 
-                              <div class=""> 
-                                <core-tooltip id='core-tooltip-diagnostic' label="Modifier" position="bottom">
-                                          <core-icon icon="add-box" on-tap={{ajouterUnPatient}}></core-icon>
-                                          <paper-ripple raised  fit></paper-ripple>
-                                  </core-tooltip>
-                              </div>
-                          <th>
-                          
-                          <th>
-                              <div class=""> 
-                                <core-tooltip id='core-tooltip-diagnostic' label="Supprimer" position="bottom">
-                                          <core-icon icon="delete" on-tap={{ajouterUnPatient}}></core-icon>
-                                          <paper-ripple raised  fit></paper-ripple>
-                                  </core-tooltip>
-                            </div>
-                          <th>
-                          
-                        </tr>                        
-                 </table> 
-              </div>
+
+                  <paper-input id="nomPatient" label="Nom" floatingLabel required value="{{patient.nom}}"> </paper-input>
+                  <paper-input id="prenomPatient" label="Prénom" floatingLabel required  value="{{patient.prenom}}">  </paper-input>
+                  <paper-input id=nasPatient label="Numero d'assurance social" floatingLabel required value="{{patient.nas}}"> </paper-input>           
             </div>
           </core-collapse>        
       </template>
-          <script type="application/dart" src="../../../controleurs/acceuil/patient/ligne_table_patient.dart"></script>        
+          <script type="application/dart" src="../../../controleurs/acceuil/patient/ligne_table_patient.dart"> </script>        
    </polymer-element> 
-  </body>
-</html>
+

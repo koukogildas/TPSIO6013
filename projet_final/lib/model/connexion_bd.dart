@@ -4,13 +4,13 @@ part of systeme_gestion_patient;
 //import 'package:projet_final/model/systeme_gestion_patient.dart';
 
 class ConnexionBase {
-  List<Utilisateur> utilisateurs = new List<Utilisateur>();
-   Utilisateur utilisateurConnecte;
-   String message = "Veuillez vous connecter svp.";
-   String infoConnexion = 'Ouvrir une session';
+  @observable List<Utilisateur> utilisateurs = new List<Utilisateur>();
+  @observable  Utilisateur utilisateurConnecte;
+  @observable  String message = "Veuillez vous connecter svp.";
+  @observable  String infoConnexion = 'Ouvrir une session';
 
    ConnexionBase() {
-    ouvrirUneConnexion();
+    ouvrirUneConnexionBd();
   }
    
    
@@ -19,25 +19,35 @@ class ConnexionBase {
          (Utilisateur u) => ((u.username == username)&& (u.password==passeWord)), orElse: () => null);
    }
    
-   
-   authentifierUtilisateur(Event e, var detail, Node target) {
-       if (infoConnexion != 'déconnexion') {
-         infoConnexion = 'déconnexion';
-         message = '';
-         connexionBase.utilisateurConnecte.statutConnexion = true;
-         connexionBase.utilisateurConnecte.profilMedecin = true;
-         connexionBase.utilisateurConnecte.profilAdministrateur = false;
-       } else {
-         message = 'Veuillez vous connecter svp.';
-         infoConnexion = 'Ouvrir une session';
-         connexionBase.utilisateurConnecte.statutConnexion = false;
-         connexionBase.utilisateurConnecte.profilMedecin = false;
-         connexionBase.utilisateurConnecte.profilAdministrateur = false;
+   void authentificationConnexion(String username, String password) {
 
+       Utilisateur user =
+           trouverUnUtilisateur(username, password);
+       if (user == null) {
+         utilisateurConnecte.statutConnexion = false;
+         message = "Non d'utilisateur ou mot de passe incorrecte";
+       } else {
+         message = 'Bienvenu ${user.prenom} ${user.nom}';
+         user.statutConnexion = true;
+         utilisateurConnecte = user;
+         infoConnexion = 'déconnexion';
        }
      }
-
-  void ouvrirUneConnexion() {
+   
+   void authentificationDeconnexion() {
+      Utilisateur user = new Utilisateur();
+      user.nom = "";
+      user.prenom = "";
+      user.statutConnexion = false;
+      user.profilMedecin = false;
+      user.profilAdministrateur = false;
+      utilisateurConnecte = user;
+      message = 'Veuillez vous connecter svp.';
+      infoConnexion = 'Ouvrir une session';
+      utilisateurConnecte = user;
+    }
+   
+  void ouvrirUneConnexionBd() {
     String json = window.localStorage['projet_final'];
     if (json == null) {
       initialiserModel();
@@ -69,8 +79,8 @@ class ConnexionBase {
     utilisateur.prenom = "Gildas";
     utilisateur.idPersonne =  utilisateur.prenom+utilisateur.nom;
     utilisateur.statutConnexion= false;
-    utilisateur.profilAdministrateur = false;
-    utilisateur.profilMedecin = false;
+    utilisateur.profilAdministrateur = true;
+    utilisateur.profilMedecin = true;
     utilisateur.username = "kougil";
     utilisateur.password = "kougil";
     utilisateur = toObservable(utilisateur);
@@ -106,8 +116,10 @@ class ConnexionBase {
     utilisateur.patients.add(patient1);
 
     utilisateurs.add(utilisateur);
-    utilisateurConnecte = utilisateur;    
-    definirPatientCourant(patient.prenom+patient.nom);    
+    authentificationDeconnexion();
+  //  infoConnexion = 'Ouvrir une session';
+    //utilisateurConnecte = utilisateur;    
+    //definirPatientCourant(patient.prenom+patient.nom);    
   }
   
   
