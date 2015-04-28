@@ -6,11 +6,18 @@ import '../../../model/systeme_gestion_patient.dart';
 @CustomTag('ligne-table-probleme')
 class LigneTableProbleme extends PolymerElement {
   @published Probleme probleme;
+  @published ConnexionBase connexionBase;
   
 
   LigneTableProbleme.created() : super.created() {}
 
   void afficherDossierPatient(Event e, var detail, Node target) {
     (this.shadowRoot.querySelector("core-collapse") as CoreCollapse).toggle();
+    connexionBase.message= "";
   }
+  
+  supprimerUnPatient(Event e, var detail, Node target) {
+      connexionBase.utilisateurConnecte.patientCourant.problemes.remove(probleme);
+      connexionBase.message = "Le diagnostic est supprimé";
+    }
 }

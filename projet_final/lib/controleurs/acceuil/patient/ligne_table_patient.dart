@@ -2,14 +2,14 @@ import 'package:polymer/polymer.dart';
 import 'dart:html';
 import 'package:core_elements/core_collapse.dart';
 import '../../../model/systeme_gestion_patient.dart';
-import 'package:core_elements/core_input.dart';
-import 'package:paper_elements/paper_input.dart';
+//import 'package:core_elements/core_input.dart';
+//import 'package:paper_elements/paper_input.dart';
 
 @CustomTag('ligne-table-patient')
 class LigneTablePatient extends PolymerElement {
   @published Patient patient;
   @published ConnexionBase connexionBase;
-  @published String StrDossierPatient;
+ // @published String StrDossierPatient;
 
   LigneTablePatient.created() : super.created() {
 
@@ -18,6 +18,7 @@ class LigneTablePatient extends PolymerElement {
   void afficherDossierPatient(Event e, var detail, Node target) {
     connexionBase.definirPatientCourant(patient.idPersonne);
     (this.shadowRoot.querySelector("core-collapse") as CoreCollapse).toggle();
+    connexionBase.message= "";
   }
   supprimerUnPatient(Event e, var detail, Node target) {
     patient.problemes.clear();

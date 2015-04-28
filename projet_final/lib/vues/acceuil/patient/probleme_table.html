@@ -67,7 +67,7 @@
                         <tbody template repeat="{{probleme in patient.problemes.internalList}}">
                          <tr>
                           <td> 
-                              <ligne-table-probleme message ={{message}} probleme="{{probleme}}" id="{{patient.idPersonne}}"></ligne-table-probleme>
+                              <ligne-table-probleme connexionBase ={{connexionBase}} probleme="{{probleme}}" id="{{patient.idPersonne}}"></ligne-table-probleme>
                           </td>
                          </tr>                
                         </tbody>                

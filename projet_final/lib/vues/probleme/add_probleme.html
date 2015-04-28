@@ -8,20 +8,15 @@
   href="../../../../packages/paper_elements/paper_button.html">
 <link rel="import"
   href="../../../../packages/paper_elements/paper_input.html">
+<link rel="import"  href="../../../../packages/paper_elements/paper_autogrow_textarea.html">  
+
 <polymer-element name="add-probleme"> 
   <template>
     <style type="text/css">
       .add_Probleme {
         position: inherit;
       }
-      
-      .content { 
-               padding: 20px; 
-               border: 2px solid #dedede; 
-               border-top: none; 
-               border-bottom-left-radius: 10px; 
-               border-bottom-right-radius: 10px; 
-             } 
+    
     </style>
     <div>
       <paper-action-dialog id='paper-action-dialog'
@@ -35,11 +30,11 @@
                 <input  id="diagnostic" is="core-input" name="nomdiagnostic" type="text" value= "{{probleme.diagnostic}}" required>
              </paper-input-decorator>
              
-             Commentaire:
+             <br/>Commentaire: <br/>
              
-             <paper-autogrow-textarea  id="paper-autogrow-textarea" label="Commentaire" maxrow:2>
-                          <textarea id="textarea"  label="Entrez un commentaire" value= "{{probleme.commentaire}}"></textarea>
-             </paper-autogrow-textarea>       
+
+            <textarea id="textarea"  label="Entrez un commentaire" value= "{{probleme.commentaire}}"></textarea>
+
         </div>
 <!--       <paper-input-decorator label="Commentaire" floatingLabel error="Entrez un mommentaire." autoValidate> -->
 <!--           <input id="commentaire" is="core-input" name="Commentaire" type="text" value= "{{probleme.commentaire}}"> -->

@@ -11,7 +11,8 @@
     <link rel="import"
       href="../../../../../packages/paper_elements/paper_input.html">            
       <link rel="import" href="../../../../../packages/core_elements/core_tooltip.html"> 
-      <link rel="import"  href="../../../../../packages/paper_elements/paper_autogrow_textarea.html">    
+      <link rel="import"  href="../../../../../packages/paper_elements/paper_autogrow_textarea.html">
+            <link rel="import" href="../../../../../packages/core_elements/core_icon_button.html">    
       
       
     <title>ligne-table-patient</title>
@@ -57,6 +58,7 @@
                -ms-user-select: none; 
                user-select: none; 
                -webkit-tap-highlight-color: rgba(0,0,0,0); 
+               float:left;"
              } 
         
              .content { 
@@ -72,47 +74,19 @@
               }             
         </style>
         
-         <div class="heading"  on-click="{{afficherDossierPatient}}"> {{probleme.diagnostic}} {{probleme.commentaire}}</div> 
+         <div class="heading"  on-click="{{afficherDossierPatient}}"> {{probleme.diagnostic}}</div> 
+         <core-tooltip  label="Supprimer" position="right">
+                                  <core-icon-button icon="delete" on-click="{{supprimerUnPatient}}"></core-icon-button> 
+                                </core-tooltip>  
           <core-collapse>
             <div class="content">
               <div>  
-                  <paper-input label="Entrer le diagnostic" floatingLabel > </paper-input>
+                  <paper-input label="Diagnostic" floatingLabel  value= "{{probleme.diagnostic}}"> </paper-input>
                    <br/> <br/> Commentaire:<br/>
-                  
-                  <paper-autogrow-textarea  id="paper-autogrow-textarea" class="content" label="Diagnostic" maxrow:2>
-                      <textarea id="textarea"  label="Entrez un diagnostic"></textarea>
-                  </paper-autogrow-textarea>          
-                  
-                  <table style="border-spacing: 15px;">
-                        <tr>
-                          <th>
-                                <div class=""> 
-                                  <core-tooltip id='core-tooltip-diagnostic' label="Annuler" position="bottom">
-                                        <core-icon icon="cancel" on-tap={{ajouterUnPatient}}></core-icon>
-                                        <paper-ripple raised  fit></paper-ripple>
-                                  </core-tooltip>
-                              </div>
-                        </th>
-                          <th> 
-                              <div class=""> 
-                                <core-tooltip id='core-tooltip-diagnostic' label="Modifier" position="bottom">
-                                          <core-icon icon="add-box" on-tap={{ajouterUnPatient}}></core-icon>
-                                          <paper-ripple raised  fit></paper-ripple>
-                                  </core-tooltip>
-                              </div>
-                          <th>
-                          
-                          <th>
-                              <div class=""> 
-                                <core-tooltip id='core-tooltip-diagnostic' label="Supprimer" position="bottom">
-                                          <core-icon icon="delete" on-tap={{ajouterUnPatient}}></core-icon>
-                                          <paper-ripple raised  fit></paper-ripple>
-                                  </core-tooltip>
-                            </div>
-                          <th>
-                          
-                        </tr>                        
-                 </table> 
+                                     
+                  <paper-autogrow-textarea  id="paper-autogrow-textarea" class="content" label="Commentaire" maxrow:2>
+                      <textarea id="textarea"  label="Commentaire" value= "{{probleme.commentaire}}"></textarea>
+                  </paper-autogrow-textarea>         
                                      
               </div>
             </div>

@@ -9,16 +9,21 @@ class ConnexionUser extends PolymerElement {
  // @published String message;
  // @published String infoConnexion;
   @published ConnexionBase connexionBase;
+  @published CoreInput username = new CoreInput();
+  @published CoreInput password = new CoreInput();
 
 //  inInputElement username;
 //
 //  inInputElement passeword;
 
-  ConnexionUser.created() : super.created() {} 
+  ConnexionUser.created() : super.created() {
+    password.value="";
+    username.value="";
+  } 
 
   authentifierUtilisateur(Event e, var detail, Node target) {
-    CoreInput username = this.$["username"];
-    CoreInput password = this.$["password"];
+     username = this.$["username"];
+     password = this.$["password"];
     if (connexionBase.infoConnexion != 'déconnexion') {
       connexionBase.authentificationConnexion(username.value,password.value);
     } else {

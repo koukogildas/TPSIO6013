@@ -1,0 +1,63 @@
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="import" href="../../../../packages/polymer/polymer.html">
+<link rel="import"
+  href="../../../../packages/paper_elements/paper_action_dialog.html">
+<link rel="import"
+  href="../../../../packages/paper_elements/paper_button.html">
+<link rel="import"
+  href="../../../../packages/paper_elements/paper_input.html"> 
+ <link rel="import"
+  href="../../../../packages/paper_elements/paper_radio_group.html">
+  
+<polymer-element name="add-utilisateur"> 
+  <template>
+    <style type="text/css" shim-shadowdom>
+          .addUtilisateur {
+            position: inherit;
+          }
+                
+    </style>
+    <div>
+      <paper-action-dialog id='paper-action-dialog'
+        heading="Ajouter un utilisateur" transition="core-transition-center"
+        class="addUtilisateur" backdrop>
+        
+              <paper-radio-group id="paperRadioGroup" selected="{{paperRadioGroup.selected}}">
+              <paper-radio-button name="Médecin" label="Médecin"></paper-radio-button>
+              <paper-radio-button name="Administrateur" label="Administrateur"></paper-radio-button>
+              </paper-radio-group>
+              
+        
+        <paper-input-decorator id="decoratorPatientName" label="Nom de famille" floatingLabel
+          error="Entrez le nom" autoValidate>
+            <input  id="nomFamille" is="core-input" name="nomFamille" type="text" value= "{{nomFamille.value}}" required>
+         </paper-input-decorator>
+         
+       <paper-input-decorator id="decoratorPatientName" label="Prenom" floatingLabel
+          error="Entrez le nom" autoValidate>
+            <input  id="prenomUtilisateur" is="core-input" name="prenomUtilisateur" type="text" value= "{{prenomUtilisateur.value}}" required>
+         </paper-input-decorator>
+    
+      <paper-input-decorator label="Numero assurance social" floatingLabel error="Entrez le numero d'assurance social" autoValidate>
+          <input id="nasUtilisateur" is="core-input" name="nasUtilisateur" type="text" value= "{{nasUtilisateur.value}}">
+      </paper-input-decorator> 
+        
+         <paper-input-decorator id="decoratorUsername" label="Nom d'utilisateur" floatingLabel
+          error="veuillez entrer un nom d'utilisateur" autoValidate>
+            <input  id="username" is="core-input" name="username" type="text" value="{{username.value}}" required>
+         </paper-input-decorator>
+    
+      <paper-input-decorator label="Mot de passe"
+        floatingLabel error="veuillez entrer un mot de passe" autoValidate>
+          <input id="password" is="core-input" name="password" type="password" value="{{password.value}}" required>
+      </paper-input-decorator> 
+      
+      <paper-button affirmative raised on-tap={{AjouterUtilisateur}}>Ajouter</paper-button> 
+      
+     </paper-action-dialog>
+    </div>
+  </template> <script type="application/dart"
+    src="../../controleurs/utilisateur/add_utilisateur.dart"></script>
+</polymer-element>

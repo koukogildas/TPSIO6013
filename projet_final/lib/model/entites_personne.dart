@@ -18,9 +18,9 @@ class Patient extends Personne {
 
 //@observable
 class Utilisateur extends Personne {
-  String password = '';
-  String username = '';
-  String type = '';
+  @observable String password = '';
+  @observable String username = '';
+  @observable String type = '';
   @observable Patient patientCourant;
   @observable bool statutConnexion = false;
   @observable bool profilMedecin = false;

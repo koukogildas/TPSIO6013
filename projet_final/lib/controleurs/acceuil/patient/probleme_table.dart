@@ -8,6 +8,7 @@ class ProblemeTable extends PolymerElement {
 
   @published Patient patient;
   @published String message;
+  @published ConnexionBase connexionBase;
   
   ProblemeTable.created() : super.created(){
 //    patient = toObservable(new Personne());

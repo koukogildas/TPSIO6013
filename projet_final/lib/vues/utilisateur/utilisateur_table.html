@@ -1,0 +1,42 @@
+<link rel="import" href="../../../../packages/polymer/polymer.html">
+<link rel="import"
+  href="../../../../packages/paper_elements/paper_action_dialog.html">
+<link rel="import"
+  href="../../../../packages/paper_elements/paper_button.html">
+
+<link rel="import"
+  href="../../../../packages/core_elements/core_tooltip.html">
+<link rel="import"
+  href="../../../../packages/paper_elements/paper_input.html">
+<link rel="import"
+  href="../../../../packages/core_elements/core_header_panel.html">
+<link rel="import" href="ligne_table_utilisateur.html"> 
+
+<polymer-element name="utilisateur-table"> <template>
+
+ <paper-action-dialog id='paper-action-dialog'>
+<paper-shadow z="5">
+<table style="">
+  <tr>
+    <td>
+      <section>
+        <table id="utilisateur-table">
+          <tbody template
+            repeat="{{utlisateur in connexionBase.utilisateurs}}">
+            <tr>
+              <td>
+                  <ligne-table-utilisateur utlisateur="{{utlisateur}}"
+                  id="{{utlisateur.idPersonne}}" connexionBase="{{connexionBase}}"></ligne-table-utilisateur>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </td>
+  </tr>
+</table>
+</paper-shadow> 
+ </paper-action-dialog>
+</template> <script type="application/dart"
+  src="../../controleurs/utilisateur/utilisateur_table.dart"></script>
+</polymer-element>

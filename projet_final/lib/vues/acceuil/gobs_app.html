@@ -22,13 +22,19 @@
   <link rel="import"
   href="../../../../packages/projet_final/vues/acceuil/patient/add_patient.html">
   
-    <link rel="import"
-  href="../../../../packages/projet_final/vues/probleme/add_probleme.html">
-  
 <link rel="import"
   href="../../../../packages/projet_final/vues/acceuil/patient/probleme_table.html">
   
 <link rel="import" href="../../../../packages/core_elements/core_icon_button.html">
+
+<link rel="import"
+  href="../../../../packages/projet_final/vues/utilisateur/add_utilisateur.html">
+  
+  <link rel="import"
+  href="../../../../packages/projet_final/vues/utilisateur/utilisateur_table.html">
+
+<link rel="import"
+  href="../../../../packages/projet_final/vues/probleme/add_probleme.html">
 
 <polymer-element name="gobs-app">
  <template> 
@@ -48,35 +54,47 @@
         </nav>        
         <core-toolbar tool flex>        
             <div id="information" style="text-align: center;" flex>{{connexionBase.message}}</div>             
+            
             <template if="{{connexionBase.utilisateurConnecte.profilAdministrateur}}">  
               <core-tooltip id='core-tooltip-compte' label="Créer un compte">
-                  <core-icon-button icon="face"></core-icon-button> 
-              </core-tooltip> 
-            </template>   
-            
+              <add-utilisateur id="add-utilisateur" connexionBase ={{connexionBase}}>
+                     </add-utilisateur> 
+                  <core-icon-button icon="accessibility" on-tap="{{afficherFenetreAjouterCompte}}"></core-icon-button> 
+              </core-tooltip>
+              
+               <core-tooltip id='core-tooltip-listeUtilisateur' label="Liste des utilisateurs du système">
+              <utilisateur-table id="utilisateur-table" connexionBase ="{{connexionBase}}">
+                     </utilisateur-table>  
+                  <core-icon-button icon=" supervisor-account" on-tap="{{afficherFenetreListeCompte}}"></core-icon-button> 
+               </core-tooltip>
+                              
+            </template>  
+                    
+             
             <template if="{{connexionBase.utilisateurConnecte.profilMedecin}}">
             
                 <core-tooltip id='core-tooltip-dossier' label="Créer un dossier">
-                     <add-patient id="add-patient" connexionBase ="{{connexionBase}}">
+                     <add-patient id="add-patient" connexionBase ={{connexionBase}}>
                      </add-patient> 
                     <core-icon-button icon="folder" on-tap="{{afficherFenetreAjouterPatient}}"></core-icon-button> 
-                </core-tooltip>                 
+                </core-tooltip> 
+                
                              
                 <core-tooltip id='core-tooltip-diagnostic' label="Ajouter un diagnostic">
-                  <add-probleme id="add-probleme" connexionBase ="{{connexionBase}}">
-                  </add-probleme>
-                  <core-icon-button icon="create" on-tap="{{afficherFenetreAjouterDiagnostic}}"></core-icon-button> 
+                  <add-probleme id="add-probleme" connexionBase ={{connexionBase}}>
+                  </add-probleme> 
+                    <core-icon-button icon="create" on-tap="{{afficherFenetreAjouterDiagnostic}}"></core-icon-button> 
                 </core-tooltip>  
             </template>   
              
             <core-tooltip id='core-tooltip-connexion' label={{connexionBase.infoConnexion}} position="left">
-                  <connexion-user id="connexion-user" connexionBase ="{{connexionBase}}">
+                  <connexion-user id="connexion-user" connexionBase ={{connexionBase}}>
                   </connexion-user> 
                   <core-icon-button icon="account-box" on-tap="{{afficherFenetreConnexion}}"> </core-icon-button> 
             </core-tooltip>            
         </core-toolbar>
         <template if="{{connexionBase.utilisateurConnecte.statutConnexion}}"> 
-          <div><probleme-table patient="{{connexionBase.utilisateurConnecte.patientCourant}}" id="probleme-table"></probleme-table></div>
+          <div><probleme-table patient="{{connexionBase.utilisateurConnecte.patientCourant}}" id="probleme-table" connexionBase ={{connexionBase}}></probleme-table></div>
         </template>  
     </core-scaffold> 
   </template> 

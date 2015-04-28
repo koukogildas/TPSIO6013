@@ -19,6 +19,11 @@ class ConnexionBase {
          (Utilisateur u) => ((u.username == username)&& (u.password==passeWord)), orElse: () => null);
    }
    
+   Utilisateur trouverUnUtilisateurById(String idUtilisateur){
+       return utilisateurs.firstWhere(
+           (Utilisateur u) => (u.username == idUtilisateur), orElse: () => null);
+     }
+   
    void authentificationConnexion(String username, String password) {
 
        Utilisateur user =

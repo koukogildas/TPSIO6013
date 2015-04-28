@@ -20,14 +20,14 @@
         heading="Ouvrir une session" transition="core-transition-center"
         class="connexion" backdrop>
         
-         <paper-input-decorator id="decoratorUsername" label="Entrez un nom d'utilisateur" floatingLabel
+         <paper-input-decorator id="decoratorUsername" label="Nom d'utilisateur" floatingLabel
           error="veuillez entrer un nom d'utilisateur" autoValidate>
-            <input  id="username" is="core-input" name="username" type="text" required>
+            <input  id="username" is="core-input" name="username" type="text" value="{{username.value}}" required>
          </paper-input-decorator>
     
-      <paper-input-decorator label="Entrer votre votre de passe"
+      <paper-input-decorator label="Mot de passe"
         floatingLabel error="veuillez entrer un mot de passe" autoValidate>
-          <input id="password" is="core-input" name="password" type="password" required>
+          <input id="password" is="core-input" name="password" type="password" value="{{password.value}}" required>
       </paper-input-decorator> 
       
       <paper-button affirmative raised on-tap={{authentifierUtilisateur}}>Connexion</paper-button> 
