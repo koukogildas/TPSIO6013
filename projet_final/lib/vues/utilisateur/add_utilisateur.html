@@ -24,9 +24,9 @@
         heading="Ajouter un utilisateur" transition="core-transition-center"
         class="addUtilisateur" backdrop>
         
-              <paper-radio-group id="paperRadioGroup" selected="{{paperRadioGroup.selected}}">
-              <paper-radio-button name="Médecin" label="Médecin"></paper-radio-button>
-              <paper-radio-button name="Administrateur" label="Administrateur"></paper-radio-button>
+              <paper-radio-group id="paperRadioGroup" >
+              <paper-radio-button id="radioboutonMedecin" name='Médecin' label='Médecin' on-tap={{changerChoixMedecin}}></paper-radio-button>
+              <paper-radio-button id="radioboutonAdmin" name='Administrateur' label='Administrateur' on-tap={{changerChoixAdmin}}></paper-radio-button>
               </paper-radio-group>
               
         
@@ -40,9 +40,9 @@
             <input  id="prenomUtilisateur" is="core-input" name="prenomUtilisateur" type="text" value= "{{prenomUtilisateur.value}}" required>
          </paper-input-decorator>
     
-      <paper-input-decorator label="Numero assurance social" floatingLabel error="Entrez le numero d'assurance social" autoValidate>
-          <input id="nasUtilisateur" is="core-input" name="nasUtilisateur" type="text" value= "{{nasUtilisateur.value}}">
-      </paper-input-decorator> 
+<!--       <paper-input-decorator label="Numero assurance social" floatingLabel error="Entrez le numero d'assurance social" autoValidate> -->
+<!--           <input id="nasUtilisateur" is="core-input" name="nasUtilisateur" type="text" value= "{{nasUtilisateur.value}}"> -->
+<!--       </paper-input-decorator>  -->
         
          <paper-input-decorator id="decoratorUsername" label="Nom d'utilisateur" floatingLabel
           error="veuillez entrer un nom d'utilisateur" autoValidate>

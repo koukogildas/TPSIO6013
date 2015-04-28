@@ -7,6 +7,8 @@
       <link rel="import" href="../../../../packages/core_elements/core_tooltip.html">
       
        <link rel="import" href="../../../../packages/core_elements/core_icon_button.html">
+            <link rel="import" href="../../../../packages/paper_elements/paper_input_decorator.html">
+       paper-input-decorator
 
   <polymer-element name="ligne-table-utilisateur"> 
       <template>
@@ -42,15 +44,20 @@
               }
               .table{
                 border-spacing: 15px;
-              }
+              }      
+               
+   
              
         </style>
-
-         <div class="heading"  id={{utilisateur.idPersonne}}> {{utilisateur.nom}} {{utilisateur.prenom}} {{utilisateur.nas}} {{utilisateur.username}}
-         {{utilisateur.password}}  {{profil}} </div>  
-         <core-tooltip  label="Supprimer" position="right">
-                                  <core-icon-button icon="delete" on-click="{{supprimerUnUtilisateur}}"></core-icon-button> 
-         </core-tooltip>     
+        
+         
+         
+<!--          <div class="heading"  id={{utilisateur.idPersonne}}> {{utilisateur.nom}} {{utilisateur.prenom}} {{utilisateur.username}} -->
+<!--          {{utilisateur.password}}  {{profil}} </div>   -->
+<!--          <core-tooltip  label="Supprimer" position="right"> -->
+<!--                                   <core-icon-button icon="delete" on-click="{{supprimerUnUtilisateur}}"></core-icon-button>  -->
+<!--          </core-tooltip>  -->
+             
       </template>
           <script type="application/dart" src="../../controleurs/utilisateur/ligne_table_utilisateur.dart"> </script>        
    </polymer-element> 
