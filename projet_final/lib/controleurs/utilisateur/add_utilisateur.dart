@@ -47,7 +47,7 @@ class AddUtilisateur extends PolymerElement {
       if (connexionBase.trouverUnUtilisateur(username.value, password.value) !=
           null) {
         connexionBase.message =
-            "le assword et le username existe déjà. Changés les svp.";
+            "Le assword et le username existe déjà. Changés les svp.";
       } else {
         if (connexionBase.trouverUnUtilisateurById(
                 nomFamille.value + prenomUtilisateur.value) ==

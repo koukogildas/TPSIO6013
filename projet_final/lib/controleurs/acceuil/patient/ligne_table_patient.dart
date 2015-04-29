@@ -20,6 +20,6 @@ class LigneTablePatient extends PolymerElement {
     patient.nom = "";
     patient.prenom = "";
     connexionBase.utilisateurConnecte.patients.remove(patient);
-    connexionBase.message = "Le dossier du patient est supprimé";
+    connexionBase.message = "Le dossier du patient est supprimé.";
   }
 }
