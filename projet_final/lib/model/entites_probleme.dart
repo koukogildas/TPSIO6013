@@ -11,7 +11,7 @@ class Probleme extends ConceptEntity<Probleme> {
     }
   }
 
-  Probleme newEntity() => new Probleme();
+  Probleme newEntity() => toObservable(new Probleme());
 
   String toString() {
     return '  {\n ' '   diagnostic: ${diagnostic},' '   commentaire: ${commentaire}\n' '  }\n';
@@ -34,6 +34,6 @@ class Probleme extends ConceptEntity<Probleme> {
 }
 
 class Problemes extends ConceptEntities<Probleme> {
-  Problemes newEntities() => new Problemes();
-  Probleme newEntity() => new Probleme();
+  Problemes newEntities() => toObservable(new Problemes());
+  Probleme newEntity() => toObservable(new Probleme());
 }

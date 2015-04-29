@@ -30,6 +30,7 @@ class Patient extends Personne {
     idPersonne = entityMap['idPersonne'];
     nas = entityMap['nas'];
     problemes.fromJson(entityMap['problemes']);
+    problemes.internalList = toObservable(problemes.internalList);
   }
 }
 

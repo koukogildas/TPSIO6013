@@ -9,7 +9,7 @@ class AddPatient extends PolymerElement {
   @published ConnexionBase connexionBase;
 
   AddPatient.created() : super.created() {
-    patient = toObservable(new Patient());
+    patient = new Patient();
   }
 
   ajouterPatient(Event e, var detail, Node target) {

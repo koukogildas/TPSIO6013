@@ -9,7 +9,7 @@ class AddProbleme extends PolymerElement {
   @published ConnexionBase connexionBase;
   
   AddProbleme.created() : super.created() {
-    probleme = toObservable(new Probleme());
+    probleme = new Probleme();
   }
 
   ajouterProbleme(Event e, var detail, Node target) {
