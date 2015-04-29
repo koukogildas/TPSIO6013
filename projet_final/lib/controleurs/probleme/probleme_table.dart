@@ -1,5 +1,5 @@
 import 'package:polymer/polymer.dart';
-import '../../../model/systeme_gestion_patient.dart';
+import '../../model/systeme_gestion_patient.dart';
 
 @CustomTag('probleme-table')
 class ProblemeTable extends PolymerElement {

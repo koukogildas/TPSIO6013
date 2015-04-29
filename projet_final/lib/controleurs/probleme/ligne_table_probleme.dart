@@ -1,7 +1,7 @@
 import 'package:polymer/polymer.dart';
 import 'dart:html';
 import 'package:core_elements/core_collapse.dart';
-import '../../../model/systeme_gestion_patient.dart';
+import '../../model/systeme_gestion_patient.dart';
 
 @CustomTag('ligne-table-probleme')
 class LigneTableProbleme extends PolymerElement {

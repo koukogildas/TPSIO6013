@@ -19,19 +19,14 @@
   href="../../../../packages/projet_final/vues/acceuil/patient/patient_table.html">
 <link rel="import"
   href="../../../../packages/projet_final/vues/acceuil/patient/add_patient.html">
-
 <link rel="import"
-  href="../../../../packages/projet_final/vues/acceuil/patient/probleme_table.html">
-
+  href="../../../../packages/projet_final/vues/probleme/probleme_table.html">
 <link rel="import"
   href="../../../../packages/core_elements/core_icon_button.html">
-
 <link rel="import"
   href="../../../../packages/projet_final/vues/utilisateur/add_utilisateur.html">
-
 <link rel="import"
   href="../../../../packages/projet_final/vues/utilisateur/utilisateur_table.html">
-
 <link rel="import"
   href="../../../../packages/projet_final/vues/probleme/add_probleme.html">
 
@@ -88,7 +83,7 @@
                   <core-icon-button icon="account-box" on-tap="{{afficherFenetreConnexion}}"> </core-icon-button> 
             </core-tooltip>            
         </core-toolbar>
-        <template if="{{connexionBase.utilisateurConnecte.statutConnexion}}"> 
+        <template if="{{(connexionBase.utilisateurConnecte.statutConnexion) && (connexionBase.utilisateurConnecte.patientCourant != null)}}"> 
           <div><probleme-table patient="{{connexionBase.utilisateurConnecte.patientCourant}}" id="probleme-table" connexionBase ={{connexionBase}}></probleme-table></div>
         </template>  
     </core-scaffold> 

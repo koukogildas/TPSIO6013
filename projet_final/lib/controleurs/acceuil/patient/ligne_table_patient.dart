@@ -12,13 +12,11 @@ class LigneTablePatient extends PolymerElement {
 
   void afficherDossierPatient(Event e, var detail, Node target) {
     connexionBase.definirPatientCourant(patient.idPersonne);
+    patient = connexionBase.utilisateurConnecte.patientCourant;
     (this.shadowRoot.querySelector("core-collapse") as CoreCollapse).toggle();
     connexionBase.message = "";
   }
   supprimerUnPatient(Event e, var detail, Node target) {
-    patient.problemes.clear();
-    patient.nom = "";
-    patient.prenom = "";
     connexionBase.utilisateurConnecte.patients.remove(patient);
     connexionBase.message = "Le dossier du patient est supprimé.";
   }
