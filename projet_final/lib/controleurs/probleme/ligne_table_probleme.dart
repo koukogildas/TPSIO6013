@@ -5,8 +5,8 @@ import '../../model/systeme_gestion_patient.dart';
 
 @CustomTag('ligne-table-probleme')
 class LigneTableProbleme extends PolymerElement {
-  @published Probleme probleme;
-  @published ConnexionBase connexionBase;
+  @observable @published Probleme probleme;
+  @observable @published ConnexionBase connexionBase;
 
   LigneTableProbleme.created() : super.created() {}
 

@@ -5,8 +5,8 @@ import '../../../model/systeme_gestion_patient.dart';
 
 @CustomTag('ligne-table-patient')
 class LigneTablePatient extends PolymerElement {
-  @published Patient patient;
-  @published ConnexionBase connexionBase;
+  @observable @published Patient patient;
+  @observable @published ConnexionBase connexionBase;
 
   LigneTablePatient.created() : super.created() {}
 
