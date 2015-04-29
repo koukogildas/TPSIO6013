@@ -40,13 +40,11 @@ class ConnexionBase {
   }
 
   void order() {
-    // in place sort
     utilisateurs.sort((m, n) => m.compareTo(n));
   }
 
   void authentificationDeconnexion() {
     EnvoyerDonneVersBase();
-
     Utilisateur user = new Utilisateur();
     user.nom = "";
     user.prenom = "";
@@ -70,7 +68,6 @@ class ConnexionBase {
         initialiserModel();
       }
       order();
-      //utilisateurs = toObservable(utilisateurs);
     }
   }
 
@@ -91,7 +88,7 @@ class ConnexionBase {
   }
 
   void initialiserModel() {
-    Utilisateur utilisateur = new Utilisateur();
+    Utilisateur utilisateur = toObservable(new Utilisateur());
     utilisateur.nom = "Kouko";
     utilisateur.prenom = "Gildas";
     utilisateur.idPersonne = utilisateur.prenom + utilisateur.nom;
@@ -101,16 +98,15 @@ class ConnexionBase {
     utilisateur.profil = "Administrateur";
     utilisateur.username = "kougil";
     utilisateur.password = "kougil";
-    utilisateur = toObservable(utilisateur);
     utilisateur.patients = toObservable(utilisateur.patients);
 
-    Patient patient = new Patient();
-    Patient patient1 = new Patient();
+    Patient patient = toObservable(new Patient());
+    Patient patient1 = toObservable(new Patient());
 
-    Probleme p = new Probleme();
+    Probleme p = toObservable(new Probleme());
     p.diagnostic = "Sida";
     p.commentaire = "Prendre tous médicaments prescrits au petit déjeuner.";
-    p.idProbleme = p.diagnostic;
+    p.idProbleme = "prblemetest";
 
     patient.nom = "Goulet";
     patient.prenom = "Guillaume";
@@ -120,10 +116,10 @@ class ConnexionBase {
     patient.problemes.add(p);
     utilisateur.patients.add(patient);
 
-    Probleme p1 = new Probleme();
+    Probleme p1 = toObservable(new Probleme());
     p1.diagnostic = "Maux de tête chronique";
     p1.commentaire = "Le patient à fait un ACV diabétique il 2 ans.";
-    p1.idProbleme = p1.diagnostic;
+    p1.idProbleme = new DateTime.now().toIso8601String();
 
     patient1.nom = "Maxime";
     patient1.prenom = "Gilbert";

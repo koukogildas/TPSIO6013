@@ -5,8 +5,6 @@
   href="../../../../packages/paper_elements/paper_shadow.html">
 <link rel="import"
   href="../../../../packages/paper_elements/paper_item.html">
-<!-- <link rel="import" -->
-<!--   href="../../../../packages/core_elements/core_a11y_keys.html"> -->
 <link rel="import"
   href="../../../../packages/core_elements/core_scaffold.html">
 <link rel="import"
@@ -19,18 +17,19 @@
   href="../../../../packages/projet_final/vues/acceuil/connexion/connexion_user.html">
 <link rel="import"
   href="../../../../packages/projet_final/vues/acceuil/patient/patient_table.html">
-  <link rel="import"
+<link rel="import"
   href="../../../../packages/projet_final/vues/acceuil/patient/add_patient.html">
-  
+
 <link rel="import"
   href="../../../../packages/projet_final/vues/acceuil/patient/probleme_table.html">
-  
-<link rel="import" href="../../../../packages/core_elements/core_icon_button.html">
+
+<link rel="import"
+  href="../../../../packages/core_elements/core_icon_button.html">
 
 <link rel="import"
   href="../../../../packages/projet_final/vues/utilisateur/add_utilisateur.html">
-  
-  <link rel="import"
+
+<link rel="import"
   href="../../../../packages/projet_final/vues/utilisateur/utilisateur_table.html">
 
 <link rel="import"
@@ -41,16 +40,13 @@
     <link rel="stylesheet" href="../../css/styles.css">    
     <core-scaffold id="scaffold">
         <nav>
-            <core-toolbar>            
-              <template if="{{connexionBase.utilisateurConnecte.statutConnexion}}">
-                <span> Dossier des patients </span>
-              </template> 
-            </core-toolbar>           
-            <core-menu>
-              <template if="{{connexionBase.utilisateurConnecte.statutConnexion}}"> 
-                <patient-table id="patientTtable" connexionBase="{{connexionBase}}"></patient-table>
-              </template>  
-            </core-menu>
+          <core-toolbar> <template
+            if="{{connexionBase.utilisateurConnecte.statutConnexion}}">
+          <span> Dossier des patients: {{connexionBase.utilisateurConnecte.patients.length}} </span> </template> </core-toolbar>
+          <core-menu> <template
+            if="{{connexionBase.utilisateurConnecte.statutConnexion}}">
+          <patient-table id="patientTtable" connexionBase="{{connexionBase}}"></patient-table>
+          </template> </core-menu>
         </nav>        
         <core-toolbar tool flex>        
             <div id="information" style="text-align: center;" flex>{{connexionBase.message}}</div>             
@@ -68,8 +64,7 @@
                   <core-icon-button icon="supervisor-account" on-tap="{{afficherFenetreListeCompte}}"></core-icon-button> 
                </core-tooltip>
                               
-            </template>  
-                    
+            </template>                      
              
             <template if="{{connexionBase.utilisateurConnecte.profilMedecin}}">
             

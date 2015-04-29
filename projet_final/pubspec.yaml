@@ -10,6 +10,7 @@ dependencies:
   paper_elements: any
   polymer: any
   sqljocky: any
+  unittest: any
 transformers:
 - polymer:
     entry_points: web/index.html

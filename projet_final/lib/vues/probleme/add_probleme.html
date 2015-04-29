@@ -1,6 +1,3 @@
-
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="import" href="../../../../packages/polymer/polymer.html">
 <link rel="import"
   href="../../../../packages/paper_elements/paper_action_dialog.html">
@@ -31,16 +28,9 @@
              </paper-input-decorator>
              
              <br/>Commentaire: <br/>
-             
-
-            <textarea id="textarea"  label="Entrez un commentaire" value= "{{probleme.commentaire}}"></textarea>
-
-        </div>
-<!--       <paper-input-decorator label="Commentaire" floatingLabel error="Entrez un mommentaire." autoValidate> -->
-<!--           <input id="commentaire" is="core-input" name="Commentaire" type="text" value= "{{probleme.commentaire}}"> -->
-<!--       </paper-input-decorator>   -->
-      
-      <paper-button affirmative raised on-tap="{{ajouterProbleme}}">Ajouter</paper-button> 
+             <textarea id="textarea"  label="Entrez un commentaire" value= "{{probleme.commentaire}}"></textarea>
+        </div>      
+       <paper-button affirmative raised on-tap="{{ajouterProbleme}}">Ajouter</paper-button> 
       
      </paper-action-dialog>
     </div>

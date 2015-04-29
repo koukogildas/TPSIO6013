@@ -1,15 +1,13 @@
 part of systeme_gestion_patient;
 
 class Probleme extends ConceptEntity<Probleme> {
-
   @observable String diagnostic = "";
   @observable String commentaire = "";
- 
 
   String get idProbleme => super.code;
-  set idProbleme(String idProbleme ) {
+  set idProbleme(String idProbleme) {
     if (code == null) {
-      code = idProbleme ;
+      code = idProbleme;
     }
   }
 
@@ -24,23 +22,18 @@ class Probleme extends ConceptEntity<Probleme> {
     entityMap['diagnostic'] = diagnostic;
     entityMap['commentaire'] = commentaire;
     entityMap['idPersonne'] = idProbleme;
-//    entityMap['problemes'] = problemes.toJson();
     return entityMap;
   }
 
-  fromJson(Map<String, Object> entityMap){
+  fromJson(Map<String, Object> entityMap) {
     super.fromJson(entityMap);
     diagnostic = entityMap['diagnostic'];
     commentaire = entityMap['commentaire'];
-    idProbleme  = entityMap['idProbleme'];
-//    problemes.fromJson(entityMap['problemes']);
+    idProbleme = entityMap['idProbleme'];
   }
-
 }
 
 class Problemes extends ConceptEntities<Probleme> {
-
   Problemes newEntities() => new Problemes();
   Probleme newEntity() => new Probleme();
-
 }

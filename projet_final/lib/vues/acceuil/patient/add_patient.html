@@ -1,6 +1,3 @@
-
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="import" href="../../../../../packages/polymer/polymer.html">
 <link rel="import"
   href="../../../../../packages/paper_elements/paper_action_dialog.html">
@@ -9,35 +6,40 @@
 <link rel="import"
   href="../../../../../packages/paper_elements/paper_input.html">
 <polymer-element name="add-patient"> 
-  <template>
-    <style type="text/css">
+ <template>
+      <style type="text/css">
       .add_Patient {
         position: inherit;
       }
-    </style>
-    <div>
-      <paper-action-dialog id='paper-action-dialog'
-        heading="Ajouter un patient" transition="core-transition-center"
-        class="add_Patient" backdrop>
+      </style>
+      <div>
+        <paper-action-dialog id='paper-action-dialog'
+          heading="Ajouter un patient" transition="core-transition-center"
+          class="add_Patient" backdrop>
+           
+        <paper-input-decorator
+            id="decoratorPatientName" label="Nom" floatingLabel
+            error="Entrez le nom du patient." autoValidate>
+            <input id="nomPatient" is="core-input" name="nomPatient" type="text"
+            value="{{patient.nom}}" required> 
+        </paper-input-decorator> 
         
-         <paper-input-decorator id="decoratorPatientName" label="Nom" floatingLabel
-          error="Entrez le nom du patient." autoValidate>
-            <input  id="nomPatient" is="core-input" name="nomPatient" type="text" value= "{{patient.nom}}" required>
-         </paper-input-decorator>
-    
-      <paper-input-decorator label="Prenom" floatingLabel error="Entrez le prénom du patient." autoValidate>
-          <input id="prenomPatient" is="core-input" name="prenomPatient" type="text" value= "{{patient.prenom}}" required>
-      </paper-input-decorator> 
-      
-       <paper-input-decorator label="Numero d'assurance social."
-        floatingLabel error="Entrez le numero d'assurance social." autoValidate>
-          <input id="nasPatient" is="core-input" name="nasPatient" type="text" value="{{patient.nas}}">
-      </paper-input-decorator> 
-      
-      <paper-button affirmative raised on-tap={{ajouterPatient}}>Ajouter</paper-button> 
-      
-     </paper-action-dialog>
-    </div>
+        <paper-input-decorator
+            label="Prenom" floatingLabel error="Entrez le prénom du patient."
+            autoValidate> <input id="prenomPatient"
+            is="core-input" name="prenomPatient" type="text"
+            value="{{patient.prenom}}" required> 
+         </paper-input-decorator> 
+         <paper-input-decorator
+            label="Numero d'assurance social." floatingLabel
+            error="Entrez le numero d'assurance social." autoValidate>
+            <input id="nasPatient" is="core-input" name="nasPatient" type="text"
+            value="{{patient.nas}}">
+          </paper-input-decorator> 
+          
+          <paper-button affirmative raised
+            on-tap={{ajouterPatient}}>Ajouter</paper-button> </paper-action-dialog>
+      </div>
   </template> <script type="application/dart"
     src="../../../controleurs/acceuil/patient/add_patient.dart"></script>
 </polymer-element>

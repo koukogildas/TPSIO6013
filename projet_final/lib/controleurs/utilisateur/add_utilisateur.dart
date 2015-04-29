@@ -11,7 +11,6 @@ class AddUtilisateur extends PolymerElement {
   @published ConnexionBase connexionBase;
   @published CoreInput username = toObservable(new CoreInput());
   @published CoreInput password = toObservable(new CoreInput());
-//  @published CoreInput nomUtilisateur = toObservable(new CoreInput());
   @published CoreInput prenomUtilisateur = toObservable(new CoreInput());
   @published CoreInput nasUtilisateur = toObservable(new CoreInput());
   @published CoreInput nomFamille = toObservable(new CoreInput());
@@ -48,7 +47,7 @@ class AddUtilisateur extends PolymerElement {
       if (connexionBase.trouverUnUtilisateur(username.value, password.value) !=
           null) {
         connexionBase.message =
-            "Password et username déjà utiliser. Changés les svp.";
+            "le assword et le username existe déjà. Changés les svp.";
       } else {
         if (connexionBase.trouverUnUtilisateurById(
                 nomFamille.value + prenomUtilisateur.value) ==
@@ -63,12 +62,12 @@ class AddUtilisateur extends PolymerElement {
               (paperRadioGroup.selected == "Administrateur") ? true : false;
           user.profilMedecin =
               (paperRadioGroup.selected == "Médecin") ? true : false;
-
           connexionBase.utilisateurs.add(user);
           connexionBase.message = "L'utilisateur est Ajouté";
           InitialiserValeurChamp();
         } else {
           connexionBase.message = "L'utilisateur existe déjà";
+          InitialiserValeurChamp();
         }
       }
     }

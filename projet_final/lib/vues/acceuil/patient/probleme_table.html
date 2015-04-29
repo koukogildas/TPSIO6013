@@ -1,9 +1,3 @@
-<!DOCTYPE html>
-
-<html>
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="import" href="../../../../../packages/polymer/polymer.html">
 <link rel="import"
   href="../../../../../packages/paper_elements/paper_action_dialog.html">
@@ -13,73 +7,64 @@
   href="../../../../../packages/paper_elements/paper_input.html">
 <link rel="import"
   href="../../../../../packages/core_elements/core_header_panel.html">
-  <link rel="import" href="../../../../../packages/core_elements/core_tooltip.html">
-    <link rel="import"  href="ligne_table_probleme.html">
-<title>Connexion à GOBS</title>
-</head>
+<link rel="import"
+  href="../../../../../packages/core_elements/core_tooltip.html">
+<link rel="import" href="ligne_table_probleme.html">
 
 <body fullbleed>
-  <polymer-element name="probleme-table"> 
-  
-   <template>
-   
-    <style type="text/css">
-                  .page {
-            margin : auto; 
-            height:auto;
-            width: 50%;
-            margin-top:2%;
-            background: #fff;
-            border: 1px solid black;
-            border-top-color: #fff;
-            }
-            
-            .lienDroite {
-/*               float:right;              */
-                text-align: center;
-              }
-              .marker {
-                  font-family: arial, sans-serif;
-                  font-size: 16px;
-                  font-weight: bold;
-/*                   color: #003366; */
-                  background: #ffe4b5;
-                  padding: 1px;
-                  text-align: center;
-                } 
-         
+  <polymer-element name="probleme-table"> <template>
+      <style type="text/css">
+        .page {
+          margin: auto;
+          height: auto;
+          width: 50%;
+          margin-top: 2%;
+          background: #fff;
+          border: 1px solid black;
+          border-top-color: #fff;
+        }
+        
+        .marker {
+          font-family: arial, sans-serif;
+          font-size: 16px;
+          font-weight: bold;
+          color: #003366;
+          background: #ffe4b5;
+          padding: 1px;
+          text-align: center;
+        }
+      </style>
+  <br />
+  <div class="marker">Diagnostics identifiés pour
+    {{patient.prenom}} {{patient.nom}}: {{patient.problemes.length}}</div>
+  <br />
+  <section class="page">
+    <paper-shadow z="5">
 
-    </style>
-    
-    <br/>
-    <div class="marker"> 
-                      Diagnostics identifiés pour: {{patient.prenom}} {{patient.nom}}
-     </div>
-     <br/>
-    <section class="page">
-    <paper-shadow z="5">             
-               
-             <table >             
+    <table>
+      <tr>
+        <td>
+          <section>
+            <table id="table-patient">
+              <tbody template
+                repeat="{{probleme in patient.problemes.internalList}}">
                 <tr>
-                  <td>
-                    <section>      
-                      <table id="table-patient">                                                                                          
-                        <tbody template repeat="{{probleme in patient.problemes.internalList}}">
-                         <tr>
-                          <td> 
-                              <ligne-table-probleme connexionBase ={{connexionBase}} probleme="{{probleme}}" id="{{patient.idPersonne}}"></ligne-table-probleme>
-                          </td>
-                         </tr>                
-                        </tbody>                
-                      </table>                      
-                    </section> 
-                  </td>           
+                  <td><ligne-table-probleme
+                      connexionBase={{connexionBase}}
+                      probleme="{{probleme}}"
+                      id="{{patient.idPersonne}}"></ligne-table-probleme>
+                  </td>
                 </tr>
-              </table>
-        </paper-shadow>
-        </section>
-      </template>
-    <script type="application/dart" src="../../../controleurs/acceuil/patient/probleme_table.dart"></script>
+              </tbody>
+            </table>
+          </section>
+        </td>
+      </tr>
+    </table>
+    </paper-shadow>
+  </section>
+  </template> <script type="application/dart"
+    src="../../../controleurs/acceuil/patient/probleme_table.dart"></script>
   </polymer-element>
 </body>
 </html>

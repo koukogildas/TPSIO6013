@@ -8,32 +8,38 @@
   href="../../../../../packages/paper_elements/paper_button.html">
 <link rel="import"
   href="../../../../../packages/paper_elements/paper_input.html">
-<polymer-element name="connexion-user"> 
-  <template>
-    <style type="text/css">
-      .connexion {
-        position: inherit;
-      }
-    </style>
-    <div>
-      <paper-action-dialog id='paper-action-dialog'
-        heading="Ouvrir une session" transition="core-transition-center"
-        class="connexion" backdrop>
-        
-         <paper-input-decorator id="decoratorUsername" label="Nom d'utilisateur" floatingLabel
-          error="veuillez entrer un nom d'utilisateur" autoValidate>
-            <input  id="username" is="core-input" name="username" type="text" value="{{username.value}}" required>
-         </paper-input-decorator>
+  
+<polymer-element name="connexion-user"> <template>
+
+<style type="text/css">
+  .connexion {
+    position: inherit;
+  }
+</style>
+
+<div>
+  <paper-action-dialog id='paper-action-dialog'
+    heading="Ouvrir une session" transition="core-transition-center"
+    class="connexion" backdrop> 
+  <paper-input-decorator
+      id="decoratorUsername" label="Nom d'utilisateur" floatingLabel
+      error="veuillez entrer un nom d'utilisateur" autoValidate>
+      <input id="username" is="core-input" name="username" type="text"
+      value="{{username.value}}" required> 
+   </paper-input-decorator> 
     
-      <paper-input-decorator label="Mot de passe"
-        floatingLabel error="veuillez entrer un mot de passe" autoValidate>
-          <input id="password" is="core-input" name="password" type="password" value="{{password.value}}" required>
-      </paper-input-decorator> 
-      
-      <paper-button affirmative raised on-tap={{authentifierUtilisateur}}>Connexion</paper-button> 
-      
-     </paper-action-dialog>
-    </div>
-  </template> <script type="application/dart"
-    src="../../../controleurs/acceuil/connexion/connexion_user.dart"></script>
+    <paper-input-decorator
+      label="Mot de passe" floatingLabel
+      error="veuillez entrer un mot de passe" autoValidate>
+      <input id="password" is="core-input" name="password" type="password"
+      value="{{password.value}}" required>
+    </paper-input-decorator> 
+    
+    <paper-button
+      affirmative raised on-tap={{authentifierUtilisateur}}>Connexion</paper-button>
+
+  </paper-action-dialog>
+</div>
+</template> <script type="application/dart"
+  src="../../../controleurs/acceuil/connexion/connexion_user.dart"></script>
 </polymer-element>

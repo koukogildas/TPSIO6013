@@ -29,11 +29,10 @@ class Patient extends Personne {
     prenom = entityMap['prenom'];
     idPersonne = entityMap['idPersonne'];
     nas = entityMap['nas'];
-    problemes = problemes.fromJson(entityMap['problemes']);
+    problemes.fromJson(entityMap['problemes']);
   }
 }
 
-//@observable
 class Utilisateur extends Personne {
   @observable String password = '';
   @observable String username = '';
@@ -48,15 +47,15 @@ class Utilisateur extends Personne {
   definirPatientCourant(String idPatient) {
     patientCourant = patients.firstWhere(
         (Patient p) => (p.idPersonne == idPatient), orElse: () => null);
-//    if( patientCourant== null){
-//
-//    }
   }
+
   int compareTo(Utilisateur utlisateur) {
-      if (utlisateur.idPersonne != null) {
-        return idPersonne.compareTo(utlisateur.idPersonne);
-      }
+    if (utlisateur.idPersonne != null) {
+      return idPersonne.compareTo(utlisateur.idPersonne);
+    }
+    return 0;
   }
+
   Patient trouverUnPatient(String idPatient) {
     return patients.firstWhere((Patient p) => (p.idPersonne == idPatient),
         orElse: () => null);

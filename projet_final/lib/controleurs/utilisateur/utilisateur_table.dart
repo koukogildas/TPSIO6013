@@ -7,17 +7,16 @@ import 'package:core_elements/core_icon_button.dart';
 @CustomTag('utilisateur-table')
 class UtilisateurTable extends PolymerElement {
   @published ConnexionBase connexionBase;
-  //@observable Utilisateur utilisateur;
 
   UtilisateurTable.created() : super.created() {}
+
   supprimerUnUtilisateur(Event e, var detail, CoreIconButton target) {
-    
-      if (target.id != connexionBase.utilisateurConnecte.idPersonne) {
-        connexionBase.utilisateurs.remove(connexionBase.trouverUnUtilisateurById(target.id));
-        connexionBase.message = "L'utilisateur est supprimé";
-      }
-      else{
-        connexionBase.message = "L'utilisateur est actuellement connecté";
-      }
+    if (target.id != connexionBase.utilisateurConnecte.idPersonne) {
+      connexionBase.utilisateurs
+          .remove(connexionBase.trouverUnUtilisateurById(target.id));
+      connexionBase.message = "L'utilisateur est supprimé";
+    } else {
+      connexionBase.message = "L'utilisateur est actuellement connecté";
     }
+  }
 }
