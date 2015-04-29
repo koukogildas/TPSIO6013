@@ -5,8 +5,12 @@ import '../../../model/systeme_gestion_patient.dart';
 
 @CustomTag('ligne-table-patient')
 class LigneTablePatient extends PolymerElement {
-  @observable @published Patient patient;
-  @observable @published ConnexionBase connexionBase;
+  @observable
+  @published
+  Patient patient;
+  @observable
+  @published
+  ConnexionBase connexionBase;
 
   LigneTablePatient.created() : super.created() {}
 
@@ -18,6 +22,8 @@ class LigneTablePatient extends PolymerElement {
   }
   supprimerUnPatient(Event e, var detail, Node target) {
     connexionBase.utilisateurConnecte.patients.remove(patient);
+    connexionBase.utilisateurConnecte.patients
+        .remove(connexionBase.utilisateurConnecte.trouverUnPatient(""));
     connexionBase.message = "Le dossier du patient est supprimé.";
   }
 }
