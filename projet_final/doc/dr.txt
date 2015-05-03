@@ -1,0 +1,9 @@
+pf
+
+55/60
+(-1) ne pouvait pas exécuter les tests
+(-1) avertissements dans le code
+import '../probleme/add_probleme.dart'; ?
+(-2) comment un utilisateur peut se faire enregistrer au depart?
+kougil, kougil
+(-1) pubspec: sqljocky: any ?
